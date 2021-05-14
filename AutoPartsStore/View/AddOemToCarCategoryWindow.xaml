@@ -1,0 +1,36 @@
+﻿<Window x:Class="AutoPartsStore.View.AddOemNumberIntoSelectedCarCategoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoPartsStore.View"
+        mc:Ignorable="d"
+        Title="AddOemNumberIntoSelectedCarCategoryWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Grid DataContext="{Binding Source={StaticResource ChooseCarViewModel}}">
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>-->
+            <ComboBox  ItemsSource="{Binding Path=VehicleBrands}"
+                  SelectedValue="{Binding Path=SelectedVehicleBrand}"
+                    Grid.Column="0" x:Name="CarBrandName" FontSize="16"
+                           Margin="10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
+            <ComboBox  ItemsSource="{Binding Path=VehicleModifications}"
+                            SelectedValue="{Binding Path=SelectedVehicleModification}"
+                    Grid.Column="1" x:Name="CarModification" 
+                           Margin="0,10,10,10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
+            <ComboBox ItemsSource="{Binding Path=VehicleEngines}"
+                  SelectedValue="{Binding Path=SelectedVehicleEngine}"
+                    Grid.Column="2" x:Name="CarEngine" 
+                          Margin="0,10,0,10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
+        </Grid>
+
+            <Grid DataContext="{Binding Source={StaticResource AddOemToCarCategoryViewModel}}">
+                <ItemsControl ItemsSource=""></ItemsControl>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
