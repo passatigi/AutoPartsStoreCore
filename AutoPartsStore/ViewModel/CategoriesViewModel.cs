@@ -47,8 +47,11 @@ namespace AutoPartsStore.ViewModel
             {
                 return addCategoryOemNumberCommand ?? (addCategoryOemNumberCommand = new RelayCommand(action =>
                 {
-                    MessageBox.Show(((int)action).ToString());
-                    //ProductViewModel.ProductViewModelObject.
+                    if (action is int)
+                    {
+                        UserConfiguration.GetUserConfiguration().SelectedCategory = storeService.CategoryService.GetCategoryById((int)action);
+
+                    }
 
                 }, func =>
                 {

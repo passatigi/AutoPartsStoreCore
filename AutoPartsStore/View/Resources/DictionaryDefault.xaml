@@ -11,7 +11,7 @@
     <vm:ProductViewModel x:Key="ProductViewModel"/>
     <vm:NewCategoryViewModel x:Key="NewCategoryViewModel"/>
     <vm:NewCarViewModel x:Key="NewCarViewModel"/>
-    <!--<vm:ChooseCarViewModel x:Key="ChooseCarViewModel"/>-->
+    <vm:ChooseCarViewModel x:Key="ChooseCarViewModel"/>
     <vm:AddOemToCarCategoryViewModel x:Key="AddOemToCarCategoryViewModel"/>
     <vm:AddEntityPanelViewModel x:Key="AddEntityPanelViewModel"/>
 

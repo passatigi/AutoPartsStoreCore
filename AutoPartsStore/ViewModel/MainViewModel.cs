@@ -18,7 +18,7 @@ namespace AutoPartsStore.ViewModel
 
         public NewCarViewModel NewCarViewModel { get; set; }
 
-        //public ChooseCarViewModel ChooseCarViewModel { get; set; }
+        public ChooseCarViewModel ChooseCarViewModel { get; set; }
         public static MainViewModel GetMainViewModel()
         {
             if (mainViewModel == null)
