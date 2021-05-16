@@ -34,6 +34,10 @@ namespace AutoPartsStore.Model
             }
             
         }
+        public override string ToString()
+        {
+            return $"{Name} level: {categoryLevel}";
+        }
         public int Id
         {
             get

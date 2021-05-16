@@ -29,7 +29,7 @@
         </Grid>
 
             <Grid DataContext="{Binding Source={StaticResource AddOemToCarCategoryViewModel}}">
-                <ItemsControl ItemsSource=""></ItemsControl>
+                <!--<ItemsControl ItemsSource=""></ItemsControl>-->
             </Grid>
         </StackPanel>
     </Grid>

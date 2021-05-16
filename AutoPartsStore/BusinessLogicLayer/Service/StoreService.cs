@@ -11,6 +11,7 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
     {
         public ICategoryService CategoryService { get; }
         public VehicleService VehicleService { get; }
+        public ManufacturerService ManufacturerService { get; }
     }
     class StoreService : IStoreService
     {
@@ -54,6 +55,15 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
             get
             {
                 return vehicleService ?? (vehicleService = new VehicleService(unitOfWork));
+            }
+        }
+
+        private ManufacturerService manufacturerService;
+        public ManufacturerService ManufacturerService
+        {
+            get
+            {
+                return manufacturerService ?? (manufacturerService = new ManufacturerService(unitOfWork));
             }
         }
     }

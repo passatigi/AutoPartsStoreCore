@@ -42,7 +42,7 @@ namespace AutoPartsStore
             //if (AddCarButton.Content.Equals())
             //AddCarButton.Content = "Вернуться к продуктам"
             //if ()
-            ProductOrAddCar.Source = new Uri("AddNewCarPage.xaml", UriKind.Relative);
+            ProductOrAddCar.Source = new Uri("Vehicle/AddNewCarPage.xaml", UriKind.Relative);
 
         }
     }

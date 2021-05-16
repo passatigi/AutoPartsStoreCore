@@ -57,35 +57,35 @@ namespace AutoPartsStore.ViewModel
         }
         public ProductViewModel()
         {
-            _productViewModel = this;
-            product = new Product();
-            Category category = new Category();
-            product.Availability = 10;
-            product.Category = category;
-            product.CategoryString = "Диск сцепления";
-            product.Manufacturer = new Manufacturer();
-            product.Manufacturer.Name = "stellox";
-            product.VendorCode = new VendorCode();
-            product.VendorCode.VendorCodeString = "07-00026-sx";
-            product.ImagePath = "http://stellox.com/i/logo_ru.gif";
-            product.Price = (decimal)(10.12);
-            product.FeaturesString = "диаметр[мм]:215;профиль ступицы:23x26-23n;число зубцов:23;вес[кг]:1,07;";
-            products = new ObservableCollection<Product>();
-            products.Add(product);
+            //_productViewModel = this;
+            //product = new Product();
+            //Category category = new Category();
+            //product.Availability = 10;
+            //product.Category = category;
+            //product.CategoryString = "Диск сцепления";
+            //product.Manufacturer = new Manufacturer();
+            //product.Manufacturer.Name = "stellox";
+            //product.VendorCode = new VendorCode();
+            //product.VendorCode.VendorCodeString = "07-00026-sx";
+            //product.ImagePath = "http://stellox.com/i/logo_ru.gif";
+            //product.Price = (decimal)(10.12);
+            //product.FeaturesString = "диаметр[мм]:215;профиль ступицы:23x26-23n;число зубцов:23;вес[кг]:1,07;";
+            //products = new ObservableCollection<Product>();
+            //products.Add(product);
 
-            Product product2 = new Product();
-            product2.Availability = 10;
-            product2.Category = category;
+            //Product product2 = new Product();
+            //product2.Availability = 10;
+            //product2.Category = category;
 
-            product2.CategoryString = "Диск сцепления";
-            product2.Manufacturer = new Manufacturer();
-            product2.Manufacturer.Name = "stellox";
-            product2.VendorCode = new VendorCode();
-            product2.VendorCode.VendorCodeString = "07-00026-sx";
-            product2.ImagePath = "http://stellox.com/i/logo_ru.gif";
-            product2.Price = (decimal)(10.12);
-            product2.FeaturesString = "диаметр[мм]:215;профиль ступицы:23x26-23n;число зубцов:23;вес[кг]:1,07;";            
-            products.Add(product2);
+            //product2.CategoryString = "Диск сцепления";
+            //product2.Manufacturer = new Manufacturer();
+            //product2.Manufacturer.Name = "stellox";
+            //product2.VendorCode = new VendorCode();
+            //product2.VendorCode.VendorCodeString = "07-00026-sx";
+            //product2.ImagePath = "http://stellox.com/i/logo_ru.gif";
+            //product2.Price = (decimal)(10.12);
+            //product2.FeaturesString = "диаметр[мм]:215;профиль ступицы:23x26-23n;число зубцов:23;вес[кг]:1,07;";            
+            //products.Add(product2);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

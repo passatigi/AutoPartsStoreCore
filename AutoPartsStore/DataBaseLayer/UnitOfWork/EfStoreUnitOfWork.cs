@@ -32,8 +32,8 @@ namespace AutoPartsStore.DataBaseConnector
             return storeUnitOfWork;
         }
         #endregion
-
-        private AutoPartsStoreContext db;
+        // private
+        public AutoPartsStoreContext db;
         protected EfStoreUnitOfWork()
         {
             var builder = new ConfigurationBuilder();
@@ -58,6 +58,7 @@ namespace AutoPartsStore.DataBaseConnector
         private VehicleModificationRepository vehicleModificationRepository;
         private VehicleEngineRepository vehicleEngineRepository;
         private CategoryRepository categoryRepository;
+        private ManufacturerRepository manufacturerRepository;
 
         #region Properties
 
@@ -97,6 +98,16 @@ namespace AutoPartsStore.DataBaseConnector
                 return categoryRepository;
             }
         }
+        public IRepository<Manufacturer> ManufacturerRepository
+        {
+            get
+            {
+                if (manufacturerRepository == null)
+                    manufacturerRepository = new ManufacturerRepository(db);
+                return manufacturerRepository;
+            }
+        }
+
         #endregion
 
         public void Save()

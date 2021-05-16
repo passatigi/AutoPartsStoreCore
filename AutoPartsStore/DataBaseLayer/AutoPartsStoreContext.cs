@@ -42,10 +42,13 @@ namespace AutoPartsStore.DataBaseLayer
                 .HasOne(c => c.ParentCategory)
                 .WithMany(pc => pc.Nodes)
                 .OnDelete(DeleteBehavior.ClientSetNull);
-                
+
+            modelBuilder.Entity<Product>().Ignore(p => p.Image).Ignore(p => p.Features);
+
+            modelBuilder.Entity<Manufacturer>().Ignore(m => m.Image);
             //modelBuilder.Entity<Category>().Property(c => c.ParentCategory)
             //    .ValueGeneratedOnAddOrUpdate();
-            ;
+
         }
 
     }

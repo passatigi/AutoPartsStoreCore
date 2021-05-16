@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace AutoPartsStore.Model
 {
@@ -70,17 +73,71 @@ namespace AutoPartsStore.Model
         }
 
     }
-    public class Product
+    public class Product : BasicModel
     {
         private long id;
         private Category category;
         private Manufacturer manufacturer;
         private VendorCode vendorCode;
-        private string imagePath;
+        
+
         private Decimal price;
         private int availability;
         private string description;
         private ObservableCollection<Feature> features;
+
+
+        public byte[] ImageByteArray
+        {
+            get
+            {
+                if (image != null)
+                {
+                    byte[] data;
+                    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                    encoder.QualityLevel = 30;
+                    encoder.Frames.Add(BitmapFrame.Create(image as BitmapImage));
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        encoder.Save(ms);
+                        data = ms.ToArray();
+                    }
+                    return data;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    using (var ms = new MemoryStream(value))
+                    {
+                        BitmapImage image = new BitmapImage();
+                        image.BeginInit();
+                        image.CacheOption = BitmapCacheOption.OnLoad; // here
+                        image.StreamSource = ms;
+                        image.EndInit();
+                        Image = image;
+                        NotifyPropertyChanged(nameof(Image));
+                    }
+                }
+            }
+        }
+
+        private ImageSource image;
+        
+        public ImageSource Image
+        {
+            get
+            {
+                return image;
+            }
+            set
+            {
+                image = value;
+                NotifyPropertyChanged(nameof(Image));
+            }
+        }
 
         public Product()
         {
@@ -95,7 +152,7 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                id = value;
+                SetProperty(ref id, value);
             }
         }
         
@@ -108,22 +165,11 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                category = value;
+                SetProperty(ref category, value);
 
             }
         }
-        public string CategoryString
-        {
-            get
-            {
-                return category.Name;
-            }
-            set
-            {
-                //Name = value;
 
-            }
-        }
         public Manufacturer Manufacturer
         {
             get
@@ -132,7 +178,7 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                manufacturer = value;
+                SetProperty(ref manufacturer, value);
             }
         }
         public VendorCode VendorCode
@@ -143,21 +189,10 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                vendorCode = value;
+                SetProperty(ref vendorCode, value);
+            }
+        }
 
-            }
-        }
-        public string ImagePath
-        {
-            get
-            {
-                return imagePath;
-            }
-            set
-            {
-                imagePath = value;
-            }
-        }
         public Decimal Price
         {
             get
@@ -166,7 +201,7 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                price = value;
+                SetProperty(ref price, value);
 
             }
         }
@@ -178,7 +213,7 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                availability = value;
+                SetProperty(ref availability, value);
 
             }
         }
@@ -190,8 +225,7 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                description = value;
-
+                SetProperty(ref description, value);
             }
         }
         public ObservableCollection<Feature> Features
@@ -202,8 +236,7 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                features = value;
-
+                SetProperty(ref features, value);
             }
         }
         public string FeaturesString {
@@ -213,7 +246,8 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                features = Feature.GetFeaturesByString(value);
+                Features = Feature.GetFeaturesByString(value);
+                NotifyPropertyChanged(nameof(FeaturesString));
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoPartsStore.View.Manufacturer;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,6 +17,11 @@ namespace AutoPartsStore.ViewModel
             //newCategory.ParentCategory = categoryService.GetCategoryById(parentId);
             //ClearNewCategory();
             //newCategoryWindow.Show();
+        }
+        public static void OpenAddManufacturerWindow()
+        {
+            AddManufacturerWindow addManufacturerWindow = new AddManufacturerWindow();
+            addManufacturerWindow.Show();
         }
     }
 }
