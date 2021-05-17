@@ -13,6 +13,7 @@ namespace AutoPartsStore.Model
     {
         public int ManufacturerId { get; set; }
         public string Name { get; set; }
+
         public byte[] ImageByteArray
         {
             get
@@ -44,7 +45,7 @@ namespace AutoPartsStore.Model
                         image.StreamSource = ms;
                         image.EndInit();
                         Image = image;
-                        NotifyPropertyChanged(nameof(Image));
+                        //NotifyPropertyChanged(nameof(Image));
                     }
                 }
             }
