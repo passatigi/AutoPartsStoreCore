@@ -51,6 +51,10 @@ namespace AutoPartsStore.Model
             }
         }
 
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
         private ImageSource image;
 
         public ImageSource Image

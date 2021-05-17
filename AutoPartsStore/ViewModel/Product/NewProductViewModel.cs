@@ -31,6 +31,9 @@ namespace AutoPartsStore.ViewModel
             storeService = StoreService.GetStoreService();
             Categories = new ObservableCollection<Category>();
             Manufacturers = new ObservableCollection<Manufacturer>();
+            Feature = new Feature();
+            product = new Product();
+            product.Features = new ObservableCollection<Feature>();
             FillCategories();
             FillManufacturers();
         }
@@ -88,16 +91,29 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref manufacturers, value);
             }
         }
-        private string searchCategoryString;
-        public string SearchCategoryString
+
+        private Feature feature;
+        public Feature Feature
         {
             get
             {
-                return searchCategoryString;
+                return feature;
             }
             set
             {
-                SetProperty(ref searchCategoryString, value);
+                SetProperty(ref feature, value);
+            }
+        }
+        private string searchString;
+        public string SearchString
+        {
+            get
+            {
+                return searchString;
+            }
+            set
+            {
+                SetProperty(ref searchString, value);
             }
         }
         #region command
@@ -109,11 +125,8 @@ namespace AutoPartsStore.ViewModel
             {
                 return addProductCommand ?? (addProductCommand = new RelayCommand(action =>
                 {
-                    if (action is int)
-                    {
-                        //efStoreUnitOfWork.
-                        //efStoreUnitOfWork.db.Products
-                    }
+                    storeService.ProductService.AddProduct(Product);
+                    Product = new Product();
 
                 }, func =>
                 {
@@ -135,21 +148,45 @@ namespace AutoPartsStore.ViewModel
                 }));
             }
         }
-
-        private RelayCommand findCategoryCommand;
-        public RelayCommand FindCategoryCommand
+        private RelayCommand addFeatureCommand;
+        public RelayCommand AddFeatureCommand
         {
             get
             {
-                return findCategoryCommand ?? (findCategoryCommand = new RelayCommand(action =>
+                return addFeatureCommand ?? (addFeatureCommand = new RelayCommand(action =>
                 {
-                    if (action is string)
+                    product.Features.Add(Feature);
+                    Feature = new Feature();
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
+
+        private RelayCommand findStringCommand;
+        public RelayCommand FindStringCommand
+        {
+            get
+            {
+                return findStringCommand ?? (findStringCommand = new RelayCommand(action =>
+                {
+                    if (action == categories)
                     {
                         Categories.Clear();
                         foreach (Category category in
-                        storeService.CategoryService.GetAllCategories().Where(c => c.Name.Contains(SearchCategoryString)))
+                        storeService.CategoryService.GetAllCategories().Where(c => c.Name.Contains(SearchString)))
                         {
                             Categories.Add(category);
+                        }
+                    }
+                    else if (action == manufacturers)
+                    {
+                        Manufacturers.Clear();
+                        foreach (Manufacturer manufacturer in
+                        storeService.ManufacturerService.GetAllManufacturers().Where(c => c.Name.Contains(SearchString)))
+                        {
+                            Manufacturers.Add(manufacturer);
                         }
                     }
 

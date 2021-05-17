@@ -1,4 +1,5 @@
-﻿using AutoPartsStore.Model;
+﻿using AutoPartsStore.BusinessLogicLayer.Service;
+using AutoPartsStore.Model;
 using AutoPartsStore.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,89 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.ViewModel
 {
-    class ProductViewModel : INotifyPropertyChanged
+    class ProductViewModel : BaseViewModel
     {
+
+        private void FilProducts()
+        {
+            IEnumerable<Product> products = storeService.ProductService.GetAllProducts();
+            if (isSortByManufacturer)
+            {
+                if (isSortAcs)
+                {
+                    products = products.OrderBy(p => p.Manufacturer.Name);
+                 }
+                else
+                {
+                    products = products.OrderByDescending((p => p.Manufacturer.Name));
+                }
+            }
+            else
+            {
+                if (isSortAcs)
+                {
+                    products = products.OrderBy(p => p.Price);
+                }
+                else
+                {
+                    products = products.OrderByDescending((p => p.Price));
+                }
+            }
+
+            Products.Clear();
+            foreach (Product product in products)
+            {
+                Products.Add(product);
+            }
+        }
+
+
+
+        private bool isSortByManufacturer = true;
+
+        public bool IsSortByManufacturer
+        {
+            get
+            {
+                return isSortByManufacturer;
+            }
+            set
+            {
+                if (value != isSortByManufacturer)
+                {
+                    isSortByManufacturer = value;
+                    FilProducts();
+                    NotifyPropertyChanged(nameof(isSortByManufacturer));
+
+                }
+                else
+                {
+                    SetProperty(ref isSortByManufacturer, value);
+                }
+            }
+        }
+        private bool isSortAcs = true;
+
+        public bool IsSortAcs
+        {
+            get
+            {
+                return isSortAcs;
+            }
+            set
+            {
+                if (value != isSortAcs)
+                {
+                    isSortAcs = value;
+                    FilProducts();
+                    NotifyPropertyChanged(nameof(IsSortAcs));
+                }
+                else
+                {
+                    SetProperty(ref isSortAcs, value);
+                }
+            }
+        }
         private static ProductViewModel _productViewModel;
         public static ProductViewModel ProductViewModelObject {
             get
@@ -37,8 +119,7 @@ namespace AutoPartsStore.ViewModel
             }
             set
             {
-                product = value;
-                NotifyPropertyChanged("Product");
+                SetProperty(ref product, value);
             }
         }
         private ObservableCollection<Product> products;
@@ -51,50 +132,16 @@ namespace AutoPartsStore.ViewModel
             }
             set
             {
-                products = value;
-                NotifyPropertyChanged("Products");
+                SetProperty(ref products, value);
             }
         }
+        IStoreService storeService;
         public ProductViewModel()
         {
-            //_productViewModel = this;
-            //product = new Product();
-            //Category category = new Category();
-            //product.Availability = 10;
-            //product.Category = category;
-            //product.CategoryString = "Диск сцепления";
-            //product.Manufacturer = new Manufacturer();
-            //product.Manufacturer.Name = "stellox";
-            //product.VendorCode = new VendorCode();
-            //product.VendorCode.VendorCodeString = "07-00026-sx";
-            //product.ImagePath = "http://stellox.com/i/logo_ru.gif";
-            //product.Price = (decimal)(10.12);
-            //product.FeaturesString = "диаметр[мм]:215;профиль ступицы:23x26-23n;число зубцов:23;вес[кг]:1,07;";
-            //products = new ObservableCollection<Product>();
-            //products.Add(product);
-
-            //Product product2 = new Product();
-            //product2.Availability = 10;
-            //product2.Category = category;
-
-            //product2.CategoryString = "Диск сцепления";
-            //product2.Manufacturer = new Manufacturer();
-            //product2.Manufacturer.Name = "stellox";
-            //product2.VendorCode = new VendorCode();
-            //product2.VendorCode.VendorCodeString = "07-00026-sx";
-            //product2.ImagePath = "http://stellox.com/i/logo_ru.gif";
-            //product2.Price = (decimal)(10.12);
-            //product2.FeaturesString = "диаметр[мм]:215;профиль ступицы:23x26-23n;число зубцов:23;вес[кг]:1,07;";            
-            //products.Add(product2);
+            storeService = StoreService.GetStoreService();
+            Products = new ObservableCollection<Product>();
+            FilProducts();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void NotifyPropertyChanged(string propertyName)
-        {
-            if(PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+       
     }
 }

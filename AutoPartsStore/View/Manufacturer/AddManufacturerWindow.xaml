@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:AutoPartsStore.View.Manufacturer"
         mc:Ignorable="d"
         Title="AddManufacturerWindow"  Width="394">
-    <Grid DataContext="{Binding Source={StaticResource AddManufacturerViewModel}}">
+    <Grid>
+        <Grid DataContext="{Binding Source={StaticResource AddManufacturerViewModel}}">
         <StackPanel>
             <TextBox Text="{Binding Manufacturer.Name}"/>
             <StackPanel>
@@ -14,7 +15,8 @@
                 <Button Height="23" Name="BrowseButton" Click="BrowseButton_Click" Content="{DynamicResource AddImageButtonText}"/>
             </StackPanel>
             <TextBox Text="{Binding Manufacturer.Description}"/>
-            <Button Height="23" Click="BrowseButton_Click" Command="{Binding AddManufacturerCommand}"/>
+            <Button Height="23" Command="{Binding AddManufacturerCommand}"/>
         </StackPanel>
+        </Grid>
     </Grid>
 </Window>

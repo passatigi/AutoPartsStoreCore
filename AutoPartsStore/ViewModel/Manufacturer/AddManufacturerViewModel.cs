@@ -8,12 +8,12 @@ using AutoPartsStore.Model;
 
 namespace AutoPartsStore.ViewModel
 {
-    class AddManufacturerViewModel : BaseViewModel
+    public class AddManufacturerViewModel : BaseViewModel
     {
         IStoreService storeService;
-        public AddManufacturerViewModel(IStoreService storeService)
+        public AddManufacturerViewModel()
         {
-            this.storeService = storeService;
+            this.storeService = StoreService.GetStoreService();
             manufacturer = new Manufacturer();
         }
         private Manufacturer manufacturer;
@@ -37,7 +37,7 @@ namespace AutoPartsStore.ViewModel
                 {
                     if (manufacturer.Name != null || manufacturer.Name != "") {
                         storeService.ManufacturerService.AddManufacturer(Manufacturer);
-                        manufacturer = new Manufacturer();
+                        Manufacturer = new Manufacturer();
                     }
                     else
                     {

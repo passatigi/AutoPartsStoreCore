@@ -22,6 +22,7 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
         public void AddManufacturer(Manufacturer manufacturer)
         {
             unitOfWork.ManufacturerRepository.Add(manufacturer);
+            unitOfWork.Save();
         }
     }
 }

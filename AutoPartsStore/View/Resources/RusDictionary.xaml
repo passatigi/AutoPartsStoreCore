@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AutoPartsStore.View.Resources"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:AutoPartsStore.ViewModel"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:m="clr-namespace:AutoPartsStore.Model">
+    <sys:String x:Key="NewCategoryWindowTitle">Добавить категорию</sys:String>
+    <sys:String x:Key="AddOemToCarMenuItemText">Добавить OEM номер для этой категории</sys:String>
+    <sys:String x:Key="AddIntoCategoryMenuItemText">Добавить в эту категорию</sys:String>
+    <sys:String x:Key="AddWithCategoryMenuItemText">Добавить к этой категории</sys:String>
+    <sys:String x:Key="RenameCategoryMenuItemText">Переименовать категорию</sys:String>
+    <sys:String x:Key="DeleteCategoryMenuItemText">Удалить категорию</sys:String>
+    <sys:String x:Key="NewCategoryTipLabel">Добавить категорию в</sys:String>
+    <sys:String x:Key="NewCategoryButtonText">Добавить категорию</sys:String>
+    <sys:String x:Key="NewCarButtonText">Добавить автомобиль</sys:String>
+    <sys:String x:Key="NewProductButtonText">Добавить товар</sys:String>
+    <sys:String x:Key="FindCategoryButtonText">Искать</sys:String>
+    <sys:String x:Key="AddImageButtonText">Добавить изображение</sys:String>
+    <sys:String x:Key="AddManufacturerButtonText">Добавить производителя</sys:String>
+    <sys:String x:Key="ProductListButtonText">Список товаров</sys:String>
+
+    <sys:String x:Key="SortByPriceText">По цене</sys:String>
+    <sys:String x:Key="SortByManufacturerText">По производителю</sys:String>
+    <sys:String x:Key="SortAscText">По возврастанию</sys:String>
+    <sys:String x:Key="SortDescText">По убыванию</sys:String>
+
+    <sys:String x:Key="ParameterLabelText">Параметр</sys:String>
+    <sys:String x:Key="DescriptionLabelText">Характеристика</sys:String>
+    <sys:String x:Key="PriceLabelText">Цена</sys:String>
+    <sys:String x:Key="AvaibilityLabelText">Количество</sys:String>
+
+
+
+    <!--<sys:String x:Key="ChooseCarPagePath">Vehicle/ChooseCarPage.xaml</sys:String>-->
+    <sys:Uri x:Key="ChooseCarPagePath">Vehicle/ChooseCarPage.xaml</sys:Uri>
+    <sys:Uri x:Key="CategoryPagePath">Category/CategoryPage.xaml</sys:Uri>
+    <sys:Uri x:Key="ProductsShowPagePath">Product/ProductsShowPage.xaml</sys:Uri>
+    <!--<sys:Uri x:Key="ChooseCarPagePath">Vehicle/ChooseCarPage.xaml</sys:Uri>-->
+
+    <sys:String x:Key="SelectCarBrandLabel">Выберите марку автомобиля</sys:String>
+    <sys:String x:Key="SelectCarModelLabel">Заполните модификацию</sys:String>
+    <sys:String x:Key="SelectCarEngineLabel">Заполните параметры двигателя</sys:String>
+    <sys:String x:Key="AddCarBrandButtonText">Добавить</sys:String>
+    <sys:String x:Key="AddCarModificationButtonText">Добавить модификацию</sys:String>
+    <sys:String x:Key="AddCarEngineButtonText">Добавить двигатель</sys:String>
+    <sys:String x:Key="AddCarModificationTipText">Добавить в базу данных</sys:String>
+    <sys:String x:Key="DeleteCarBrandButtonText">Удалить</sys:String>
+</ResourceDictionary>

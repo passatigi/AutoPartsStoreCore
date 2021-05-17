@@ -2,10 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AutoPartsStore.View.Resources">
 
-    <SolidColorBrush x:Key="BlackTextColor" Color="black"/>
+    <SolidColorBrush x:Key="BlackTextColor" Color="white"/>
 
     <SolidColorBrush x:Key="ItemBackGround" Color="#F4F4F4"></SolidColorBrush>
-    <SolidColorBrush x:Key="SecondItemBackGround" Color="white"></SolidColorBrush>
+    <SolidColorBrush x:Key="SecondItemBackGround" Color="blue"></SolidColorBrush>
     <SolidColorBrush x:Key="RedButtonColor" Color="#D70000"></SolidColorBrush>
     <SolidColorBrush x:Key="RedButtonColorOnMouseOver" Color="#f75e5e"></SolidColorBrush>
     <SolidColorBrush x:Key="RedButtonColorOnClick" Color="#911717"></SolidColorBrush>
