@@ -30,6 +30,7 @@ namespace AutoPartsStore.ViewModel
         {
             storeService = StoreService.GetStoreService();
             Categories = new ObservableCollection<Category>();
+            Manufacturers = new ObservableCollection<Manufacturer>();
             FillCategories();
             FillManufacturers();
         }
