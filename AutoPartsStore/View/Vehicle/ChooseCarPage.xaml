@@ -10,7 +10,7 @@
      >
 
     <Grid Margin="10 10 0 10"  DataContext="{Binding Source={StaticResource ChooseCarViewModel}}">
-        <Border Background="white">
+        <Border Background="{DynamicResource SecondItemBackGround}">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
             </Border.Effect>

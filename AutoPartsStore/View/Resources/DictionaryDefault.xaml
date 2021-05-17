@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:vm="clr-namespace:AutoPartsStore.ViewModel"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="AutoPartsStore.AddCarWindow"
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
         xmlns:m="clr-namespace:AutoPartsStore.Model">
 
     <vm:CategoriesViewModel x:Key="CategoriesViewModel"/>
@@ -19,43 +19,11 @@
 
     <ObjectDataProvider x:Key="CategoriesViewModelDataProvider" ObjectType="{x:Type vm:CategoriesViewModel}" IsAsynchronous="True"/>
     
-    <sys:String x:Key="NewCategoryWindowTitle">Добавить категорию</sys:String>
-    <sys:String x:Key="AddOemToCarMenuItemText">Добавить OEM номер для этой категории</sys:String>
-    <sys:String x:Key="AddIntoCategoryMenuItemText">Добавить в эту категорию</sys:String>
-    <sys:String x:Key="AddWithCategoryMenuItemText">Добавить к этой категории</sys:String>
-    <sys:String x:Key="RenameCategoryMenuItemText">Переименовать категорию</sys:String>
-    <sys:String x:Key="DeleteCategoryMenuItemText">Удалить категорию</sys:String>
-    <sys:String x:Key="NewCategoryTipLabel">Добавить категорию в </sys:String>
-    <sys:String x:Key="NewCategoryButtonText">Добавить категорию</sys:String>
-    <sys:String x:Key="NewCarButtonText">Добавить автомобиль</sys:String>
-    <sys:String x:Key="NewProductButtonText">Добавить товар</sys:String>
-    <sys:String x:Key="FindCategoryButtonText">Искать</sys:String>
-    <sys:String x:Key="AddImageButtonText">Добавить изображение</sys:String>
-    <sys:String x:Key="AddManufacturerButtonText">Добавить производителя</sys:String>
-
-    <BitmapImage x:Key="BuyBascetIcon" UriSource="C:\Users\IKpassah\source\repos\AutoPartsStore\AutoPartsStore\TempElements\icons\buyIcon.png" />
-    <!--<sys:String x:Key="ChooseCarPagePath">Vehicle/ChooseCarPage.xaml</sys:String>-->
-    <sys:Uri x:Key="ChooseCarPagePath">Vehicle/ChooseCarPage.xaml</sys:Uri>
-    <sys:Uri x:Key="CategoryPagePath">Category/CategoryPage.xaml</sys:Uri>
-    <sys:Uri x:Key="ProductsShowPagePath">Product/ProductsShowPage.xaml</sys:Uri>
-    <!--<sys:Uri x:Key="ChooseCarPagePath">Vehicle/ChooseCarPage.xaml</sys:Uri>-->
+    <BitmapImage x:Key="BuyBascetIcon" UriSource="\TempElements\icons\buyIcon.png" />
     
-    <sys:String x:Key="SelectCarBrandLabel">Выберите марку автомобиля</sys:String>
-    <sys:String x:Key="SelectCarModelLabel">Заполните модификацию</sys:String>
-    <sys:String x:Key="SelectCarEngineLabel">Заполните параметры двигателя</sys:String>
-    <sys:String x:Key="AddCarBrandButtonText">Добавить</sys:String>
-    <sys:String x:Key="AddCarModificationButtonText">Добавить модификацию</sys:String>
-    <sys:String x:Key="AddCarEngineButtonText">Добавить двигатель</sys:String>
-    <sys:String x:Key="AddCarModificationTipText">Добавить в базу данных</sys:String>
-    <sys:String x:Key="DeleteCarBrandButtonText">Удалить</sys:String>
-    <SolidColorBrush x:Key="BlackTextColor" Color="black"/>
 
-    <SolidColorBrush x:Key="ItemBackGround" Color="#F4F4F4"></SolidColorBrush>
-    <SolidColorBrush x:Key="SecondItemBackGround" Color="white"></SolidColorBrush>
-    <SolidColorBrush x:Key="RedButtonColor" Color="#D70000"></SolidColorBrush>
-    <SolidColorBrush x:Key="RedButtonColorOnMouseOver" Color="#f75e5e"></SolidColorBrush>
-    <SolidColorBrush x:Key="RedButtonColorOnClick" Color="#911717"></SolidColorBrush>
-    <SolidColorBrush x:Key="RedButtonTextColor" Color="white"></SolidColorBrush>
+    
+
 
     <Style x:Key="RedButtonTextStyle">
         <Setter Property="Control.FontSize" Value="10"/>

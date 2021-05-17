@@ -29,6 +29,24 @@ namespace AutoPartsStore
             //aut.Database.Delete();
             //aut.Database.Initialize(false);
             Closing += OnWindowClosing;
+            List<string> styles = new List<string> { "Dark", "White" };
+            styleBox.SelectionChanged += ThemeChange;
+            styleBox.ItemsSource = styles;
+            styleBox.SelectedItem = "White";
+        }
+        private void ThemeChange(object sender, SelectionChangedEventArgs e)
+        {
+            string style = styleBox.SelectedItem as string;
+            var uri = new Uri("View/Resources/Dictionary" + style + ".xaml", UriKind.Relative);
+            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+             uri = new Uri("View/Resources/DictionaryDefault.xaml", UriKind.Relative);
+            resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+            uri = new Uri("View/Resources/RusDictionary.xaml", UriKind.Relative);
+            resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
         }
         public void OnWindowClosing(object sender, CancelEventArgs e)
         {
@@ -38,11 +56,21 @@ namespace AutoPartsStore
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //NewCarButtonText
-            //if (AddCarButton.Content.Equals())
-            //AddCarButton.Content = "Вернуться к продуктам"
-            //if ()
-            ProductOrAddCar.Source = new Uri("Vehicle/AddNewCarPage.xaml", UriKind.Relative);
+            if(sender is Button)
+            {
+                Button button = sender as Button;
+                if(button == AddCarButton) {
+                    ProductOrAddCar.Source = new Uri("Vehicle/AddNewCarPage.xaml", UriKind.Relative);
+                }
+                else if(button == AddProductButton)
+                {
+                    ProductOrAddCar.Source = new Uri("Product/NewProductPage.xaml", UriKind.Relative);
+                }
+                else if (button == ProductsListButton)
+                {
+                    ProductOrAddCar.Source = new Uri("Product/ProductsShowPage.xaml", UriKind.Relative);
+                }
+            }
 
         }
     }

@@ -9,7 +9,7 @@
       Title="NewProductPage">
     <!--d:DesignHeight="450"--> 
     <Grid>
-        <Grid Background="White" MinHeight="200" MaxHeight="600" Margin="0, 0, 0, 15" DataContext="{Binding Source={StaticResource NewProductViewModel}}">
+        <Grid Background="{DynamicResource SecondItemBackGround}" MinHeight="200" MaxHeight="600" Margin="0, 0, 0, 15" DataContext="{Binding Source={StaticResource NewProductViewModel}}">
             <Grid.Effect>
                 <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
             </Grid.Effect>
@@ -28,12 +28,14 @@
                     <RowDefinition Height="100*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="1" Source="{Binding Path=ImagePath}"></Image>
+                <Image Grid.Row="1" Source="{Binding Product.Manufacturer.Image, Mode=TwoWay}"></Image>
 
                 <StackPanel  Grid.Row="2">
                     <Image Name="ProductImage" Source="{Binding Product.Image, Mode=TwoWay}" MaxHeight="150"/>
                     <Button Margin="5,0,0,0" Height="23" Name="BrowseButton" Click="BrowseButton_Click" Content="{DynamicResource AddImageButtonText}"/>
                 </StackPanel>
+
+
             </Grid>
             <Grid  Grid.Column="1" >
                 <Grid.RowDefinitions>
@@ -59,8 +61,9 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBox  Grid.Column="0" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Path=SearchCategoryString}" />
-                            <Button Grid.Column="1" Command="{Binding FindCategoryCommand}"
-                                            CommandParameter="{Binding SearchCategoryString}"
+                            <Button Grid.Column="1" Command="{Binding FindStringCommand}"
+                                            CommandParameter="{Binding Categories}"
+                                    
                             />
                         </Grid>
                     </Border>
@@ -72,8 +75,8 @@
                     </Grid.ColumnDefinitions>
                     <Border Margin="5" Grid.Column="0">
                         <ComboBox 
-                    ItemsSource="{Binding Categories}"
-                                  SelectedItem="{Binding Product.Category}"
+                    ItemsSource="{Binding Manufacturers}"
+                                  SelectedItem="{Binding Product.Manufacturer}"
                                   />
                     </Border>
                     <Border Margin="5" Grid.Column="1">
@@ -83,8 +86,11 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox  Grid.Column="0" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Path=SearchCategoryString}" />
+                            <TextBox  Grid.Column="0" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Path=SearchString}" />
                             <Button Grid.Column="1" Command="{Binding AddManufacturerCommand}"
+                            />
+                            <Button Grid.Column="1" Command="{Binding FindStringCommand}"
+                                    CommandParameter="{Binding Manufacturers}"
                             />
                             <!--<Button Grid.Column="1" Command="{Binding FindManufacturerCommand}"
                                             CommandParameter="{Binding SearchManufacturerString}"
@@ -96,7 +102,8 @@
                     <TextBlock FontSize="15" Text="{Binding Path=Manufacturer.Name, StringFormat=Бренд: {0}}" HorizontalAlignment="Left"/>
                     <TextBlock FontSize="15" Text="{Binding Path=VendorCode.VendorCodeString, StringFormat=Артикул: {0}}" HorizontalAlignment="Left"/>
                 </StackPanel>
-                <ItemsControl Grid.Row="2" x:Name="featureList" ItemsSource="{Binding Features}"
+                <StackPanel Grid.Row="2">
+                <ItemsControl x:Name="featureList" ItemsSource="{Binding Product.Features}"
                              HorizontalAlignment="Stretch"
                              AlternationCount="2"
                                   Margin="5">
@@ -117,20 +124,53 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+                <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Grid.Row="0" Margin="5">
+                            <TextBlock Text="{DynamicResource ParameterLabelText}"/>
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="0" Margin="5">
+                            <TextBlock Text="{DynamicResource DescriptionLabelText}"/>
+                        </Border>
+                        
+                    
+                        <Border Grid.Column="0" Grid.Row="1" Margin="5">
+                            <TextBox Text="{Binding Feature.Parameter}"/>
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="1" Margin="5">
+                            <TextBox Text="{Binding Feature.Description}"/>
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="1" Margin="5">
+                            <Button Content="{DynamicResource AddCarBrandButtonText}"
+                                    Command="{Binding AddFeatureCommand}"
+                                    />
+                        </Border>
+                    </Grid>
+                </StackPanel>
             </Grid>
             <Border Grid.Column="2" Padding="15 0 15 0" BorderBrush="{StaticResource ItemBackGround}"
                         BorderThickness="2,0,0,0">
                 <Grid   >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
                         <RowDefinition Height="30"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="20"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="1" FontSize="20"  FontWeight="Bold" Text="{Binding Path=Price, StringFormat={}{0} р.}" HorizontalAlignment="Center"/>
-                    <Border Grid.Row="2" Margin="10 4" BorderThickness="1" BorderBrush="{StaticResource ItemBackGround}">
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PriceLabelText}"/>
+                    <TextBox Grid.Row="1" FontSize="20"  FontWeight="Bold" Text="{Binding Path=Product.Price}" />
+                    <TextBlock Grid.Row="2" Text="{DynamicResource AvaibilityLabelText}"/>
+                    <Border Grid.Row="3" Margin="10 4" BorderThickness="1" BorderBrush="{StaticResource ItemBackGround}">
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -138,11 +178,14 @@
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Button Style="{DynamicResource ButtonStyleSelectProductCount}" Grid.Column="0" Content="&lt;"/>
-                            <TextBox Style="{DynamicResource TextboxNoBorder}" Grid.Column="1" FontSize="15" Text="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Style="{DynamicResource TextboxNoBorder}" Grid.Column="1" FontSize="15" 
+                                     Text="{Binding Product.Availability}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Button Style="{DynamicResource ButtonStyleSelectProductCount}" Grid.Column="2" Content="&gt;"/>
                         </Grid>
                     </Border>
-                    <Button Margin="5" Grid.Row="3" MinWidth="70" MaxWidth="150"  Style="{DynamicResource BuyButtonStyle}">
+                    <Button Margin="5" Grid.Row="4" MinWidth="70" MaxWidth="150"  Style="{DynamicResource BuyButtonStyle}"
+                            Command="{Binding AddProductCommand}"
+                            >
                         <StackPanel Orientation="Horizontal">
                             <Image HorizontalAlignment="Right" Grid.Column="0"
                         x:Name="buttonImage" Width="12" Height="12" Source="{DynamicResource BuyBascetIcon}"/>
@@ -156,7 +199,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <!--<Grid DataContext="{Binding Source={StaticResource NewProductViewModel}}" Background="white">
+        <!--<Grid DataContext="{Binding Source={StaticResource NewProductViewModel}}" Background="{DynamicResource SecondItemBackGround}">
             <StackPanel Width="100">
                 <Image Name="ImageViewer1" Source="{Binding Product.BitmapImage}" Width="100" Height="100"/>
             <Button Margin="5,0,0,0" Height="23" Name="BrowseButton" Width="75" Click="BrowseButton_Click">

@@ -42,11 +42,11 @@
         </Style>
     </Page.Resources>
     <Grid  DataContext="{Binding Source={StaticResource NewCarViewModel}}" Margin="0">
-        <Border Background="White" Margin="0">
+        <Border Background="{DynamicResource SecondItemBackGround}" Margin="0">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
             </Border.Effect>
-            <StackPanel Background="white" Margin="0">
+            <StackPanel Background="{DynamicResource SecondItemBackGround}" Margin="0">
                 <Grid Height="50">
                     <TextBlock Text="{DynamicResource SelectCarBrandLabel}" 
                            Foreground="Black" VerticalAlignment="Center" Margin="20,0,0,0"/>

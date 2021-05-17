@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AutoPartsStore.View.Resources"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:AutoPartsStore.ViewModel"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:m="clr-namespace:AutoPartsStore.Model">
+    <sys:String x:Key="NewCategoryWindowTitle">Add a category</sys:String>
+    <sys:String x:Key="AddOemToCarMenuItemText">Add OEM number for this category
+        </sys:String>
+        <sys:String x:Key="AddIntoCategoryMenuItemText">Add to this category
+            </sys:String>
+            <sys:String x:Key="AddWithCategoryMenuItemText">Add to this category
+                </sys:String>
+                <sys:String x:Key="RenameCategoryMenuItemText">Rename a category</sys:String>
+                <sys:String x:Key= "DeleteCategoryMenuItemText" >Delete Category</sys:String>
+                <sys:String x:Key="NewCategoryTipLabel">Add a category to
+                    </sys:String>
+                    <sys:String x:Key="NewCategoryButtonText">Add a category</sys:String>
+                    <sys:String x:Key="NewCarButtonText">Add a car
+                        </sys:String>
+                        <sys:String x:Key="NewProductButtonText">Add product
+                            </sys:String>
+                            <sys:String x:Key="FindCategoryButtonText">Search for</sys:String>
+                            <sys:String x:Key="AddImageButtonText">Add image
+                                </sys:String>
+                                <sys:String x:Key="AddManufacturerButtonText">Add manufacturer</sys:String>
+                                <sys:String x:Key="ProductListButtonText">List of products</sys:String>
+
+                                <sys:String x:Key="SortByPriceText">By price</sys:String>
+                                <sys:String x:Key="SortByManufacturerText">By manufacturer</sys:String>
+                                <sys:String x:Key="SortAscText">By returning</sys:String>
+                                <sys:String x:Key="SortDescText">Descending order</sys:String>
+
+    <sys:String x:Key="ParameterLabelText">The parameter</sys:String>
+                                <sys:String x:Key= "DescriptionLabelText" >Characteristic</sys:String>
+                                <sys:String x:Key= "PriceLabelText" >Price</sys:String>
+                                <sys:String x:Key="AvaibilityLabelText">Number of</sys:String>
+</ResourceDictionary>
