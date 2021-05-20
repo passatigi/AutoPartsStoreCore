@@ -2,26 +2,31 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Controls;
 
 namespace AutoPartsStore.ViewModel
 {
     public static class WindowProvider
     {
+        public static Frame WorkSpacePage { get; set; }
+
         public static void OpenAddOemToVehicleCategoryWindow()
         {
-            //NewCategoryWindow newCategoryWindow = new NewCategoryWindow();
-            //if (newCategory == null)
-            //{
-            //    newCategory = new Category();
-            //}
-            //newCategory.ParentCategory = categoryService.GetCategoryById(parentId);
-            //ClearNewCategory();
-            //newCategoryWindow.Show();
+            if (WorkSpacePage != null)
+            {
+                WorkSpacePage.Source = new Uri("Vehicle/AddOemToCarCategoryPage.xaml", UriKind.Relative);
+            }
+            else
+                throw new Exception("Chto nado");
         }
         public static void OpenAddManufacturerWindow()
         {
             AddManufacturerWindow addManufacturerWindow = new AddManufacturerWindow();
             addManufacturerWindow.Show();
         }
+
+
+       
+
     }
 }

@@ -3,6 +3,7 @@ using AutoPartsStore.Command;
 using AutoPartsStore.DataBaseConnector;
 using AutoPartsStore.DataBaseLayer;
 using AutoPartsStore.Model;
+using AutoPartsStore.Model.Vehicle;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,9 +34,14 @@ namespace AutoPartsStore.ViewModel
             Manufacturers = new ObservableCollection<Manufacturer>();
             Feature = new Feature();
             product = new Product();
+            product.VendorCode = new VendorCode();
+            vendorCodeOEMNumber = new VendorCodeOEMNumber();
+            vendorCodeOEMNumber.VendorCode = product.VendorCode;
             product.Features = new ObservableCollection<Feature>();
+            VehicleBrands = new ObservableCollection<VehicleBrand>();
             FillCategories();
             FillManufacturers();
+            FillVehicleBrands();
         }
         private void FillCategories()
         {
@@ -51,6 +57,14 @@ namespace AutoPartsStore.ViewModel
             foreach (Manufacturer manufacturer in storeService.ManufacturerService.GetAllManufacturers())
             {
                 Manufacturers.Add(manufacturer);
+            }
+        }
+        private void FillVehicleBrands()
+        {
+            VehicleBrands.Clear();
+            foreach (VehicleBrand vehicleBrand in storeService.VehicleService.GetAllBrands())
+            {
+                VehicleBrands.Add(vehicleBrand);
             }
         }
         private Product product;
@@ -76,6 +90,18 @@ namespace AutoPartsStore.ViewModel
             set
             {
                 SetProperty(ref categories, value);
+            }
+        }
+        private ObservableCollection<VehicleBrand> vehicleBrands;
+        public ObservableCollection<VehicleBrand> VehicleBrands
+        {
+            get
+            {
+                return vehicleBrands;
+            }
+            set
+            {
+                SetProperty(ref vehicleBrands, value);
             }
         }
 
@@ -104,20 +130,80 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref feature, value);
             }
         }
-        private string searchString;
-        public string SearchString
+        private VendorCodeOEMNumber vendorCodeOEMNumber;
+        public VendorCodeOEMNumber VendorCodeOEMNumber
         {
             get
             {
-                return searchString;
+                return vendorCodeOEMNumber;
             }
             set
             {
-                SetProperty(ref searchString, value);
+                SetProperty(ref vendorCodeOEMNumber, value);
             }
         }
+
+        private string searchCategoryString;
+        public string SearchCategoryString
+        {
+            get
+            {
+                return searchCategoryString;
+            }
+            set
+            {
+                SetProperty(ref searchCategoryString, value);
+            }
+        }
+        private string searchManufacturerString;
+        public string SearchManufacturerString
+        {
+            get
+            {
+                return searchManufacturerString;
+            }
+            set
+            {
+                SetProperty(ref searchManufacturerString, value);
+            }
+        }
+
         #region command
         //AddManufacturerCommand
+        private RelayCommand editVendorCodeCommand;
+        public RelayCommand EditVendorCodeCommand
+        {
+            get
+            {
+                return editVendorCodeCommand ?? (editVendorCodeCommand = new RelayCommand(action =>
+                {
+                    //WindowProvider.
+
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
+        private RelayCommand addOemCommand;
+        public RelayCommand AddOemCommand
+        {
+            get
+            {
+                return addOemCommand ?? (addOemCommand = new RelayCommand(action =>
+                {
+                    // proverka
+                    product.VendorCode.VendorCodeOEMNumbers.Add(vendorCodeOEMNumber);
+                    VendorCodeOEMNumber = new VendorCodeOEMNumber();
+                    VendorCodeOEMNumber.VendorCode = product.VendorCode;
+
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
+
         private RelayCommand addProductCommand;
         public RelayCommand AddProductCommand
         {
@@ -134,6 +220,8 @@ namespace AutoPartsStore.ViewModel
                 }));
             }
         }
+
+
         private RelayCommand addManufacturerCommand;
         public RelayCommand AddManufacturerCommand
         {
@@ -175,7 +263,7 @@ namespace AutoPartsStore.ViewModel
                     {
                         Categories.Clear();
                         foreach (Category category in
-                        storeService.CategoryService.GetAllCategories().Where(c => c.Name.Contains(SearchString)))
+                        storeService.CategoryService.GetAllCategories().Where(c => c.Name.Contains(SearchCategoryString)))
                         {
                             Categories.Add(category);
                         }
@@ -184,7 +272,7 @@ namespace AutoPartsStore.ViewModel
                     {
                         Manufacturers.Clear();
                         foreach (Manufacturer manufacturer in
-                        storeService.ManufacturerService.GetAllManufacturers().Where(c => c.Name.Contains(SearchString)))
+                        storeService.ManufacturerService.GetAllManufacturers().Where(c => c.Name.Contains(SearchManufacturerString)))
                         {
                             Manufacturers.Add(manufacturer);
                         }

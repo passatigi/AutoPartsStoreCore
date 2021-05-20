@@ -108,7 +108,6 @@ namespace AutoPartsStore.ViewModel
             set
             {
                 SetProperty(ref selectedVehicleEngine, value);
-
                     UserConfiguration.GetUserConfiguration().SelectedVehicleEngine = value;
 
             }

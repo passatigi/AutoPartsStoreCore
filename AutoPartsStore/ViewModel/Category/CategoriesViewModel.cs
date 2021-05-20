@@ -50,7 +50,7 @@ namespace AutoPartsStore.ViewModel
                     if (action is int)
                     {
                         UserConfiguration.GetUserConfiguration().SelectedCategory = storeService.CategoryService.GetCategoryById((int)action);
-
+                        WindowProvider.OpenAddOemToVehicleCategoryWindow();
                     }
 
                 }, func =>

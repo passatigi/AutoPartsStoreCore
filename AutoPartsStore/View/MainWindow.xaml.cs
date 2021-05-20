@@ -1,4 +1,5 @@
 ﻿using AutoPartsStore.DataBaseConnector;
+using AutoPartsStore.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,10 @@ namespace AutoPartsStore
             //AutoPartsStoreContext aut = AutoPartsStoreContext.GetStoreContext();
             //aut.Database.Delete();
             //aut.Database.Initialize(false);
+            WindowProvider.WorkSpacePage = WorkSpacePage;
+
             Closing += OnWindowClosing;
+
             List<string> styles = new List<string> { "Dark", "White" };
             styleBox.SelectionChanged += ThemeChange;
             styleBox.ItemsSource = styles;
@@ -60,15 +64,15 @@ namespace AutoPartsStore
             {
                 Button button = sender as Button;
                 if(button == AddCarButton) {
-                    ProductOrAddCar.Source = new Uri("Vehicle/AddNewCarPage.xaml", UriKind.Relative);
+                    WorkSpacePage.Source = new Uri("Vehicle/AddNewCarPage.xaml", UriKind.Relative);
                 }
                 else if(button == AddProductButton)
                 {
-                    ProductOrAddCar.Source = new Uri("Product/NewProductPage.xaml", UriKind.Relative);
+                    WorkSpacePage.Source = new Uri("Product/NewProductPage.xaml", UriKind.Relative);
                 }
                 else if (button == ProductsListButton)
                 {
-                    ProductOrAddCar.Source = new Uri("Product/ProductsShowPage.xaml", UriKind.Relative);
+                    WorkSpacePage.Source = new Uri("Product/ProductsShowPage.xaml", UriKind.Relative);
                 }
             }
 

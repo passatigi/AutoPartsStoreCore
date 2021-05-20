@@ -90,7 +90,7 @@
                                x:Name="ProductOrAddCar" Grid.Row="1" Source="{DynamicResource ProductsShowPagePath}"/>-->
                         <Frame Margin="0 0 0 10" 
                                NavigationUIVisibility="Hidden"
-                               x:Name="ProductOrAddCar" Grid.Row="1" Source="{DynamicResource ProductsShowPagePath}"/>
+                               x:Name="WorkSpacePage" Grid.Row="1" Source="{DynamicResource ProductsShowPagePath}"/>
                         <!--<UserControl x:Name="AddCar" Grid.Row="1" Source="ProductsShowPage.xaml"/>-->
                     </StackPanel>
                     

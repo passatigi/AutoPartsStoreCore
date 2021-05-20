@@ -29,6 +29,19 @@
     <sys:String x:Key="DescriptionLabelText">Характеристика</sys:String>
     <sys:String x:Key="PriceLabelText">Цена</sys:String>
     <sys:String x:Key="AvaibilityLabelText">Количество</sys:String>
+    
+    
+    <sys:String x:Key="EditVendorCodeLabelText">Редактировать артикул</sys:String>
+    <sys:String x:Key="SetVendorCodeLabelText">Напишите артикул</sys:String>
+    
+    <sys:String x:Key="ManufacturerLabelText">Производитель</sys:String>
+
+    <sys:String x:Key="WhenVendorEditHidenButtonText">Отркыть панель редaктирования артикула</sys:String>
+    <sys:String x:Key="WhenVendorEditShowedButtonText">Скрыть панель редaктирования артикула</sys:String>
+    
+    <sys:String x:Key="CarBrandLabelText">Автомобильный брэнд</sys:String>
+    <sys:String x:Key="OemLabelText">OEM номер</sys:String>
+    
 
 
 

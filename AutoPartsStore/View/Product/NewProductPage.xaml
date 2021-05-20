@@ -4,15 +4,18 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AutoPartsStore.View.Product"
+      xmlns:usercontrol="clr-namespace:AutoPartsStore.View"
       mc:Ignorable="d" 
       d:DesignWidth="800"
+      d:DesignHeight="800"
       Title="NewProductPage">
-    <!--d:DesignHeight="450"--> 
+    <!----> 
     <Grid>
-        <Grid Background="{DynamicResource SecondItemBackGround}" MinHeight="200" MaxHeight="600" Margin="0, 0, 0, 15" DataContext="{Binding Source={StaticResource NewProductViewModel}}">
-            <Grid.Effect>
+        <StackPanel Background="{DynamicResource SecondItemBackGround}" Margin="0, 0, 0, 15" DataContext="{Binding Source={StaticResource NewProductViewModel}}">
+            <StackPanel.Effect>
                 <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
-            </Grid.Effect>
+            </StackPanel.Effect>
+            <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
@@ -86,10 +89,10 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox  Grid.Column="0" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Path=SearchString}" />
+                            <TextBox  Grid.Column="0" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Path=SearchManufacturerString}" />
                             <Button Grid.Column="1" Command="{Binding AddManufacturerCommand}"
                             />
-                            <Button Grid.Column="1" Command="{Binding FindStringCommand}"
+                            <Button Grid.Column="2" Command="{Binding FindStringCommand}"
                                     CommandParameter="{Binding Manufacturers}"
                             />
                             <!--<Button Grid.Column="1" Command="{Binding FindManufacturerCommand}"
@@ -98,10 +101,8 @@
                         </Grid>
                     </Border>
                 </Grid>
-                <StackPanel Grid.Row="1" Margin="5">
-                    <TextBlock FontSize="15" Text="{Binding Path=Manufacturer.Name, StringFormat=Бренд: {0}}" HorizontalAlignment="Left"/>
-                    <TextBlock FontSize="15" Text="{Binding Path=VendorCode.VendorCodeString, StringFormat=Артикул: {0}}" HorizontalAlignment="Left"/>
-                </StackPanel>
+                
+
                 <StackPanel Grid.Row="2">
                 <ItemsControl x:Name="featureList" ItemsSource="{Binding Product.Features}"
                              HorizontalAlignment="Stretch"
@@ -199,18 +200,92 @@
                 </Grid>
             </Border>
         </Grid>
-        <!--<Grid DataContext="{Binding Source={StaticResource NewProductViewModel}}" Background="{DynamicResource SecondItemBackGround}">
-            <StackPanel Width="100">
-                <Image Name="ImageViewer1" Source="{Binding Product.BitmapImage}" Width="100" Height="100"/>
-            <Button Margin="5,0,0,0" Height="23" Name="BrowseButton" Width="75" Click="BrowseButton_Click">
-                Browse
-            </Button>
-                <Button 
-                    Command="{Binding AddProductCommand}"
-                    Margin="5,0,0,0" Height="23" Width="75">
-                    Browse
-                </Button>
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="5" Grid.Column="0" Grid.Row="0">
+                        <TextBlock Text="{DynamicResource ManufacturerLabelText}"/>
+                    </Border>
+                    <Border Margin="5" Grid.Column="1"  Grid.Row="0">
+                        <TextBlock Text="{DynamicResource SetVendorCodeLabelText}"/>
+                    </Border>
+                    <Border Margin="5" Grid.Column="0" Grid.Row="1">
+                        <TextBlock Text="{Binding Product.Manufacturer}"/>
+                    </Border>
+                    <Border Margin="5" Grid.Column="1"  Grid.Row="1">
+                        <TextBox Text="{Binding Product.VendorCode.VendorCodeString}"/>
+                    </Border>
+                </Grid>
+                <ItemsControl ItemsSource="{Binding Product.VendorCode.VendorCodeOEMNumbers}"
+                             HorizontalAlignment="Stretch"
+                             AlternationCount="2"
+                                  Margin="5">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid x:Name="PropertyItem">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=VehicleBrand.Brand}" HorizontalAlignment="Left"/>
+                                <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=OEM}" HorizontalAlignment="Right"/>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                    <Setter TargetName="PropertyItem" Property="Background" Value="{StaticResource ItemBackGround}"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0" Margin="5">
+                        <TextBlock Text="{DynamicResource CarBrandLabelText}"/>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0" Margin="5">
+                        <TextBlock Text="{DynamicResource OemLabelText}"/>
+                    </Border>
+
+
+                    <Border Grid.Column="0" Grid.Row="1" Margin="5">
+                        <ComboBox 
+                    ItemsSource="{Binding VehicleBrands}"
+                                  SelectedItem="{Binding VendorCodeOEMNumber.VehicleBrand}"
+                                  />
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1" Margin="5">
+                        <TextBox Text="{Binding VendorCodeOEMNumber.OEM}"/>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1" Margin="5">
+                        <Button Content="{DynamicResource AddCarBrandButtonText}"
+                                    Command="{Binding AddOemCommand}"
+                                    />
+                    </Border>
+                </Grid>
             </StackPanel>
-        </Grid>-->
+            <!--<Grid>
+            <usercontrol:SpoilerUserControl ButtonTextWhenHide="{DynamicResource WhenVendorEditHidenButtonText}"
+                                                ButtonTextWhenShow="{DynamicResource WhenVendorEditShowedButtonText}">
+                    <usercontrol:SpoilerUserControl.SpoilerContent>
+                        <TextBlock Text="ss"></TextBlock>
+                    </usercontrol:SpoilerUserControl.SpoilerContent>
+                </usercontrol:SpoilerUserControl>
+            </Grid>-->
+        </StackPanel>
     </Grid>
 </Page>

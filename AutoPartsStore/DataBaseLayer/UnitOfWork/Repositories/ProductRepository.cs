@@ -18,6 +18,11 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
         }
         public void Add(Product item)
         {
+            foreach (VendorCodeOEMNumber vendorCodeOEMNumber in item.VendorCode.VendorCodeOEMNumbers)
+            {
+                db.VendorCodeOEMNumbers.Add(vendorCodeOEMNumber);
+            }
+            db.VendorCodes.Add(item.VendorCode);
             db.Products.Add(item);
         }
 

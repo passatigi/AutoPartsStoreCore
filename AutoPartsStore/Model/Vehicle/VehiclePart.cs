@@ -12,37 +12,15 @@ namespace AutoPartsStore.Model.Vehicle
     {
         public long Id { get; set; }
 
-        private VehicleBrand vehicle;
-        private VehicleModification vehicleModification;
         private VehicleEngine vehicleEngine;
+        private Category category;
 
         private List<ConcretVehiclePartOemNumber> concretVehiclePartOemNumbers;
 
-        private Category category;
+        
 
         #region properties
-        public VehicleBrand Vehicle
-        {
-            get
-            {
-                return vehicle;
-            }
-            set
-            {
-                SetProperty(ref vehicle, value);
-            }
-        }
-        public VehicleModification VehicleModification
-        {
-            get
-            {
-                return vehicleModification;
-            }
-            set
-            {
-                SetProperty(ref vehicleModification, value);
-            }
-        }
+
         public VehicleEngine VehicleEngine
         {
             get
