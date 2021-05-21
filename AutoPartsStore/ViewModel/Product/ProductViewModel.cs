@@ -1,5 +1,6 @@
 ﻿using AutoPartsStore.BusinessLogicLayer.Service;
 using AutoPartsStore.Model;
+using AutoPartsStore.Model.Vehicle;
 using AutoPartsStore.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace AutoPartsStore.ViewModel
 {
@@ -94,21 +96,7 @@ namespace AutoPartsStore.ViewModel
                 }
             }
         }
-        private static ProductViewModel _productViewModel;
-        public static ProductViewModel ProductViewModelObject {
-            get
-            {
-                if(_productViewModel != null)
-                {
-                    return _productViewModel;
-                }
-                throw new Exception("_productViewModel is null");
-            }
-            private set
-            {
 
-            }
-        }
 
         private Product product;
         public Product Product
@@ -135,10 +123,29 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref products, value);
             }
         }
+        private VehiclePart vehiclePart;
+        public void UpdateProductsList()
+        {
+            Products.Clear();
+            vehiclePart = storeService.VehiclePartService.GetVehiclePart(
+                UserConfiguration.GetUserConfiguration().SelectedVehicleEngine,
+                UserConfiguration.GetUserConfiguration().SelectedCategory
+                );
+            foreach(Product product in storeService.ProductService.GetProductsByVehiclePart(vehiclePart))
+            {
+                Products.Add(product);
+            }
+        }
+        MainViewModel mainViewModel;
+        
         IStoreService storeService;
         public ProductViewModel()
         {
+            mainViewModel = MainViewModel.GetMainViewModel();
+            mainViewModel.ProductViewModel = this;
+
             storeService = StoreService.GetStoreService();
+
             Products = new ObservableCollection<Product>();
             FilProducts();
         }

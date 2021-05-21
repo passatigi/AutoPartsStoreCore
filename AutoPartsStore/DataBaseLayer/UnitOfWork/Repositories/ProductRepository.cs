@@ -18,9 +18,9 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
         }
         public void Add(Product item)
         {
-            //foreach (ProductOEMNumber vendorCodeOEMNumber in item.VendorCode.VendorCodeOEMNumbers)
+            //foreach (ProductOEMNumber productOEMNumber in item.VendorCode.VendorCodeOEMNumbers)
             //{
-            //    db.VendorCodeOEMNumbers.Add(vendorCodeOEMNumber);
+            //    db.VendorCodeOEMNumbers.Add(productOEMNumber);
             //}
             //db.VendorCodes.Add(item.VendorCode);
             db.Products.Add(item);
@@ -41,10 +41,6 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             throw new NotImplementedException();
         }
 
-        public Product GetAs(Product item)
-        {
-            throw new NotImplementedException();
-        }
 
         public Product GetById(int id)
         {
@@ -52,6 +48,11 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
         }
 
         public void Update(Product item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Product> GetAs(Product item)
         {
             throw new NotImplementedException();
         }

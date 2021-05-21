@@ -10,7 +10,7 @@ namespace AutoPartsStore.Model.Vehicle
     public class VehicleModification : BasicModel
     {
         public int VehicleId { get; set; }
-        public VehicleBrand Vehicle { get; set; }
+        public VehicleBrand VehicleBrand { get; set; }
         
         private int id;
         private string model;
@@ -27,7 +27,7 @@ namespace AutoPartsStore.Model.Vehicle
         }
         public VehicleModification(VehicleModification vehicleModification)
         {
-            this.Vehicle = vehicleModification.Vehicle;
+            this.VehicleBrand = vehicleModification.VehicleBrand;
             this.model = vehicleModification.model;
             this.modelCode = vehicleModification.modelCode;
             this.releaseStart = vehicleModification.releaseStart;
@@ -36,7 +36,7 @@ namespace AutoPartsStore.Model.Vehicle
 
         public VehicleModification(VehicleBrand vehicle, string model, string modelCode, string releaseStart, string releaseEnd)
         {
-            this.Vehicle = vehicle;
+            this.VehicleBrand = vehicle;
             this.model = model;
             this.modelCode = modelCode;
             this.releaseStart = releaseStart;
@@ -44,7 +44,7 @@ namespace AutoPartsStore.Model.Vehicle
         }
         public VehicleModification(VehicleBrand vehicle, VehicleModification vehicleModification)
         {
-            this.Vehicle = vehicle;
+            this.VehicleBrand = vehicle;
             this.model = vehicleModification.model;
             this.modelCode = vehicleModification.modelCode;
             this.releaseStart = vehicleModification.releaseStart;

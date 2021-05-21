@@ -89,6 +89,7 @@ namespace AutoPartsStore.Model
         public Product()
         {
             ProductOEMNumbers = new ObservableCollection<ProductOEMNumber>();
+            features = new ObservableCollection<Feature>();
         }
         public byte[] ImageByteArray
         {

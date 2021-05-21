@@ -36,7 +36,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             throw new NotImplementedException();
         }
 
-        public Manufacturer GetAs(Manufacturer item)
+        public IEnumerable<Manufacturer> GetAs(Manufacturer item)
         {
             throw new NotImplementedException();
         }

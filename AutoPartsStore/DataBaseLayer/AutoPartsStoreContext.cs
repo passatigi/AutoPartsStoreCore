@@ -24,8 +24,7 @@ namespace AutoPartsStore.DataBaseLayer
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
-        public DbSet<VendorCode> VendorCodes { get; set; }
-        public DbSet<ProductOEMNumber> VendorCodeOEMNumbers { get; set; }
+        public DbSet<ProductOEMNumber> ProductOEMNumbers { get; set; }
 
         public DbSet<VehicleBrand> Vehicles { get; set; }
         public DbSet<VehicleModification> VehicleModifications { get; set; }
@@ -58,10 +57,10 @@ namespace AutoPartsStore.DataBaseLayer
             //    );
             //VehicleModification[] vehicleModifications =
             //{
-            //    new VehicleModification{ Id = 1, Model = "Sierra", ModelCode = "GBS", ReleaseStart = "1980", ReleaseEnd = "1990", Vehicle = vehicleBrands[0]  },
-            //    new VehicleModification{ Id = 2, Model = "Sierra", ModelCode = "GBS", ReleaseStart = "1990", ReleaseEnd = "2000", Vehicle = vehicleBrands[0]  },
-            //    new VehicleModification{ Id = 3, Model = "5 Series", ModelCode = "GG", ReleaseStart = "1980", ReleaseEnd = "1990", Vehicle = vehicleBrands[1]  },
-            //    new VehicleModification{ Id = 4, Model = "440", ModelCode = "BB", ReleaseStart = "1980", ReleaseEnd = "1990", Vehicle = vehicleBrands[2]  }
+            //    new VehicleModification{ Id = 1, Model = "Sierra", ModelCode = "GBS", ReleaseStart = "1980", ReleaseEnd = "1990", VehicleBrand = vehicleBrands[0]  },
+            //    new VehicleModification{ Id = 2, Model = "Sierra", ModelCode = "GBS", ReleaseStart = "1990", ReleaseEnd = "2000", VehicleBrand = vehicleBrands[0]  },
+            //    new VehicleModification{ Id = 3, Model = "5 Series", ModelCode = "GG", ReleaseStart = "1980", ReleaseEnd = "1990", VehicleBrand = vehicleBrands[1]  },
+            //    new VehicleModification{ Id = 4, Model = "440", ModelCode = "BB", ReleaseStart = "1980", ReleaseEnd = "1990", VehicleBrand = vehicleBrands[2]  }
             //};
             //modelBuilder.Entity<VehicleModification>().HasData(
             //   vehicleModifications

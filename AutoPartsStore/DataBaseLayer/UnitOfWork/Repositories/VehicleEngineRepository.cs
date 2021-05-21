@@ -44,7 +44,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
                 throw new Exception("Condition should be VehicleModification");
         }
 
-        public VehicleEngine GetAs(VehicleEngine item)
+        public IEnumerable<VehicleEngine> GetAs(VehicleEngine item)
         {
             throw new NotImplementedException();
         }

@@ -49,7 +49,7 @@ namespace AutoPartsStore.ViewModel
             vehicleModifications = new ObservableCollection<VehicleModification>();
 
             FillVehicleBrands();
-            SelectedVehicleBrand = vehicleEngine.VehicleModification.Vehicle;
+            SelectedVehicleBrand = vehicleEngine.VehicleModification.VehicleBrand;
             SelectedVehicleModification = vehicleEngine.VehicleModification;
             SelectedVehicleEngine = vehicleEngine;            
         }

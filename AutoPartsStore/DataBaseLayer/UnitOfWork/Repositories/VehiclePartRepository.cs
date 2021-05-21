@@ -37,11 +37,11 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             throw new NotImplementedException();
         }
 
-        public VehiclePart GetAs(VehiclePart item)
+        public IEnumerable<VehiclePart> GetAs(VehiclePart item)
         {
             return db.VehicleParts
                 .Where(p => p.Category.Id == item.Category.Id && p.VehicleEngine.Id == item.VehicleEngine.Id)
-                .Include(p => p.ConcretVehiclePartOemNumbers).FirstOrDefault();
+                .Include(p => p.ConcretVehiclePartOemNumbers);
         }
 
         public VehiclePart GetById(int id)

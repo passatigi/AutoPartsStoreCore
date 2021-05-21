@@ -64,6 +64,7 @@ namespace AutoPartsStore.DataBaseConnector
         private ManufacturerRepository manufacturerRepository;
         private ProductRepository productRepository; 
         private VehiclePartRepository vehiclePartRepository;
+        private ProductOEMNumberRepository productOEMNumberRepository;
 
         #region Properties
 
@@ -128,6 +129,15 @@ namespace AutoPartsStore.DataBaseConnector
                 if (vehiclePartRepository == null)
                     vehiclePartRepository = new VehiclePartRepository(db);
                 return vehiclePartRepository;
+            }
+        }
+         public IRepository<ProductOEMNumber> ProductOEMNumberRepository
+        {
+            get
+            {
+                if (productOEMNumberRepository == null)
+                    productOEMNumberRepository = new ProductOEMNumberRepository(db);
+                return productOEMNumberRepository;
             }
         }
 

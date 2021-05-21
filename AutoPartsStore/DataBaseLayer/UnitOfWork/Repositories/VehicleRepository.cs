@@ -36,7 +36,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             throw new NotImplementedException();
         }
 
-        public VehicleBrand GetAs(VehicleBrand item)
+        public IEnumerable<VehicleBrand> GetAs(VehicleBrand item)
         {
             throw new NotImplementedException();
         }

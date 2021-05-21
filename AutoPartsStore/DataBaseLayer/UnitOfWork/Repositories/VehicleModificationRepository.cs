@@ -35,14 +35,14 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             if (condition is VehicleBrand)
             {
                 VehicleBrand vehicle = condition as VehicleBrand;
-                return db.VehicleModifications.Where(wm => wm.Vehicle.Brand.Equals(vehicle.Brand)).AsEnumerable();
+                return db.VehicleModifications.Where(wm => wm.VehicleBrand.Brand.Equals(vehicle.Brand)).AsEnumerable();
             }
             else
                 throw new Exception("Condition should be VehicleBrand");
             
         }
 
-        public VehicleModification GetAs(VehicleModification item)
+        public IEnumerable<VehicleModification> GetAs(VehicleModification item)
         {
             throw new NotImplementedException();
         }

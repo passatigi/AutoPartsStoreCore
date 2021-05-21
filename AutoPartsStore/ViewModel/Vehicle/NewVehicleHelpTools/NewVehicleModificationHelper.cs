@@ -127,7 +127,7 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                     if (CheckVehicleModification(NewVehicleModification))
                     {
                         VehicleModification vehicleModification = new VehicleModification(NewVehicleModification);
-                        vehicleModification.Vehicle = newCarViewModel.GetSelectedVehicleBrand();
+                        vehicleModification.VehicleBrand = newCarViewModel.GetSelectedVehicleBrand();
                         storeService.VehicleService.AddModification(vehicleModification);
                         vehicleModifications.Add(vehicleModification);
                         SelectedVehicleModification = vehicleModification;

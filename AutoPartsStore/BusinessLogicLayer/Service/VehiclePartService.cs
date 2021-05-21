@@ -3,6 +3,7 @@ using AutoPartsStore.Model;
 using AutoPartsStore.Model.Vehicle;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AutoPartsStore.BusinessLogicLayer.Service
@@ -19,7 +20,7 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
             VehiclePart vehiclePart = new VehiclePart();
             vehiclePart.Category = category;
             vehiclePart.VehicleEngine = vehicleEngine;
-            VehiclePart outVehiclePart = unitOfWork.VehiclePartRepository.GetAs(vehiclePart);
+            VehiclePart outVehiclePart = unitOfWork.VehiclePartRepository.GetAs(vehiclePart).FirstOrDefault();
             if(outVehiclePart == null)
             {
                 unitOfWork.VehiclePartRepository.Add(vehiclePart);

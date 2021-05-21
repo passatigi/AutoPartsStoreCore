@@ -25,7 +25,7 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
             unitOfWork.Save();
         }
         public IEnumerable<VehicleModification> GetModifications(VehicleBrand vehicleBrand) {
-            return unitOfWork.VehicleModificationRepository.GetAll().Where(vm => vm.Vehicle == vehicleBrand);
+            return unitOfWork.VehicleModificationRepository.GetAll().Where(vm => vm.VehicleBrand == vehicleBrand);
         }
         public void AddModification(VehicleModification vehicleModification)
         {

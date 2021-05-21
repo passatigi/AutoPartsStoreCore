@@ -45,7 +45,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             throw new NotImplementedException();
         }
 
-        public Category GetAs(Category item)
+        public IEnumerable<Category> GetAs(Category item)
         {
             throw new NotImplementedException();
         }

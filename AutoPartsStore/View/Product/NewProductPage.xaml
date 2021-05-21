@@ -220,10 +220,10 @@
                         <TextBlock Text="{Binding Product.Manufacturer}"/>
                     </Border>
                     <Border Margin="5" Grid.Column="1"  Grid.Row="1">
-                        <TextBox Text="{Binding Product.VendorCode.VendorCodeString}"/>
+                        <TextBox Text="{Binding Product.VendorCode}"/>
                     </Border>
                 </Grid>
-                <ItemsControl ItemsSource="{Binding Product.VendorCode.VendorCodeOEMNumbers}"
+                <ItemsControl ItemsSource="{Binding Product.ProductOEMNumbers}"
                              HorizontalAlignment="Stretch"
                              AlternationCount="2"
                                   Margin="5">
@@ -233,7 +233,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=VehicleBrand.Brand}" HorizontalAlignment="Left"/>
+                                <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=VehicleBrandd}" HorizontalAlignment="Left"/>
                                 <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=OEM}" HorizontalAlignment="Right"/>
                             </Grid>
                             <DataTemplate.Triggers>
@@ -265,11 +265,11 @@
                     <Border Grid.Column="0" Grid.Row="1" Margin="5">
                         <ComboBox 
                     ItemsSource="{Binding VehicleBrands}"
-                                  SelectedItem="{Binding VendorCodeOEMNumber.VehicleBrand}"
+                                  SelectedItem="{Binding SelectedVehicleBrand}"
                                   />
                     </Border>
                     <Border Grid.Column="1" Grid.Row="1" Margin="5">
-                        <TextBox Text="{Binding VendorCodeOEMNumber.OEM}"/>
+                        <TextBox Text="{Binding OemNumberString}"/>
                     </Border>
                     <Border Grid.Column="2" Grid.Row="1" Margin="5">
                         <Button Content="{DynamicResource AddCarBrandButtonText}"

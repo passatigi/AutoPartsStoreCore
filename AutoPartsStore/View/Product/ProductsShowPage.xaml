@@ -67,7 +67,7 @@
                                         <TextBlock  Margin="5" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Category.Name}" HorizontalAlignment="Left"/>
                                         <StackPanel Grid.Row="1" Margin="5">
                                             <TextBlock FontSize="15" Text="{Binding Path=Manufacturer.Name, StringFormat=Бренд: {0}}" HorizontalAlignment="Left"/>
-                                            <TextBlock FontSize="15" Text="{Binding Path=VendorCode.VendorCodeString, StringFormat=Артикул: {0}}" HorizontalAlignment="Left"/>
+                                            <TextBlock FontSize="15" Text="{Binding Path=VendorCode, StringFormat=Артикул: {0}}" HorizontalAlignment="Left"/>
                                         </StackPanel>
                                         <ItemsControl Grid.Row="2" x:Name="featureList" ItemsSource="{Binding Features}"
                              HorizontalAlignment="Stretch"

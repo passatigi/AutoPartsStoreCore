@@ -16,15 +16,7 @@ namespace AutoPartsStore.ViewModel
 {
     class NewProductViewModel : BaseViewModel
     {
-        //private long id;
-        //private Category category;
-        //private Manufacturer manufacturer;
-        //private VendorCode vendorCode;
-        //private string imagePath;
-        //private Decimal price;
-        //private int availability;
-        //private string description;
-        //private ObservableCollection<Feature> features;
+
 
         IStoreService storeService;
             public NewProductViewModel()
@@ -34,9 +26,10 @@ namespace AutoPartsStore.ViewModel
             Manufacturers = new ObservableCollection<Manufacturer>();
             Feature = new Feature();
             product = new Product();
-            product.VendorCode = new VendorCode();
-            vendorCodeOEMNumber = new ProductOEMNumber();
-            vendorCodeOEMNumber.VendorCode = product.VendorCode;
+            //product.VendorCode = new VendorCode();
+            //productOEMNumber = new ProductOEMNumber();
+            //productOEMNumber.VendorCode = product.VendorCode;
+
             product.Features = new ObservableCollection<Feature>();
             VehicleBrands = new ObservableCollection<VehicleBrand>();
             FillCategories();
@@ -130,16 +123,43 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref feature, value);
             }
         }
-        private ProductOEMNumber vendorCodeOEMNumber;
-        public ProductOEMNumber VendorCodeOEMNumber
+
+        private string oemNumberString;
+        public string OemNumberString
         {
             get
             {
-                return vendorCodeOEMNumber;
+                return oemNumberString;
             }
             set
             {
-                SetProperty(ref vendorCodeOEMNumber, value);
+                SetProperty(ref oemNumberString, value);
+            }
+        }
+        private VehicleBrand selectedVehicleBrand;
+        public VehicleBrand SelectedVehicleBrand
+        {
+            get
+            {
+                return selectedVehicleBrand;
+            }
+            set
+            {
+                SetProperty(ref selectedVehicleBrand, value);
+            }
+        }
+
+
+        private ProductOEMNumber productOEMNumber;
+        public ProductOEMNumber ProductOEMNumber
+        {
+            get
+            {
+                return productOEMNumber;
+            }
+            set
+            {
+                SetProperty(ref productOEMNumber, value);
             }
         }
 
@@ -192,11 +212,11 @@ namespace AutoPartsStore.ViewModel
             {
                 return addOemCommand ?? (addOemCommand = new RelayCommand(action =>
                 {
-                    // proverka
-                    product.VendorCode.VendorCodeOEMNumbers.Add(vendorCodeOEMNumber);
-                    VendorCodeOEMNumber = new ProductOEMNumber();
-                    VendorCodeOEMNumber.VendorCode = product.VendorCode;
-
+                    ProductOEMNumber = new ProductOEMNumber();
+                    productOEMNumber.Product = product;
+                    productOEMNumber.OEM = oemNumberString;
+                    productOEMNumber.VehicleBrand = selectedVehicleBrand;
+                    product.ProductOEMNumbers.Add(ProductOEMNumber);
                 }, func =>
                 {
                     return true;
@@ -213,7 +233,6 @@ namespace AutoPartsStore.ViewModel
                 {
                     storeService.ProductService.AddProduct(Product);
                     Product = new Product();
-
                 }, func =>
                 {
                     return true;
