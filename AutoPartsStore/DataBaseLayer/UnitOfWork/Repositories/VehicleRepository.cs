@@ -36,6 +36,11 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             throw new NotImplementedException();
         }
 
+        public VehicleBrand GetAs(VehicleBrand item)
+        {
+            throw new NotImplementedException();
+        }
+
         public VehicleBrand GetById(int id)
         {
             throw new NotImplementedException();

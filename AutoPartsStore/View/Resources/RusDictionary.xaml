@@ -41,6 +41,19 @@
     
     <sys:String x:Key="CarBrandLabelText">Автомобильный брэнд</sys:String>
     <sys:String x:Key="OemLabelText">OEM номер</sys:String>
+
+
+    <sys:String x:Key="CategoryText">Категория</sys:String>
+    <sys:String x:Key="EngineText">Двигатель</sys:String>
+    <sys:String x:Key="UpdateAutoPartText">Обновить запчасть</sys:String>
+    
+    <sys:String x:Key="SaveChangesText">Сохранить изменения</sys:String>
+    
+    <sys:String x:Key="DeleteText">Удалить</sys:String>
+    
+    
+    
+    
     
 
 

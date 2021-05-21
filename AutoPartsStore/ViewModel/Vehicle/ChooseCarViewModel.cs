@@ -23,15 +23,35 @@ namespace AutoPartsStore.ViewModel
             mainViewModel.ChooseCarViewModel = this;
 
 
-            selectedVehicleBrand = new VehicleBrand();
-            selectedVehicleModification = new VehicleModification();
-            selectedVehicleEngine = new VehicleEngine();
+            
 
             vehicleBrands = new ObservableCollection<VehicleBrand>();
             vehicleModifications = new ObservableCollection<VehicleModification>();
             vehicleEngines = new ObservableCollection<VehicleEngine>();
 
+            //selectedvehiclebrand = new vehiclebrand();
+            //selectedvehiclemodification = new vehiclemodification();
+            //selectedvehicleengine = new vehicleengine();
             FillVehicleBrands();
+        }
+
+        public ChooseCarViewModel(VehicleEngine vehicleEngine)
+        {
+
+
+            storeService = StoreService.GetStoreService();
+
+            mainViewModel = MainViewModel.GetMainViewModel();
+            //mainViewModel.ChooseCarViewModel = this;
+
+            vehicleEngines = new ObservableCollection<VehicleEngine>();
+            vehicleBrands = new ObservableCollection<VehicleBrand>();
+            vehicleModifications = new ObservableCollection<VehicleModification>();
+
+            FillVehicleBrands();
+            SelectedVehicleBrand = vehicleEngine.VehicleModification.Vehicle;
+            SelectedVehicleModification = vehicleEngine.VehicleModification;
+            SelectedVehicleEngine = vehicleEngine;            
         }
 
         void FillVehicleBrands()
@@ -43,20 +63,20 @@ namespace AutoPartsStore.ViewModel
             }
             NotifyPropertyChanged(nameof(VehicleBrands));
         }
-        void FillVehicleModifications()
+        void FillVehicleModifications(VehicleBrand vehicleBrand)
         {
             vehicleModifications.Clear();
-            foreach (VehicleModification vehicle in storeService.VehicleService.GetModifications(SelectedVehicleBrand))
+            foreach (VehicleModification vehicle in storeService.VehicleService.GetModifications(vehicleBrand))
             {
                 vehicleModifications.Add(vehicle);
             }
             NotifyPropertyChanged(nameof(VehicleModifications));
         }
 
-        void FillVehicleEngines()
+        void FillVehicleEngines(VehicleModification vehicleModification)
         {
             vehicleEngines.Clear();
-            foreach (VehicleEngine vehicle in storeService.VehicleService.GetEngines(SelectedVehicleModification))
+            foreach (VehicleEngine vehicle in storeService.VehicleService.GetEngines(vehicleModification))
             {
                 vehicleEngines.Add(vehicle);
             }
@@ -79,7 +99,7 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref selectedVehicleBrand, value);
                 if (value != null)
                 {
-                    FillVehicleModifications();
+                    FillVehicleModifications(selectedVehicleBrand);
                 }
             }
         }
@@ -95,7 +115,7 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref selectedVehicleModification, value);
                 if (value != null)
                 {
-                    FillVehicleEngines();
+                    FillVehicleEngines(selectedVehicleModification);
                 }
             }
         }

@@ -36,6 +36,11 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             throw new NotImplementedException();
         }
 
+        public Manufacturer GetAs(Manufacturer item)
+        {
+            throw new NotImplementedException();
+        }
+
         public Manufacturer GetById(int id)
         {
             throw new NotImplementedException();

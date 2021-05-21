@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.Model
 {
-    public class VendorCodeOEMNumber
+    public class ProductOEMNumber
     {
-        public VendorCode VendorCode { get; set; }
+        public int Id { get; set; }
         
-        public string Id { get; set; }
+        public Product Product { get; set; }
         public VehicleBrand VehicleBrand { get; set; }
         public string OEM { get; set; }
     }

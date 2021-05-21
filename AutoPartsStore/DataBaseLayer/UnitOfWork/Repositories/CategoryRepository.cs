@@ -45,6 +45,11 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             throw new NotImplementedException();
         }
 
+        public Category GetAs(Category item)
+        {
+            throw new NotImplementedException();
+        }
+
         public Category GetById(int id)
         {
             return db.Categories.Where(c => c.Id == id).Include(c => c.Nodes).FirstOrDefault();

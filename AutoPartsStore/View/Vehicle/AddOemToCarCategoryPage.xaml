@@ -9,25 +9,158 @@
       Title="AddOemToCarCategoryPage">
 
     <Grid>
-        <StackPanel Background="{DynamicResource SecondItemBackGround}">
-            <Grid DataContext="{Binding Source={StaticResource ChooseCarViewModel}}">
-                <ComboBox  ItemsSource="{Binding Path=VehicleBrands}"
-                  SelectedValue="{Binding Path=SelectedVehicleBrand}"
+        <Border>
+            <Border.Effect>
+                <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
+            </Border.Effect>
+       
+        <StackPanel Background="{DynamicResource SecondItemBackGround}"
+                     DataContext="{Binding Source={StaticResource AddOemToCarCategoryViewModel}}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox  ItemsSource="{Binding Path=ChooseCarViewModel.VehicleBrands}"
+                  SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleBrand}"
                     Grid.Column="0" x:Name="CarBrandName" FontSize="16"
                            Margin="10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
-                <ComboBox  ItemsSource="{Binding Path=VehicleModifications}"
-                            SelectedValue="{Binding Path=SelectedVehicleModification}"
+                <ComboBox  ItemsSource="{Binding Path=ChooseCarViewModel.VehicleModifications}"
+                            SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleModification}"
                     Grid.Column="1" x:Name="CarModification" 
                            Margin="0,10,10,10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
-                <ComboBox ItemsSource="{Binding Path=VehicleEngines}"
-                  SelectedValue="{Binding Path=SelectedVehicleEngine}"
+                <ComboBox ItemsSource="{Binding Path=ChooseCarViewModel.VehicleEngines}"
+                  SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleEngine}"
                     Grid.Column="2" x:Name="CarEngine" 
                           Margin="0,10,0,10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
             </Grid>
-
-            <Grid DataContext="{Binding Source={StaticResource AddOemToCarCategoryViewModel}}">
-                <!--<ItemsControl ItemsSource=""></ItemsControl>-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Margin="5" Grid.Column="0">
+                    <ComboBox 
+                    ItemsSource="{Binding Categories}"
+                                  SelectedItem="{Binding SelectedCategory}"
+                                  />
+                </Border>
+                <Border Margin="5" Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox  Grid.Column="0" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Path=SearchCategoryString}" />
+                        <Button Grid.Column="1" Command="{Binding FindStringCommand}"
+                                            CommandParameter="{Binding Categories}"
+                                    
+                            />
+                    </Grid>
+                </Border>
             </Grid>
-        </StackPanel>
+                
+                    <Border Margin="5">
+                        <Button Command="{Binding UpdateVehiclePartCommand}"
+                                            CommandParameter="{Binding Categories}"
+                            Content="{DynamicResource UpdateAutoPartText}"
+                            />
+                    </Border>
+                
+                <ItemsControl 
+                    x:Name="OemList" ItemsSource="{Binding VehiclePart.ConcretVehiclePartOemNumbers}"
+                             HorizontalAlignment="Stretch"
+                             AlternationCount="2"
+                                  Margin="5, 15, 5, 5">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid x:Name="PropertyItem">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Margin="3"  Text="{Binding Path=OEMNumber}"  HorizontalAlignment="Left"/>
+                                <StackPanel  Grid.Column="0" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock Margin="3" Text="{Binding Path=VehiclePart.VehicleEngine.VehicleModification.Vehicle}" />
+                                    <TextBlock Margin="3" Text="{Binding Path=VehiclePart.VehicleEngine.VehicleModification}"/>
+                                    <TextBlock Margin="3" Text="{Binding Path=VehiclePart.VehicleEngine}"/>
+                                </StackPanel>
+                                <Grid  Grid.Column="1">
+                                    <Border Margin="3">
+                                        <Button Content="{DynamicResource DeleteText}"
+                                                Command="{Binding Source={StaticResource OemToCarCategoryViewModelDataProvider}, Path=DeleteVehiclePartOemNumbersCommand}"
+                                                CommandParameter="{Binding Path=Id}"
+                                                />
+                                        <!--CommandParameter="{Binding Path=this}"-->
+                                    </Border>
+                                </Grid>
+                             </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                    <Setter TargetName="PropertyItem" Property="Background" Value="{StaticResource ItemBackGround}"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Margin="5">
+                        <Button Command="{Binding UpdateVehiclePartOemNumbersCommand}"
+                                            CommandParameter="{Binding Categories}"
+                            Content="{DynamicResource SaveChangesText}"
+                            />
+                    </Border>
+                    <Border Grid.Column="1" Margin="5">
+                        <TextBlock Text="{DynamicResource SaveChangesText}"/>
+                    </Border>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0" Margin="5">
+                        <TextBlock Text="{DynamicResource CategoryText}"/>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0" Margin="5">
+                        <TextBlock Text="{DynamicResource EngineText}"/>
+                    </Border
+>
+                    <Border Grid.Column="2" Grid.Row="0" Margin="5">
+                        <TextBlock Text="{DynamicResource OemLabelText}"/>
+                    </Border>
+                        
+                    <Border Grid.Column="0" Grid.Row="1" Margin="5">
+                        <TextBlock Text="{Binding VehiclePart.Category}"/>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1" Margin="5">
+                        <TextBlock Text="{Binding VehiclePart.VehicleEngine}"/>
+                    </Border>
+
+
+                    <Border Grid.Column="2" Grid.Row="1" Margin="5">
+                        <TextBox Text="{Binding OemNumberString}"/>
+                    </Border>
+                    <Border Grid.Column="3" Grid.Row="1" Margin="5">
+                        <Button Content="{DynamicResource AddCarBrandButtonText}"
+                                    Command="{Binding AddOemNumberCommand}"
+                                    />
+                    </Border>
+                </Grid>
+            </StackPanel>
+        
+        </Border>
     </Grid>
 </Page>

@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.Model
 {
-    public class VendorCode
-    {
-        public long id { get; set; }
-        public string VendorCodeString { get; set; }
-        public ObservableCollection<VendorCodeOEMNumber> VendorCodeOEMNumbers { get; set; }
+    //public class VendorCode
+    //{
+    //    public long id { get; set; }
+    //    public string VendorCodeString { get; set; }
         
-        public VendorCode()
-        {
-            VendorCodeOEMNumbers = new ObservableCollection<VendorCodeOEMNumber>();
-        }
-    } 
+        
+    //    public VendorCode()
+    //    {
+    //        //VendorCodeOEMNumbers = new ObservableCollection<ProductOEMNumber>();
+    //    }
+    //} 
 }

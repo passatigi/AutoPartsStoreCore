@@ -18,6 +18,7 @@
     <vm:AddEntityPanelViewModel x:Key="AddEntityPanelViewModel"/>
 
     <ObjectDataProvider x:Key="CategoriesViewModelDataProvider" ObjectType="{x:Type vm:CategoriesViewModel}" IsAsynchronous="True"/>
+    <ObjectDataProvider x:Key="OemToCarCategoryViewModelDataProvider" ObjectType="{x:Type vm:AddOemToCarCategoryViewModel}" IsAsynchronous="True"/>
     
     <BitmapImage x:Key="BuyBascetIcon" UriSource="\TempElements\icons\buyIcon.png" />
     

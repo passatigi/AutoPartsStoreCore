@@ -11,6 +11,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Interfaces
         IRepository<VehicleBrand> VehicleRepository { get; }
         IRepository<VehicleModification> VehicleModificationRepository { get; }
         IRepository<VehicleEngine> VehicleEngineRepository { get; }
+        IRepository<VehiclePart> VehiclePartRepository { get; }
         IRepository<Category> CategoryRepository { get; }
 
         IRepository<Manufacturer> ManufacturerRepository { get; }

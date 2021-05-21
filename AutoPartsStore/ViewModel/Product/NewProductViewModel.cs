@@ -35,7 +35,7 @@ namespace AutoPartsStore.ViewModel
             Feature = new Feature();
             product = new Product();
             product.VendorCode = new VendorCode();
-            vendorCodeOEMNumber = new VendorCodeOEMNumber();
+            vendorCodeOEMNumber = new ProductOEMNumber();
             vendorCodeOEMNumber.VendorCode = product.VendorCode;
             product.Features = new ObservableCollection<Feature>();
             VehicleBrands = new ObservableCollection<VehicleBrand>();
@@ -130,8 +130,8 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref feature, value);
             }
         }
-        private VendorCodeOEMNumber vendorCodeOEMNumber;
-        public VendorCodeOEMNumber VendorCodeOEMNumber
+        private ProductOEMNumber vendorCodeOEMNumber;
+        public ProductOEMNumber VendorCodeOEMNumber
         {
             get
             {
@@ -194,7 +194,7 @@ namespace AutoPartsStore.ViewModel
                 {
                     // proverka
                     product.VendorCode.VendorCodeOEMNumbers.Add(vendorCodeOEMNumber);
-                    VendorCodeOEMNumber = new VendorCodeOEMNumber();
+                    VendorCodeOEMNumber = new ProductOEMNumber();
                     VendorCodeOEMNumber.VendorCode = product.VendorCode;
 
                 }, func =>

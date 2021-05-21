@@ -33,9 +33,11 @@ namespace AutoPartsStore.DataBaseConnector
         }
         #endregion
         // private
+        private readonly StreamWriter logStream = new StreamWriter("mylog.txt", true);
         public AutoPartsStoreContext db;
         protected EfStoreUnitOfWork()
         {
+
             var builder = new ConfigurationBuilder();
             // установка пути к текущему каталогу
             builder.SetBasePath(Directory.GetCurrentDirectory());
@@ -48,6 +50,7 @@ namespace AutoPartsStore.DataBaseConnector
             string connectionString = config.GetConnectionString("DefaultConnection");
 
             var optionsBuilder = new DbContextOptionsBuilder<AutoPartsStoreContext>();
+            optionsBuilder.LogTo(logStream.WriteLine);
             var options = optionsBuilder
                 .UseSqlServer(connectionString)
                 .Options;
@@ -59,7 +62,8 @@ namespace AutoPartsStore.DataBaseConnector
         private VehicleEngineRepository vehicleEngineRepository;
         private CategoryRepository categoryRepository;
         private ManufacturerRepository manufacturerRepository;
-        private ProductRepository productRepository;
+        private ProductRepository productRepository; 
+        private VehiclePartRepository vehiclePartRepository;
 
         #region Properties
 
@@ -115,6 +119,15 @@ namespace AutoPartsStore.DataBaseConnector
                 if (productRepository == null)
                     productRepository = new ProductRepository(db);
                 return productRepository;
+            }
+        }
+        public IRepository<VehiclePart> VehiclePartRepository
+        {
+            get
+            {
+                if (vehiclePartRepository == null)
+                    vehiclePartRepository = new VehiclePartRepository(db);
+                return vehiclePartRepository;
             }
         }
 

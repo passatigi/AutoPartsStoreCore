@@ -19,6 +19,18 @@ namespace AutoPartsStore.ViewModel
             else
                 throw new Exception("Chto nado");
         }
+
+        public static void OpenCategoryProductListWindow()
+        {
+            if (WorkSpacePage != null)
+            {
+                WorkSpacePage.Source = new Uri("Product/ProductsShowPage.xaml", UriKind.Relative);
+            }
+            else
+                throw new Exception("Chto nado");
+        }
+
+
         public static void OpenAddManufacturerWindow()
         {
             AddManufacturerWindow addManufacturerWindow = new AddManufacturerWindow();

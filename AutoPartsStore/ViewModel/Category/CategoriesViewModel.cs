@@ -49,8 +49,15 @@ namespace AutoPartsStore.ViewModel
                 {
                     if (action is int)
                     {
-                        UserConfiguration.GetUserConfiguration().SelectedCategory = storeService.CategoryService.GetCategoryById((int)action);
-                        WindowProvider.OpenAddOemToVehicleCategoryWindow();
+                        if (mainViewModel.ChooseCarViewModel.SelectedVehicleEngine == null)
+                        {
+                            MessageBox.Show("В начале выберите тачку");
+                        }
+                        else
+                        {
+                            UserConfiguration.GetUserConfiguration().SelectedCategory = storeService.CategoryService.GetCategoryById((int)action);
+                            WindowProvider.OpenAddOemToVehicleCategoryWindow();
+                        }
                     }
 
                 }, func =>
@@ -60,22 +67,22 @@ namespace AutoPartsStore.ViewModel
             }
         }
         
-        private RelayCommand findCommand;
-        public RelayCommand FindCommand
+        private RelayCommand findProductCommand;
+        public RelayCommand FindProductCommand
         {
             get
             {
-                return findCommand ?? (findCommand = new RelayCommand(action =>
+                return findProductCommand ?? (findProductCommand = new RelayCommand(action =>
                 {
-
-                    //ProductViewModel.ProductViewModelObject.
-                    //mainCategoryNode.Nodes.Clear();
-                    //foreach (Category category in 
-                    //storeService.CategoryService.GetAllCategories().Where(c => c.Name.Contains(inputCategoryString)))
-                    //{
-                    //    mainCategoryNode.Nodes.Add(category);
-                    //}
-
+                    if (mainViewModel.ChooseCarViewModel.SelectedVehicleEngine == null)
+                    {
+                        MessageBox.Show("В начале выберите тачку");
+                    }
+                    else
+                    {
+                        UserConfiguration.GetUserConfiguration().SelectedCategory = storeService.CategoryService.GetCategoryById((int)action);
+                        WindowProvider.OpenCategoryProductListWindow();
+                    }
                 }, func =>
                 {
                     return true;

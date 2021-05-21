@@ -18,11 +18,11 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
         }
         public void Add(Product item)
         {
-            foreach (VendorCodeOEMNumber vendorCodeOEMNumber in item.VendorCode.VendorCodeOEMNumbers)
-            {
-                db.VendorCodeOEMNumbers.Add(vendorCodeOEMNumber);
-            }
-            db.VendorCodes.Add(item.VendorCode);
+            //foreach (ProductOEMNumber vendorCodeOEMNumber in item.VendorCode.VendorCodeOEMNumbers)
+            //{
+            //    db.VendorCodeOEMNumbers.Add(vendorCodeOEMNumber);
+            //}
+            //db.VendorCodes.Add(item.VendorCode);
             db.Products.Add(item);
         }
 
@@ -37,6 +37,11 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
         }
 
         public IEnumerable<Product> GetAllWithCondition(object condition)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product GetAs(Product item)
         {
             throw new NotImplementedException();
         }

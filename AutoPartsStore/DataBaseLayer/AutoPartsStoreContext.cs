@@ -25,7 +25,7 @@ namespace AutoPartsStore.DataBaseLayer
         public DbSet<Category> Categories { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<VendorCode> VendorCodes { get; set; }
-        public DbSet<VendorCodeOEMNumber> VendorCodeOEMNumbers { get; set; }
+        public DbSet<ProductOEMNumber> VendorCodeOEMNumbers { get; set; }
 
         public DbSet<VehicleBrand> Vehicles { get; set; }
         public DbSet<VehicleModification> VehicleModifications { get; set; }

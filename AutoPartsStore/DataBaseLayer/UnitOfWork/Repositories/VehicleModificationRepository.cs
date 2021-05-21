@@ -42,6 +42,11 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             
         }
 
+        public VehicleModification GetAs(VehicleModification item)
+        {
+            throw new NotImplementedException();
+        }
+
         public VehicleModification GetById(int id)
         {
             return db.VehicleModifications.Where(vm => vm.Id == id).FirstOrDefault();

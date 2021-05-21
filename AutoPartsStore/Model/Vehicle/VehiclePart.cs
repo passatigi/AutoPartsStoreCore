@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,11 @@ namespace AutoPartsStore.Model.Vehicle
         private VehicleEngine vehicleEngine;
         private Category category;
 
-        private List<ConcretVehiclePartOemNumber> concretVehiclePartOemNumbers;
-
+        private ObservableCollection<ConcretVehiclePartOemNumber> concretVehiclePartOemNumbers;
+        public VehiclePart()
+        {
+            concretVehiclePartOemNumbers = new ObservableCollection<ConcretVehiclePartOemNumber>();
+        }
         
 
         #region properties
@@ -33,7 +37,7 @@ namespace AutoPartsStore.Model.Vehicle
             }
         }
 
-        public List<ConcretVehiclePartOemNumber> ConcretVehiclePartOemNumbers
+        public ObservableCollection<ConcretVehiclePartOemNumber> ConcretVehiclePartOemNumbers
         {
             get
             {

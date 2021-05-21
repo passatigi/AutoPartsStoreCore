@@ -78,15 +78,18 @@ namespace AutoPartsStore.Model
         private long id;
         private Category category;
         private Manufacturer manufacturer;
-        private VendorCode vendorCode;
-        
+        private string vendorCode;
+        public ObservableCollection<ProductOEMNumber> ProductOEMNumbers { get; set; }
 
         private Decimal price;
-        private int availability;
+        private short availability;
         private string description;
         private ObservableCollection<Feature> features;
 
-
+        public Product()
+        {
+            ProductOEMNumbers = new ObservableCollection<ProductOEMNumber>();
+        }
         public byte[] ImageByteArray
         {
             get
@@ -139,10 +142,6 @@ namespace AutoPartsStore.Model
             }
         }
 
-        public Product()
-        {
-
-        }
 
         public long Id
         {
@@ -181,7 +180,7 @@ namespace AutoPartsStore.Model
                 SetProperty(ref manufacturer, value);
             }
         }
-        public VendorCode VendorCode
+        public string VendorCode
         {
             get
             {
@@ -205,7 +204,7 @@ namespace AutoPartsStore.Model
 
             }
         }
-        public int Availability
+        public short Availability
         {
             get
             {

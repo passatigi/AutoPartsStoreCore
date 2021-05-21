@@ -11,7 +11,7 @@
       Title="NewProductPage">
     <!----> 
     <Grid>
-        <StackPanel Background="{DynamicResource SecondItemBackGround}" Margin="0, 0, 0, 15" DataContext="{Binding Source={StaticResource NewProductViewModel}}">
+        <StackPanel Background="{DynamicResource SecondItemBackGround}" Margin="-10,0,10,15" DataContext="{Binding Source={StaticResource NewProductViewModel}}">
             <StackPanel.Effect>
                 <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
             </StackPanel.Effect>
@@ -154,7 +154,7 @@
                                     Command="{Binding AddFeatureCommand}"
                                     />
                         </Border>
-                    </Grid>
+                </Grid>
                 </StackPanel>
             </Grid>
             <Border Grid.Column="2" Padding="15 0 15 0" BorderBrush="{StaticResource ItemBackGround}"
