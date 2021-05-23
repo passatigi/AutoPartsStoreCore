@@ -9,7 +9,7 @@
       Title="ProductsShowPage">
 
     <Grid>
-        <Grid Grid.Column="2" Grid.Row="1" DataContext="{Binding Source={StaticResource ProductViewModel}}">
+        <Grid Grid.Column="2" Grid.Row="1" DataContext="{Binding Source={StaticResource ProductsViewModel}}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
@@ -32,7 +32,7 @@
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>-->
                     <!--MinWidth="400"-->
-                    <ItemsControl  x:Name="productsList" ItemsSource="{Binding Products}" >
+                    <ItemsControl  x:Name="productsList" ItemsSource="{Binding Products, Mode=TwoWay}" >
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <!--MinWidth="400" MaxWidth="600"-->
@@ -97,33 +97,33 @@
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"></RowDefinition>
                                                 <RowDefinition Height="30"></RowDefinition>
+                                                <!--<RowDefinition Height="40"></RowDefinition>-->
                                                 <RowDefinition Height="40"></RowDefinition>
                                                 <RowDefinition Height="40"></RowDefinition>
                                                 <RowDefinition Height="20"></RowDefinition>
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <TextBlock Grid.Row="1" FontSize="20"  FontWeight="Bold" Text="{Binding Path=Price, StringFormat={}{0} р.}" HorizontalAlignment="Center"/>
-                                            <Border Grid.Row="2" Margin="10 4" BorderThickness="1" BorderBrush="{StaticResource ItemBackGround}">
-                                                <Grid >
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                                                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                                                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Button Style="{DynamicResource ButtonStyleSelectProductCount}" Grid.Column="0" Content="&lt;"/>
-                                                    <TextBox Style="{DynamicResource TextboxNoBorder}" Grid.Column="1" FontSize="15" Text="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                    <Button Style="{DynamicResource ButtonStyleSelectProductCount}" Grid.Column="2" Content="&gt;"/>
-                                                </Grid>
-                                            </Border>
-                                            <Button Margin="5" Grid.Row="3" MinWidth="70" MaxWidth="150"  Style="{DynamicResource BuyButtonStyle}">
+                                            
+                                            <Button Margin="5" Grid.Row="2" MinWidth="70" MaxWidth="150"  Style="{DynamicResource BuyButtonStyle}">
                                                 <StackPanel Orientation="Horizontal">
                                                     <Image HorizontalAlignment="Right" Grid.Column="0"
                         x:Name="buttonImage" Width="12" Height="12" Source="{DynamicResource BuyBascetIcon}"/>
                                                     <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"
-                                                                          Grid.Column="1" Style="{DynamicResource RedButtonTextStyle}"  Text="КУПИТЬ"/>
+                                                                          Grid.Column="1" Style="{DynamicResource RedButtonTextStyle}"  Text="В КОРЗИНУ"/>
                                                 </StackPanel>
                                             </Button>
-
+                                            <Button Margin="5" Grid.Row="3" MinWidth="70" MaxWidth="150"  Style="{DynamicResource ButtonStyleSelectProductCount}"
+                                                    Command="{Binding Source={StaticResource ProductsViewModelDataProvider}, Path=AboutProductCommand}"
+                                                    CommandParameter="{Binding Id}"
+                                                    >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image HorizontalAlignment="Right" Grid.Column="0"
+                        Width="12" Height="12" Source="{DynamicResource BuyBascetIcon}"/>
+                                                    <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"
+                                                                          Grid.Column="1" Text="Подробнее"/>
+                                                </StackPanel>
+                                            </Button>
 
                                             <TextBlock Grid.Row="4"  Text="{Binding Path=Availability, StringFormat=Наличие {0} шт.}" HorizontalAlignment="Center"/>
                                         </Grid>

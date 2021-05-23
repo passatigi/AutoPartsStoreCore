@@ -181,11 +181,11 @@ namespace AutoPartsStore.ViewModel
             {
                 return deleteVehiclePartOemNumbersCommand ?? (deleteVehiclePartOemNumbersCommand = new RelayCommand(action =>
                 {
-                    if (action is long) 
+                    if (action is string) 
                     {
-                        long id = (long)action;
+                        string oem = (string)action;
                         VehiclePart.ConcretVehiclePartOemNumbers.Remove(
-                             VehiclePart.ConcretVehiclePartOemNumbers.Where(p => p.Id == id).FirstOrDefault()
+                             VehiclePart.ConcretVehiclePartOemNumbers.Where(p => p.OEMNumber.Equals(oem)).LastOrDefault()
                             );
                     }
                 }, func =>

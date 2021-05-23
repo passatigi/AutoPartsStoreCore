@@ -8,7 +8,7 @@ using System.Text;
 
 namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 {
-    class ProductOEMNumberRepository : IRepository<ProductOEMNumber>
+    class ProductOEMNumberRepository : IRepository<ProductOEMNumber, int>
     {
         AutoPartsStoreContext db;
 

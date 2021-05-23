@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T, IDT> where T : class
     {
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAllWithCondition(object condition);
-        T GetById(int id);
+        T GetById(IDT id);
         IEnumerable<T> GetAs(T item);
         void Add(T item);
         void Update(T item);
-        void Delete(int id);
+        void Delete(IDT id);
     }
 }

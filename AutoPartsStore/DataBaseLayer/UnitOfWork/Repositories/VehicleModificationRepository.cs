@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 {
-    public class VehicleModificationRepository : IRepository<VehicleModification>
+    public class VehicleModificationRepository : IRepository<VehicleModification, int>
     {
         AutoPartsStoreContext db;
         public VehicleModificationRepository(AutoPartsStoreContext db)

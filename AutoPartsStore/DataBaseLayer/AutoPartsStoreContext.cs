@@ -26,11 +26,17 @@ namespace AutoPartsStore.DataBaseLayer
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<ProductOEMNumber> ProductOEMNumbers { get; set; }
 
-        public DbSet<VehicleBrand> Vehicles { get; set; }
+        public DbSet<VehicleBrand> VehicleBrands { get; set; }
         public DbSet<VehicleModification> VehicleModifications { get; set; }
         public DbSet<VehicleEngine> VehicleEngines { get; set; }
         public DbSet<VehiclePart> VehicleParts { get; set; }
         public DbSet<ConcretVehiclePartOemNumber> ConcretVehiclePartOemNumbers { get; set; }
+
+
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderPart> OrderParts { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -88,6 +94,10 @@ namespace AutoPartsStore.DataBaseLayer
             modelBuilder.Entity<Product>().Ignore(p => p.Image).Ignore(p => p.Features);
 
             modelBuilder.Entity<Manufacturer>().Ignore(m => m.Image);
+
+
+            modelBuilder.Entity<Review>().Ignore(r => r.Image);
+
             //modelBuilder.Entity<Category>().Property(c => c.ParentCategory)
             //    .ValueGeneratedOnAddOrUpdate();
 

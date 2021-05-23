@@ -33,6 +33,11 @@ namespace AutoPartsStore.ViewModel
 
         public VehicleEngine SelectedVehicleEngine { get; set; }
         public Category SelectedCategory { get; set; }
+        public Product SelectedProduct { get; set; }
+
+
+        public Customer Customer { get; set; }
+        public Order Order { get; set; }
 
     }
 }

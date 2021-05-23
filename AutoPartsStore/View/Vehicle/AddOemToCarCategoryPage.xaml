@@ -91,7 +91,7 @@
                                     <Border Margin="3">
                                         <Button Content="{DynamicResource DeleteText}"
                                                 Command="{Binding Source={StaticResource OemToCarCategoryViewModelDataProvider}, Path=DeleteVehiclePartOemNumbersCommand}"
-                                                CommandParameter="{Binding Path=Id}"
+                                                CommandParameter="{Binding Path=OEMNumber}"
                                                 />
                                         <!--CommandParameter="{Binding Path=this}"-->
                                     </Border>

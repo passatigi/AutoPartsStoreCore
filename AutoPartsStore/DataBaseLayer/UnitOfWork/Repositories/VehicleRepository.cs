@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 {
-    public class VehicleRepository : IRepository<VehicleBrand>
+    public class VehicleRepository : IRepository<VehicleBrand, int>
     {
         AutoPartsStoreContext db;
         public VehicleRepository(AutoPartsStoreContext db)
@@ -18,7 +18,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
         }
         public void Add(VehicleBrand item)
         {
-            db.Vehicles.Add(item);
+            db.VehicleBrands.Add(item);
         }
 
         public void Delete(int id)
@@ -28,7 +28,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 
         public IEnumerable<VehicleBrand> GetAll()
         {
-            return db.Vehicles.AsEnumerable();
+            return db.VehicleBrands.AsEnumerable();
         }
 
         public IEnumerable<VehicleBrand> GetAllWithCondition(object condition)

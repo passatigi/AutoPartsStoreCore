@@ -43,7 +43,7 @@
                     <Button Style="{DynamicResource ButtonStyleSelectProductCount}"
                             Command="{Binding VehicleRelayCommand}"
                             CommandParameter="refresh"
-                        Grid.Column="0" Margin="0,0,5,0"></Button>
+                        Grid.Column="0" Margin="0,0,5,0">Обновить</Button>
                     <Button Style="{DynamicResource ButtonStyleSelectProductCount}"
                         Grid.Column="1" Margin="0,0,5,0"></Button>
                     <Button Style="{DynamicResource ButtonStyleSelectProductCount}"

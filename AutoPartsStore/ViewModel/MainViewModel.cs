@@ -12,6 +12,7 @@ namespace AutoPartsStore.ViewModel
         private static object syncRoot = new Object();
 
         public CategoriesViewModel CategoriesViewModel { get; set; }
+        public ProductsViewModel ProductsViewModel { get; set; }
         public ProductViewModel ProductViewModel { get; set; }
         public AddEntityPanelViewModel AddEntityPanelViewModel { get; set; }
 

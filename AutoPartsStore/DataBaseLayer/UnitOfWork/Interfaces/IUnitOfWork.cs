@@ -8,15 +8,15 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<VehicleBrand> VehicleRepository { get; }
-        IRepository<VehicleModification> VehicleModificationRepository { get; }
-        IRepository<VehicleEngine> VehicleEngineRepository { get; }
-        IRepository<VehiclePart> VehiclePartRepository { get; }
-        IRepository<Category> CategoryRepository { get; }
+        IRepository<VehicleBrand, int> VehicleRepository { get; }
+        IRepository<VehicleModification, int> VehicleModificationRepository { get; }
+        IRepository<VehicleEngine, int> VehicleEngineRepository { get; }
+        IRepository<VehiclePart, int> VehiclePartRepository { get; }
+        IRepository<Category, int> CategoryRepository { get; }
 
-        IRepository<Manufacturer> ManufacturerRepository { get; }
-        IRepository<Product> ProductRepository { get; }
-        IRepository<ProductOEMNumber> ProductOEMNumberRepository { get; }
+        IRepository<Manufacturer, int> ManufacturerRepository { get; }
+        IRepository<Product, long> ProductRepository { get; }
+        IRepository<ProductOEMNumber, int> ProductOEMNumberRepository { get; }
         
         void Save();
     }

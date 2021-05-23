@@ -68,7 +68,7 @@ namespace AutoPartsStore.DataBaseConnector
 
         #region Properties
 
-        public IRepository<VehicleBrand> VehicleRepository
+        public IRepository<VehicleBrand, int> VehicleRepository
         {
             get
             {
@@ -77,7 +77,7 @@ namespace AutoPartsStore.DataBaseConnector
                 return vehicleRepository;
             }
         }
-        public IRepository<VehicleModification> VehicleModificationRepository
+        public IRepository<VehicleModification, int> VehicleModificationRepository
         {
             get
             {
@@ -86,7 +86,7 @@ namespace AutoPartsStore.DataBaseConnector
                 return vehicleModificationRepository;
             }
         }
-        public IRepository<VehicleEngine> VehicleEngineRepository
+        public IRepository<VehicleEngine, int> VehicleEngineRepository
         {
             get
             {
@@ -95,7 +95,7 @@ namespace AutoPartsStore.DataBaseConnector
                 return vehicleEngineRepository;
             }
         }
-        public IRepository<Category> CategoryRepository
+        public IRepository<Category, int> CategoryRepository
         {
             get
             {
@@ -104,7 +104,7 @@ namespace AutoPartsStore.DataBaseConnector
                 return categoryRepository;
             }
         }
-        public IRepository<Manufacturer> ManufacturerRepository
+        public IRepository<Manufacturer, int> ManufacturerRepository
         {
             get
             {
@@ -113,7 +113,7 @@ namespace AutoPartsStore.DataBaseConnector
                 return manufacturerRepository;
             }
         }
-        public IRepository<Product> ProductRepository
+        public IRepository<Product, long> ProductRepository
         {
             get
             {
@@ -122,7 +122,7 @@ namespace AutoPartsStore.DataBaseConnector
                 return productRepository;
             }
         }
-        public IRepository<VehiclePart> VehiclePartRepository
+        public IRepository<VehiclePart, int> VehiclePartRepository
         {
             get
             {
@@ -131,7 +131,7 @@ namespace AutoPartsStore.DataBaseConnector
                 return vehiclePartRepository;
             }
         }
-         public IRepository<ProductOEMNumber> ProductOEMNumberRepository
+         public IRepository<ProductOEMNumber, int> ProductOEMNumberRepository
         {
             get
             {

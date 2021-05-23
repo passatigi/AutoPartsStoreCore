@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 {
-    public class CategoryRepository : IRepository<Category>
+    public class CategoryRepository : IRepository<Category, int>
     {
         AutoPartsStoreContext db;
 

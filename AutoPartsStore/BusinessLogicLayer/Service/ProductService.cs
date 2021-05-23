@@ -40,5 +40,10 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
             }
             return products.Distinct();
         }
+         
+        public Product GetById(long id)
+        {
+            return unitOfWork.ProductRepository.GetById(id);
+        }
     }
 }

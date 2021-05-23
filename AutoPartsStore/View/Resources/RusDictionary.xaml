@@ -65,6 +65,7 @@
     <sys:Uri x:Key="ChooseCarPagePath">Vehicle/ChooseCarPage.xaml</sys:Uri>
     <sys:Uri x:Key="CategoryPagePath">Category/CategoryPage.xaml</sys:Uri>
     <sys:Uri x:Key="ProductsShowPagePath">Product/ProductsShowPage.xaml</sys:Uri>
+    <sys:Uri x:Key="FirstPagePath">FirstPage.xaml</sys:Uri>
     <!--<sys:Uri x:Key="ChooseCarPagePath">Vehicle/ChooseCarPage.xaml</sys:Uri>-->
 
     <sys:String x:Key="SelectCarBrandLabel">Выберите марку автомобиля</sys:String>

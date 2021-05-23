@@ -1,102 +1,34 @@
 ﻿using AutoPartsStore.BusinessLogicLayer.Service;
+using AutoPartsStore.Command;
 using AutoPartsStore.Model;
-using AutoPartsStore.Model.Vehicle;
-using AutoPartsStore.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace AutoPartsStore.ViewModel
 {
     class ProductViewModel : BaseViewModel
     {
 
-        private void FilProducts()
+        MainViewModel mainViewModel;
+
+        IStoreService storeService;
+        public ProductViewModel()
         {
-            IEnumerable<Product> products = storeService.ProductService.GetAllProducts();
-            if (isSortByManufacturer)
-            {
-                if (isSortAcs)
-                {
-                    products = products.OrderBy(p => p.Manufacturer.Name);
-                 }
-                else
-                {
-                    products = products.OrderByDescending((p => p.Manufacturer.Name));
-                }
-            }
-            else
-            {
-                if (isSortAcs)
-                {
-                    products = products.OrderBy(p => p.Price);
-                }
-                else
-                {
-                    products = products.OrderByDescending((p => p.Price));
-                }
-            }
+            mainViewModel = MainViewModel.GetMainViewModel();
+            mainViewModel.ProductViewModel = this;
 
-            Products.Clear();
-            foreach (Product product in products)
-            {
-                Products.Add(product);
-            }
+            storeService = StoreService.GetStoreService();
+
+            UpdateProduct();
+
+
         }
-
-
-
-        private bool isSortByManufacturer = true;
-
-        public bool IsSortByManufacturer
+        public void UpdateProduct()
         {
-            get
-            {
-                return isSortByManufacturer;
-            }
-            set
-            {
-                if (value != isSortByManufacturer)
-                {
-                    isSortByManufacturer = value;
-                    FilProducts();
-                    NotifyPropertyChanged(nameof(isSortByManufacturer));
-
-                }
-                else
-                {
-                    SetProperty(ref isSortByManufacturer, value);
-                }
-            }
+            Product = UserConfiguration.GetUserConfiguration().SelectedProduct;
+            ProductCount = 0;
         }
-        private bool isSortAcs = true;
-
-        public bool IsSortAcs
-        {
-            get
-            {
-                return isSortAcs;
-            }
-            set
-            {
-                if (value != isSortAcs)
-                {
-                    isSortAcs = value;
-                    FilProducts();
-                    NotifyPropertyChanged(nameof(IsSortAcs));
-                }
-                else
-                {
-                    SetProperty(ref isSortAcs, value);
-                }
-            }
-        }
-
 
         private Product product;
         public Product Product
@@ -110,45 +42,63 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref product, value);
             }
         }
-        private ObservableCollection<Product> products;
-
-        public ObservableCollection<Product> Products
+        private short productCount;
+        public short ProductCount
         {
             get
             {
-                return products;
+                return productCount;
             }
             set
             {
-                SetProperty(ref products, value);
+                if (Product != null)
+                {
+                    if (value < 0 || value > Product.Availability)
+                    {
+
+                    }
+                    else
+                    {
+                        SetProperty(ref productCount, value);
+                    }
+                }
+                
             }
         }
-        private VehiclePart vehiclePart;
-        public void UpdateProductsList()
-        {
-            Products.Clear();
-            vehiclePart = storeService.VehiclePartService.GetVehiclePart(
-                UserConfiguration.GetUserConfiguration().SelectedVehicleEngine,
-                UserConfiguration.GetUserConfiguration().SelectedCategory
-                );
-            foreach(Product product in storeService.ProductService.GetProductsByVehiclePart(vehiclePart))
-            {
-                Products.Add(product);
-            }
-        }
-        MainViewModel mainViewModel;
         
-        IStoreService storeService;
-        public ProductViewModel()
+        private RelayCommand updateProductCount;
+        public RelayCommand UpdateProductCount
         {
-            mainViewModel = MainViewModel.GetMainViewModel();
-            mainViewModel.ProductViewModel = this;
-
-            storeService = StoreService.GetStoreService();
-
-            Products = new ObservableCollection<Product>();
-            FilProducts();
+            get
+            {
+                return updateProductCount ?? (updateProductCount = new RelayCommand(action =>
+                {
+                    if(action is string)
+                    {
+                        string parm = action as string;
+                        if (parm.Equals("+"))
+                        {
+                            if(productCount != product.Availability)
+                            {
+                                ProductCount++;
+                            }
+                        }
+                        else if(parm.Equals("-"))
+                        {
+                            if(productCount != 0)
+                            {
+                                ProductCount--;
+                            }
+                        }
+                    }
+                }, func =>
+                {
+                    return true;
+                }));
+            }
         }
-       
+
+
+
     }
 }

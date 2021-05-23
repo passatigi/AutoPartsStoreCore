@@ -8,7 +8,7 @@ using System.Text;
 
 namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 {
-    class VehiclePartRepository : IRepository<VehiclePart>
+    class VehiclePartRepository : IRepository<VehiclePart, int>
     {
         AutoPartsStoreContext db;
 

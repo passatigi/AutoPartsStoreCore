@@ -11,11 +11,9 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
     class CategoryService : ICategoryService
     {
         IUnitOfWork unitOfWork;
-        IRepository<Category> categoryRepository;
         public CategoryService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            categoryRepository = unitOfWork.CategoryRepository;
         }
 
 

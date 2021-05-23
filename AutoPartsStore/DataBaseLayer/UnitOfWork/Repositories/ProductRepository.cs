@@ -3,11 +3,12 @@ using AutoPartsStore.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 {
-    class ProductRepository : IRepository<Product>
+    class ProductRepository : IRepository<Product, long>
     {
 
         AutoPartsStoreContext db;
@@ -26,14 +27,14 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             db.Products.Add(item);
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
             throw new NotImplementedException();
         }
 
         public IEnumerable<Product> GetAll()
         {
-            return db.Products.Include(p => p.Manufacturer);
+            return db.Products.Include(p => p.Manufacturer).Include(p => p.ProductOEMNumbers);
         }
 
         public IEnumerable<Product> GetAllWithCondition(object condition)
@@ -42,9 +43,10 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
         }
 
 
-        public Product GetById(int id)
+        public Product GetById(long id)
         {
-            throw new NotImplementedException();
+            return db.Products.Where(p=> p.Id == id).Include(p => p.Manufacturer).Include(p => p.ProductOEMNumbers).FirstOrDefault();
+
         }
 
         public void Update(Product item)

@@ -1,0 +1,61 @@
+﻿<Page x:Class="AutoPartsStore.View.UserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoPartsStore.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserPage">
+
+    <Grid  DataContext="{Binding Source={StaticResource UserViewModel}}" Background="{DynamicResource SecondItemBackGround}">
+        <Grid>
+            <StackPanel>
+            <TabControl HorizontalAlignment="Center">
+                <TabItem Header="Вход">
+                    <StackPanel>
+                        <Border Margin="5">
+                            <StackPanel>
+                                <TextBlock Text="Email"/>
+                                <TextBox Text="{Binding Customer.Mail}"/>
+                                 <TextBlock Text="Пароль"/>
+                                 <TextBox Text="{Binding Customer.Password}"/>
+                            </StackPanel>
+                        </Border>
+                        <Button>Войти</Button>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Регистрация">
+                    <StackPanel>
+                        <Border Margin="5">
+                            <StackPanel>
+                                    <TextBlock Text="Имя"/>
+
+                                    <TextBox Text="{Binding Customer.FullName}"/>
+                                    <TextBlock Text="Эмэйл"/>
+
+                                    <TextBox Text="{Binding Customer.Mail}"/>
+                                    <TextBlock Text="Номер телефона"/>
+
+                                    <TextBox Text="{Binding Customer.PhoneNumber}"/>
+                                    <TextBlock Text="Адрес"/>
+
+                                    <TextBox Text="{Binding Customer.Address}"/>
+                                    <TextBlock Text="Пароль"/>
+                                    <TextBox Text="{Binding Customer.Password}"/>
+                                    <TextBlock Text="Подтвердите пароль"/>
+                                    <TextBox Text="{Binding ConfirmPassword}"/>
+                            </StackPanel>
+                        </Border>
+                        <Button
+                            
+                            >Зарегестрироваться</Button>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+            </StackPanel>
+        </Grid>
+        <Grid></Grid>
+        <Grid></Grid>
+    </Grid>
+</Page>

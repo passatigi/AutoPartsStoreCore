@@ -8,6 +8,8 @@ namespace AutoPartsStore.ViewModel
 {
     public static class WindowProvider
     {
+
+        public static Frame MainFrame { get; set; }
         public static Frame WorkSpacePage { get; set; }
 
         public static void OpenAddOemToVehicleCategoryWindow()
@@ -30,6 +32,26 @@ namespace AutoPartsStore.ViewModel
             if (WorkSpacePage != null)
             {
                 WorkSpacePage.Source = new Uri("Product/ProductsShowPage.xaml", UriKind.Relative);
+            }
+            else
+                throw new Exception("Chto nado");
+        }
+
+        public static void OpenProductWindow()
+        {
+            if (WorkSpacePage != null)
+            {
+                MainFrame.Source = new Uri("Product/ProductPage.xaml", UriKind.Relative);
+            }
+            else
+                throw new Exception("Chto nado");
+        }
+
+        public static void OpenUserWindow()
+        {
+            if (WorkSpacePage != null)
+            {
+                MainFrame.Source = new Uri("User/UserPage.xaml", UriKind.Relative);
             }
             else
                 throw new Exception("Chto nado");
