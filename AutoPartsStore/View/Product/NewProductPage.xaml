@@ -233,7 +233,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=VehicleBrandd}" HorizontalAlignment="Left"/>
+                                <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=VehicleBrand}" HorizontalAlignment="Left"/>
                                 <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=OEM}" HorizontalAlignment="Right"/>
                             </Grid>
                             <DataTemplate.Triggers>

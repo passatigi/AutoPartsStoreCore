@@ -5,8 +5,11 @@
                     xmlns:vm="clr-namespace:AutoPartsStore.ViewModel"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:m="clr-namespace:AutoPartsStore.Model">
+    <sys:String x:Key="EditCategoryTitleLableText">Редактирование категории</sys:String>
+
+
     <sys:String x:Key="NewCategoryWindowTitle">Добавить категорию</sys:String>
-    <sys:String x:Key="AddOemToCarMenuItemText">Добавить OEM номер для этой категории</sys:String>
+    <sys:String x:Key="AddOemToCarMenuItemText">Редактировать OEM номера этой категории</sys:String>
     <sys:String x:Key="AddIntoCategoryMenuItemText">Добавить в эту категорию</sys:String>
     <sys:String x:Key="AddWithCategoryMenuItemText">Добавить к этой категории</sys:String>
     <sys:String x:Key="RenameCategoryMenuItemText">Переименовать категорию</sys:String>

@@ -57,6 +57,7 @@ namespace AutoPartsStore.ViewModel
                         {
                             UserConfiguration.GetUserConfiguration().SelectedCategory = storeService.CategoryService.GetCategoryById((int)action);
                             WindowProvider.OpenAddOemToVehicleCategoryWindow();
+                            //mainViewModel.AddOemToCarCategoryViewModel.UpdateOemToCarCategoryPage();
                         }
                     }
 

@@ -1,4 +1,5 @@
 ﻿using AutoPartsStore.BusinessLogicLayer.Service;
+using AutoPartsStore.Command;
 using AutoPartsStore.Model.Vehicle;
 using System;
 using System.Collections.Generic;
@@ -47,13 +48,18 @@ namespace AutoPartsStore.ViewModel
             vehicleEngines = new ObservableCollection<VehicleEngine>();
             vehicleBrands = new ObservableCollection<VehicleBrand>();
             vehicleModifications = new ObservableCollection<VehicleModification>();
+            
+            FillVehicleByEngine(vehicleEngine);
+        }
 
+
+        public void FillVehicleByEngine(VehicleEngine vehicleEngine)
+        {
             FillVehicleBrands();
             SelectedVehicleBrand = vehicleEngine.VehicleModification.VehicleBrand;
             SelectedVehicleModification = vehicleEngine.VehicleModification;
-            SelectedVehicleEngine = vehicleEngine;            
+            SelectedVehicleEngine = vehicleEngine;
         }
-
         void FillVehicleBrands()
         {
             vehicleBrands.Clear();
@@ -128,13 +134,38 @@ namespace AutoPartsStore.ViewModel
             set
             {
                 SetProperty(ref selectedVehicleEngine, value);
-                    UserConfiguration.GetUserConfiguration().SelectedVehicleEngine = value;
+                UserConfiguration.GetUserConfiguration().SelectedVehicleEngine = value;
 
             }
         }
 
+        private RelayCommand vehicleRelayCommand;
+        public RelayCommand VehicleRelayCommand
+        {
+            get
+            {
+                return vehicleRelayCommand ?? (vehicleRelayCommand = new RelayCommand(action =>
+                {
+                    
+                    if(action is string)
+                    {
+                        string command = action as string;
 
+                        if (command.Equals("refresh"))
+                        {
+                            FillVehicleBrands();
+                            vehicleEngines.Clear();
+                            vehicleModifications.Clear();
+                        }
+                    }
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
 
+       
 
         #endregion
 

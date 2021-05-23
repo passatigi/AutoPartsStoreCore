@@ -24,15 +24,15 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <ComboBox  ItemsSource="{Binding Path=ChooseCarViewModel.VehicleBrands}"
-                  SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleBrand}"
+                  SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleBrand, Mode=TwoWay}"
                     Grid.Column="0" x:Name="CarBrandName" FontSize="16"
                            Margin="10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
                 <ComboBox  ItemsSource="{Binding Path=ChooseCarViewModel.VehicleModifications}"
-                            SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleModification}"
+                            SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleModification, Mode=TwoWay}"
                     Grid.Column="1" x:Name="CarModification" 
                            Margin="0,10,10,10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
                 <ComboBox ItemsSource="{Binding Path=ChooseCarViewModel.VehicleEngines}"
-                  SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleEngine}"
+                  SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleEngine , Mode=TwoWay}"
                     Grid.Column="2" x:Name="CarEngine" 
                           Margin="0,10,0,10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
             </Grid>
@@ -44,7 +44,7 @@
                 <Border Margin="5" Grid.Column="0">
                     <ComboBox 
                     ItemsSource="{Binding Categories}"
-                                  SelectedItem="{Binding SelectedCategory}"
+                                  SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
                                   />
                 </Border>
                 <Border Margin="5" Grid.Column="1">

@@ -15,6 +15,11 @@ namespace AutoPartsStore.ViewModel
             if (WorkSpacePage != null)
             {
                 WorkSpacePage.Source = new Uri("Vehicle/AddOemToCarCategoryPage.xaml", UriKind.Relative);
+                AddOemToCarCategoryViewModel addOemToCarCategoryViewModel = MainViewModel.GetMainViewModel().AddOemToCarCategoryViewModel;
+                if (addOemToCarCategoryViewModel != null)
+                {
+                    addOemToCarCategoryViewModel.UpdateOemToCarCategoryPage();
+                }
             }
             else
                 throw new Exception("Chto nado");

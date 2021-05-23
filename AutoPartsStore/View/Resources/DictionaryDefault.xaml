@@ -16,6 +16,7 @@
     <vm:AddManufacturerViewModel x:Key="AddManufacturerViewModel"/>
     <vm:AddOemToCarCategoryViewModel x:Key="AddOemToCarCategoryViewModel"/>
     <vm:AddEntityPanelViewModel x:Key="AddEntityPanelViewModel"/>
+    <vm:EditCategoryViewModel x:Key="EditCategoryViewModel"/>
 
     <ObjectDataProvider x:Key="CategoriesViewModelDataProvider" ObjectType="{x:Type vm:CategoriesViewModel}" IsAsynchronous="True"/>
     <ObjectDataProvider x:Key="OemToCarCategoryViewModelDataProvider" ObjectType="{x:Type vm:AddOemToCarCategoryViewModel}" IsAsynchronous="True"/>

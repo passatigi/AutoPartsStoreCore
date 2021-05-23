@@ -15,6 +15,7 @@ namespace AutoPartsStore.ViewModel
     {
         IStoreService storeService;
         MainViewModel mainViewModel;
+        UserConfiguration userConfiguration;
         public AddOemToCarCategoryViewModel()
         {
             storeService = StoreService.GetStoreService();
@@ -22,20 +23,32 @@ namespace AutoPartsStore.ViewModel
             mainViewModel = MainViewModel.GetMainViewModel();
             mainViewModel.AddOemToCarCategoryViewModel = this;
 
-            VehiclePart = storeService.VehiclePartService.GetVehiclePart(
-                UserConfiguration.GetUserConfiguration().SelectedVehicleEngine,
-                UserConfiguration.GetUserConfiguration().SelectedCategory
-                ); 
+            userConfiguration = UserConfiguration.GetUserConfiguration();
 
-            ChooseCarViewModel = new ChooseCarViewModel(VehiclePart.VehicleEngine);
+
+            ChooseCarViewModel = new ChooseCarViewModel(userConfiguration.SelectedVehicleEngine);
             Categories = new ObservableCollection<Category>();
-            FillCategories("");
-            SelectedCategory = VehiclePart.Category;
+            UpdateOemToCarCategoryPage();
+        }
 
+        public void UpdateOemToCarCategoryPage()
+        {
+            VehiclePart = storeService.VehiclePartService.GetVehiclePart(
+                userConfiguration.SelectedVehicleEngine,
+                userConfiguration.SelectedCategory
+                );
+            if(ChooseCarViewModel.SelectedVehicleEngine.Id != VehiclePart.VehicleEngine.Id)
+            {
+                ChooseCarViewModel.FillVehicleByEngine(VehiclePart.VehicleEngine);
+            }
+           
+            FillCategories("");
+            SelectedCategory = Categories.Where(c => c.Id == VehiclePart.Category.Id).FirstOrDefault();
         }
 
         void FillCategories(string searchString)
         {
+            Categories.Clear();
             foreach (Category category in storeService.CategoryService.GetAllCategories())
             {
                 Categories.Add(category);
