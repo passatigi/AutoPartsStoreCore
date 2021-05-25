@@ -22,6 +22,7 @@ namespace AutoPartsStore.ViewModel
         public ChooseCarViewModel ChooseCarViewModel { get; set; }
 
         public AddOemToCarCategoryViewModel AddOemToCarCategoryViewModel { get; set; }
+        public UserViewModel UserViewModel { get; set; }
 
 
         public static MainViewModel GetMainViewModel()

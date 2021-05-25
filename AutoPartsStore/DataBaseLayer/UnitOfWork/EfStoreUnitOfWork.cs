@@ -65,9 +65,19 @@ namespace AutoPartsStore.DataBaseConnector
         private ProductRepository productRepository; 
         private VehiclePartRepository vehiclePartRepository;
         private ProductOEMNumberRepository productOEMNumberRepository;
+        private UserRepository userRepository;
 
         #region Properties
 
+        public IRepository<Customer, int> UserRepository
+        {
+            get
+            {
+                if (userRepository == null)
+                    userRepository = new UserRepository(db);
+                return userRepository;
+            }
+        }
         public IRepository<VehicleBrand, int> VehicleRepository
         {
             get
@@ -77,6 +87,7 @@ namespace AutoPartsStore.DataBaseConnector
                 return vehicleRepository;
             }
         }
+
         public IRepository<VehicleModification, int> VehicleModificationRepository
         {
             get

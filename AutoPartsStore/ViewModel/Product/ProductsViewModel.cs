@@ -183,6 +183,7 @@ namespace AutoPartsStore.ViewModel
 
             storeService = StoreService.GetStoreService();
 
+            Products = new ObservableCollection<Product>();
             //FilProducts();
         }
        

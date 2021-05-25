@@ -35,7 +35,7 @@ namespace AutoPartsStore.ViewModel
         public Category SelectedCategory { get; set; }
         public Product SelectedProduct { get; set; }
 
-
+        private bool IsAdmin;
         public Customer Customer { get; set; }
         public Order Order { get; set; }
 

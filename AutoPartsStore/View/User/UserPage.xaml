@@ -10,49 +10,148 @@
 
     <Grid  DataContext="{Binding Source={StaticResource UserViewModel}}" Background="{DynamicResource SecondItemBackGround}">
         <Grid>
-            <StackPanel>
-            <TabControl HorizontalAlignment="Center">
-                <TabItem Header="Вход">
-                    <StackPanel>
-                        <Border Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="stack" Grid.Column="1"> 
+                <StackPanel>
+                    <StackPanel.Style>
+                        <Style TargetType="{x:Type StackPanel}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <!--<Setter Property="Visibility" Value="Visible"/>-->
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Customer.Id}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Customer.Id}" Value="0">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <TabControl HorizontalAlignment="Center">
+                        <TabItem Header="Вход">
                             <StackPanel>
-                                <TextBlock Text="Email"/>
-                                <TextBox Text="{Binding Customer.Mail}"/>
-                                 <TextBlock Text="Пароль"/>
-                                 <TextBox Text="{Binding Customer.Password}"/>
+                                <Border Margin="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Email"/>
+                                        <TextBox Text="{Binding Customer.Mail}"/>
+                                        <TextBlock Text="Пароль"/>
+                                        <TextBox Text="{Binding Customer.Password}"/>
+                                    </StackPanel>
+                                </Border>
+                                <Button
+                            Command="{Binding AuthorizationCommand}"
+                              CommandParameter="login"
+                            >Войти</Button>
                             </StackPanel>
-                        </Border>
-                        <Button>Войти</Button>
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Регистрация">
-                    <StackPanel>
-                        <Border Margin="5">
+                        </TabItem>
+                        <TabItem Header="Регистрация">
                             <StackPanel>
-                                    <TextBlock Text="Имя"/>
+                                <Border Margin="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Имя"/>
 
-                                    <TextBox Text="{Binding Customer.FullName}"/>
-                                    <TextBlock Text="Эмэйл"/>
+                                        <TextBox Text="{Binding Customer.FullName}"/>
+                                        <TextBlock Text="Эмэйл"/>
 
-                                    <TextBox Text="{Binding Customer.Mail}"/>
-                                    <TextBlock Text="Номер телефона"/>
+                                        <TextBox Text="{Binding Customer.Mail}"/>
+                                        <TextBlock Text="Номер телефона"/>
 
-                                    <TextBox Text="{Binding Customer.PhoneNumber}"/>
-                                    <TextBlock Text="Адрес"/>
+                                        <TextBox Text="{Binding Customer.PhoneNumber}"/>
+                                        <TextBlock Text="Адрес"/>
 
-                                    <TextBox Text="{Binding Customer.Address}"/>
-                                    <TextBlock Text="Пароль"/>
-                                    <TextBox Text="{Binding Customer.Password}"/>
-                                    <TextBlock Text="Подтвердите пароль"/>
-                                    <TextBox Text="{Binding ConfirmPassword}"/>
-                            </StackPanel>
-                        </Border>
-                        <Button
-                            
+                                        <TextBox Text="{Binding Customer.Address}"/>
+                                        <TextBlock Text="Пароль"/>
+                                        <TextBox Text="{Binding Customer.Password}"/>
+                                        <TextBlock Text="Подтвердите пароль"/>
+                                        <TextBox Text="{Binding ConfirmPassword}"/>
+                                    </StackPanel>
+                                </Border>
+                                <Button
+                            Command="{Binding AuthorizationCommand}"
+                              CommandParameter="reg"
                             >Зарегестрироваться</Button>
+                            </StackPanel>
+                        </TabItem>
+                    </TabControl>
+                </StackPanel>
+                <Grid>
+                    <StackPanel>
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <!--<Setter Property="Visibility" Value="Collapsed"/>-->
+                                <!--<Setter Property="Visibility" Value="Visible"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Customer.Id}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Customer.Id}" Value="0">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>-->
+                            </Style>
+                        </StackPanel.Style>
+                        <StackPanel>
+                            <StackPanel.Style>
+                                <Style TargetType="{x:Type StackPanel}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                        <DataTrigger Binding="{Binding EditCustomer}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Style>
+                            
+
+                            <TextBlock Text="Имя"/>
+                            <TextBlock Text="{Binding Customer.FullName}"/>
+                            <TextBlock Text="Эмэйл"/>
+                            <TextBlock Text="{Binding Customer.Mail}"/>
+                            <TextBlock Text="Номер телефона"/>
+                            <TextBlock Text="{Binding Customer.PhoneNumber}"/>
+                            <TextBlock Text="Адрес"/>
+                            <TextBlock Text="{Binding Customer.Address}"/>
+                            <Button Command="{Binding EditUserCommand}"
+                                CommandParameter="edit"
+                                >Редактировать</Button>
+                            <Button Command="{Binding EditUserCommand}"
+                                CommandParameter="logout"
+                                >Выйти</Button>
+                        </StackPanel>
+                        <StackPanel>
+                            <StackPanel.Style>
+                                <Style TargetType="{x:Type StackPanel}">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding EditCustomer}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Style>
+
+                            <TextBlock Text="Имя"/>
+                        <TextBox Text="{Binding EditCustomer.FullName}"/>
+                        <TextBlock Text="Эмэйл"/>
+                            <TextBox Text="{Binding EditCustomer.Mail}"/>
+                        <TextBlock Text="Номер телефона"/>
+                            <TextBox Text="{Binding EditCustomer.PhoneNumber}"/>
+                        <TextBlock Text="Адрес"/>
+                            <TextBox Text="{Binding EditCustomer.Address}"/>
+                        <TextBlock Text="Старый пароль"/>
+                        <TextBox Text="{Binding ConfirmPassword}"/>
+                        <TextBlock Text="Новый пароль"/>
+                            <TextBox Text="{Binding EditCustomer.Password}"/>
+                            <Button Command="{Binding EditUserCommand}"
+                                CommandParameter="save"
+                                >Сохранить изменения</Button>
+                        </StackPanel>
                     </StackPanel>
-                </TabItem>
-            </TabControl>
+                </Grid>
             </StackPanel>
         </Grid>
         <Grid></Grid>

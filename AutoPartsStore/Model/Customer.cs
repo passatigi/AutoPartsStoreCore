@@ -6,7 +6,26 @@ namespace AutoPartsStore.Model
 {
     public class Customer : BasicModel
     {
-        public int Id { get; set; }
+        public void Update(Customer customer)
+        {
+            this.Address = customer.Address;
+            this.FullName = customer.FullName;
+            this.Mail = customer.Mail;
+            this.PhoneNumber = customer.PhoneNumber;
+            this.Password = customer.password;
+        }
+        private int id;
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                SetProperty(ref id, value);
+            }
+        }
 
         private string fullName;
         public string FullName
