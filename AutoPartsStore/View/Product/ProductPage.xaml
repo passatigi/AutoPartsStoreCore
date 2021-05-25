@@ -67,8 +67,11 @@
                                                 Grid.Column="2" Content="&gt;"/>
                                     </Grid>
                                 </Border>
-                                <Button Margin="5" Grid.Column="1" MinWidth="70" MaxWidth="150"  Style="{DynamicResource BuyButtonStyle}">
-                                    <StackPanel Orientation="Horizontal">
+                                <Button Command="{Binding AddToShoppingCartCommand}"
+                                    
+                                    Margin="5" Grid.Column="1" MinWidth="70" MaxWidth="150"  Style="{DynamicResource BuyButtonStyle}">
+                                    <StackPanel 
+                                        Orientation="Horizontal">
                                         <Image HorizontalAlignment="Right" Grid.Column="0"
                         x:Name="buttonImage" Width="12" Height="12" Source="{DynamicResource BuyBascetIcon}"/>
                                         <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"

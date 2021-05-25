@@ -34,6 +34,7 @@ namespace AutoPartsStore.ViewModel
             mainViewModel.UserViewModel = this;
 
             Customer = new Customer();
+            ConfirmPassword = "";
         }
 
         private Customer customer;
@@ -195,6 +196,11 @@ namespace AutoPartsStore.ViewModel
                         else if (str.Equals("logout"))
                         {
                             Customer = new Customer();
+                            UserConfiguration.GetUserConfiguration().Customer = null;
+                        }
+                        else if (str.Equals("back"))
+                        {
+                            EditCustomer = null;
                         }
 
                     }

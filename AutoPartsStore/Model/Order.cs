@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace AutoPartsStore.Model
@@ -26,12 +29,83 @@ namespace AutoPartsStore.Model
             }
         }
 
-        public ObservableCollection<OrderPart> OrderParts { get; set; }
+        private Decimal totalPrice;
+        [NotMapped]
+        public Decimal TotalPrice
+        {
+            get
+            {
+                return totalPrice;
+            }
+            set
+            {
+                SetProperty(ref totalPrice, value);
+            }
+        }
+
+        private ObservableCollection<OrderPart> orderParts;
+        public ObservableCollection<OrderPart> OrderParts
+        {
+            get
+            {
+                return orderParts;
+            }
+            set
+            {
+                SetProperty(ref orderParts, value);
+            }
+        }
 
 
         public Order()
         {
             OrderParts = new ObservableCollection<OrderPart>();
+        }
+
+        public void AddOrderPart(OrderPart orderPart)
+        {
+            OrderPart tempOrderPart = OrderParts.Where(p => p.Product.Id == orderPart.Product.Id).FirstOrDefault();
+            if(tempOrderPart == null)
+            {
+                OrderParts.Add(orderPart);
+            }
+            else{
+                try
+                {
+                    tempOrderPart.ProductCount += orderPart.ProductCount;
+                    if (tempOrderPart.ProductCount > tempOrderPart.Product.Availability)
+                    {
+                        throw new Exception("nedostatochno");
+                    }
+                }
+                catch (Exception e)
+                {
+                    tempOrderPart.ProductCount = tempOrderPart.Product.Availability;
+                }
+            }
+            UpdateTotalPrice();
+        }
+        public void RemoveOrderPart(long productId)
+        {
+            OrderPart tempOrderPart = OrderParts.Where(p => p.Product.Id == productId).FirstOrDefault();
+            if (tempOrderPart != null)
+            {
+                OrderParts.Remove(tempOrderPart);
+            }
+            else
+            {
+                throw new Exception("che"); 
+            }
+            UpdateTotalPrice();
+        }
+        public void UpdateTotalPrice()
+        {
+            totalPrice = 0;
+            foreach (OrderPart op in orderParts)
+            {
+                totalPrice += op.Product.Price * op.ProductCount;
+            }
+            NotifyPropertyChanged(nameof(TotalPrice));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoPartsStore.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,12 @@ namespace AutoPartsStore.ViewModel
         public AddOemToCarCategoryViewModel AddOemToCarCategoryViewModel { get; set; }
         public UserViewModel UserViewModel { get; set; }
 
+        public ShoppingCartViewModel ShoppingCartViewModel { get; set; }
 
+        public MainViewModel()
+        {
+            userConfiguration =  UserConfiguration.GetUserConfiguration();
+        }
         public static MainViewModel GetMainViewModel()
         {
             if (mainViewModel == null)
@@ -38,8 +44,26 @@ namespace AutoPartsStore.ViewModel
             return mainViewModel;
         }
 
+        UserConfiguration userConfiguration;
+
+
         public void AddCarPartOemNumberIntoCategory(int categoryId)
         {
+
+        }
+
+        public void AddProductToShoppingCart(Product product, short productCount)
+        {
+            OrderPart orderPart = new OrderPart();
+            orderPart.Product = product;
+            orderPart.ProductCount = productCount;
+            userConfiguration.ShoppingCart.AddOrderPart(orderPart);
+        }
+        public void MakeNewOrder()
+        {
+            Order order = userConfiguration.ShoppingCart;
+            userConfiguration.UpdateShopingCart();
+
 
         }
     }

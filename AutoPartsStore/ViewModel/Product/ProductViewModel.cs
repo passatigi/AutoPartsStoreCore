@@ -21,6 +21,7 @@ namespace AutoPartsStore.ViewModel
             storeService = StoreService.GetStoreService();
 
             UpdateProduct();
+            ProductCount = 1;
 
 
         }
@@ -98,7 +99,21 @@ namespace AutoPartsStore.ViewModel
             }
         }
 
-
+        
+        private RelayCommand addToShoppingCartCommand;
+        public RelayCommand AddToShoppingCartCommand
+        {
+            get
+            {
+                return addToShoppingCartCommand ?? (addToShoppingCartCommand = new RelayCommand(action =>
+                {
+                    mainViewModel.AddProductToShoppingCart(product, productCount);
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
 
     }
 }

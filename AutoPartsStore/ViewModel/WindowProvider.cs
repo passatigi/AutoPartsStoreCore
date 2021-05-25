@@ -56,6 +56,15 @@ namespace AutoPartsStore.ViewModel
             else
                 throw new Exception("Chto nado");
         }
+        public static void OpenShoppingCartWindow()
+        {
+            if (WorkSpacePage != null)
+            {
+                MainFrame.Source = new Uri("User/ShoppingCartPage.xaml", UriKind.Relative);
+            }
+            else
+                throw new Exception("Chto nado");
+        }
 
 
         public static void OpenAddManufacturerWindow()
@@ -64,6 +73,10 @@ namespace AutoPartsStore.ViewModel
             addManufacturerWindow.Show();
         }
 
+        public static void OpenOrderWindow()
+        {
+
+        }
 
        
 

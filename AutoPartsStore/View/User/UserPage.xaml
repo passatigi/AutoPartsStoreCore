@@ -82,8 +82,8 @@
                     <StackPanel>
                         <StackPanel.Style>
                             <Style TargetType="{x:Type StackPanel}">
-                                <!--<Setter Property="Visibility" Value="Collapsed"/>-->
-                                <!--<Setter Property="Visibility" Value="Visible"/>
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Setter Property="Visibility" Value="Visible"/>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Customer.Id}" Value="{x:Null}">
                                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -91,7 +91,7 @@
                                     <DataTrigger Binding="{Binding Customer.Id}" Value="0">
                                         <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
-                                </Style.Triggers>-->
+                                </Style.Triggers>
                             </Style>
                         </StackPanel.Style>
                         <StackPanel>
@@ -146,6 +146,9 @@
                         <TextBox Text="{Binding ConfirmPassword}"/>
                         <TextBlock Text="Новый пароль"/>
                             <TextBox Text="{Binding EditCustomer.Password}"/>
+                            <Button Command="{Binding EditUserCommand}"
+                                CommandParameter="back"
+                                >Назад</Button>
                             <Button Command="{Binding EditUserCommand}"
                                 CommandParameter="save"
                                 >Сохранить изменения</Button>

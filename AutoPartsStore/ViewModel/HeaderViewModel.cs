@@ -35,6 +35,10 @@ namespace AutoPartsStore.ViewModel
                         {
                             WindowProvider.OpenUserWindow();
                         }
+                        else if (parm.Equals("shoppingCart"))
+                        {
+                            WindowProvider.OpenShoppingCartWindow();
+                        }
                     }
 
                 }, func =>

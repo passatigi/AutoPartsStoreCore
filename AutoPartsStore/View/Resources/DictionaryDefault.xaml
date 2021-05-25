@@ -9,6 +9,8 @@
 
     <vm:HeaderViewModel x:Key="HeaderViewModel"/>
     <vm:UserViewModel x:Key="UserViewModel"/>
+    <vm:ShoppingCartViewModel x:Key="ShoppingCartViewModel"/>
+    <vm:OrdersViewModel x:Key="OrdersViewModel"/>
     <vm:CategoriesViewModel x:Key="CategoriesViewModel"/>
     <vm:ProductsViewModel x:Key="ProductsViewModel"/>
     <vm:ProductViewModel x:Key="ProductViewModel"/>
@@ -24,6 +26,7 @@
     <ObjectDataProvider x:Key="CategoriesViewModelDataProvider" ObjectType="{x:Type vm:CategoriesViewModel}" IsAsynchronous="True"/>
     <ObjectDataProvider x:Key="OemToCarCategoryViewModelDataProvider" ObjectType="{x:Type vm:AddOemToCarCategoryViewModel}" IsAsynchronous="True"/>
     <ObjectDataProvider x:Key="ProductsViewModelDataProvider" ObjectType="{x:Type vm:ProductsViewModel}" IsAsynchronous="True"/>
+    <ObjectDataProvider x:Key="ShoppingCartViewModelDataProvider" ObjectType="{x:Type vm:ShoppingCartViewModel}" IsAsynchronous="True"/>
     
     <BitmapImage x:Key="BuyBascetIcon" UriSource="\TempElements\icons\buyIcon.png" />
     

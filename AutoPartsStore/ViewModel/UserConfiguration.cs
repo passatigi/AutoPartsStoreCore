@@ -2,6 +2,7 @@
 using AutoPartsStore.Model.Vehicle;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace AutoPartsStore.ViewModel
@@ -28,7 +29,7 @@ namespace AutoPartsStore.ViewModel
 
         private UserConfiguration()
         {
-
+            UpdateShopingCart();
         }
 
         public VehicleEngine SelectedVehicleEngine { get; set; }
@@ -37,7 +38,13 @@ namespace AutoPartsStore.ViewModel
 
         private bool IsAdmin;
         public Customer Customer { get; set; }
-        public Order Order { get; set; }
+        public Order ShoppingCart { get; private set; }
+
+        public void UpdateShopingCart()
+        {
+            ShoppingCart = new Order();
+            ShoppingCart.OrderParts = new ObservableCollection<OrderPart>();
+        }
 
     }
 }

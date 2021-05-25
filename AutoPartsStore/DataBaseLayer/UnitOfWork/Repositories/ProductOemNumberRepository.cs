@@ -51,7 +51,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
         public IEnumerable<ProductOEMNumber> GetAs(ProductOEMNumber item)
         {
             return db.ProductOEMNumbers.Where(o => o.OEM.Equals(item.OEM) && o.VehicleBrand.Id == item.VehicleBrand.Id)
-                .Include(o => o.Product);
+                .Include(o => o.Product).ThenInclude(p => p.Manufacturer);
               
         }
     }

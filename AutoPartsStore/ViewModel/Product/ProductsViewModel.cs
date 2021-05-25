@@ -172,6 +172,23 @@ namespace AutoPartsStore.ViewModel
                 }));
             }
         }
+        private RelayCommand addToShoppingCartCommand;
+        public RelayCommand AddToShoppingCartCommand
+        {
+            get
+            {
+                return addToShoppingCartCommand ?? (addToShoppingCartCommand = new RelayCommand(action =>
+                {
+                    if(action is long)
+                    {
+                        mainViewModel.AddProductToShoppingCart(storeService.ProductService.GetById((long)action), 1);
+                    }
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
 
         MainViewModel mainViewModel;
         
