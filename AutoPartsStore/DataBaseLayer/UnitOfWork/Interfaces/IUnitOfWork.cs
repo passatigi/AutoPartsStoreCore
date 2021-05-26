@@ -19,6 +19,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Interfaces
         IRepository<ProductOEMNumber, int> ProductOEMNumberRepository { get; }
 
         IRepository<Customer, int> UserRepository { get; }
+        IRepository<Order, long> OrderRepository { get; }
         
         void Save();
     }

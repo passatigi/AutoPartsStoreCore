@@ -75,7 +75,12 @@ namespace AutoPartsStore.ViewModel
 
         public static void OpenOrderWindow()
         {
-
+            if (WorkSpacePage != null)
+            {
+                MainFrame.Source = new Uri("User/OrdersPage.xaml", UriKind.Relative);
+            }
+            else
+                throw new Exception("Chto nado");
         }
 
        

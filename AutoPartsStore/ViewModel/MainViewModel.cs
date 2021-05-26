@@ -1,9 +1,11 @@
-﻿using AutoPartsStore.Model;
+﻿using AutoPartsStore.BusinessLogicLayer.Service;
+using AutoPartsStore.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AutoPartsStore.ViewModel
 {
@@ -26,10 +28,24 @@ namespace AutoPartsStore.ViewModel
         public UserViewModel UserViewModel { get; set; }
 
         public ShoppingCartViewModel ShoppingCartViewModel { get; set; }
+        public OrdersViewModel OrdersViewModel { get; set; }
 
+        IStoreService storeService;
+        IStoreService _StoreService
+        {
+            get
+            {
+                if (storeService == null)
+                {
+                    storeService = StoreService.GetStoreService();
+                }
+                return storeService;
+            }
+        }
         public MainViewModel()
         {
             userConfiguration =  UserConfiguration.GetUserConfiguration();
+            
         }
         public static MainViewModel GetMainViewModel()
         {
@@ -62,9 +78,24 @@ namespace AutoPartsStore.ViewModel
         public void MakeNewOrder()
         {
             Order order = userConfiguration.ShoppingCart;
-            userConfiguration.UpdateShopingCart();
+            order.Customer = userConfiguration.Customer;
+            if(order.Customer == null)
+            {
+                MessageBox.Show("В начале войдите или зарегестрируйтесь");
+            }
+            else
+            {
+                try
+                {
+                    _StoreService.OrderService.AddOrder(order);
+                }
+                catch(Exception e)
+                {
 
-
+                }
+                userConfiguration.UpdateShopingCart();
+                ShoppingCartViewModel.UpdateShoppingCart();
+            }    
         }
     }
 }

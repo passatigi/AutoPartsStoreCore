@@ -7,9 +7,9 @@ namespace AutoPartsStore.Model
 {
     public class OrderPart : BasicModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        public Order order { get; set; }
+        public Order Order { get; set; }
 
         public Product Product { get; set; }
 

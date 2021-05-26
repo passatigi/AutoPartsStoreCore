@@ -39,6 +39,10 @@ namespace AutoPartsStore.ViewModel
                         {
                             WindowProvider.OpenShoppingCartWindow();
                         }
+                        else if (parm.Equals("orders"))
+                        {
+                            WindowProvider.OpenOrderWindow();
+                        }
                     }
 
                 }, func =>

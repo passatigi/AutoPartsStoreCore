@@ -10,11 +10,17 @@ namespace AutoPartsStore.Model
 {
     public class Order : BasicModel
     {
+
+        public const string InProcessing = "В обработке";
+        public const string Confirmed = "Подтвержден";
+        public const string Completed = "Выполнен";
+        public const string Rejected = "Отклонен";
+
         public long Id { get; set; }
 
         public  Customer Customer { get; set; }
        
-        public DateTime dateTime { get; set; }
+        public DateTime DateTime { get; set; }
 
         private string status;
         public string Status
@@ -35,11 +41,8 @@ namespace AutoPartsStore.Model
         {
             get
             {
+                _UpdateTotalPriceNoNotify();
                 return totalPrice;
-            }
-            set
-            {
-                SetProperty(ref totalPrice, value);
             }
         }
 
@@ -84,6 +87,7 @@ namespace AutoPartsStore.Model
                 }
             }
             UpdateTotalPrice();
+            NotifyPropertyChanged(nameof(TotalPrice));
         }
         public void RemoveOrderPart(long productId)
         {
@@ -96,15 +100,19 @@ namespace AutoPartsStore.Model
             {
                 throw new Exception("che"); 
             }
-            UpdateTotalPrice();
+            UpdateTotalPrice();     
         }
-        public void UpdateTotalPrice()
+        private void _UpdateTotalPriceNoNotify()
         {
             totalPrice = 0;
             foreach (OrderPart op in orderParts)
             {
                 totalPrice += op.Product.Price * op.ProductCount;
             }
+        }
+        public void UpdateTotalPrice()
+        {
+            _UpdateTotalPriceNoNotify();
             NotifyPropertyChanged(nameof(TotalPrice));
         }
     }

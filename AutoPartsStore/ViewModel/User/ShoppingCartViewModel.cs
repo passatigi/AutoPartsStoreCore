@@ -38,6 +38,12 @@ namespace AutoPartsStore.ViewModel
 
         }
 
+        public void UpdateShoppingCart()
+        {
+            ShoppingCart.OrderParts.Clear();
+            ShoppingCart = UserConfiguration.GetUserConfiguration().ShoppingCart;
+        }
+
         private RelayCommand placeOrderCommand;
         public RelayCommand PlaceOrderCommand
         {

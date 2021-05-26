@@ -67,7 +67,10 @@
                         >Корзина</Button>
                 </Border>
                 <Border Grid.Column="3" Margin="5, 10, 5, 10">
-                    <Button>Заказы</Button>
+                    <Button
+                        Command="{Binding OpenWindowCommand}"
+                             CommandParameter="orders"
+                        >Заказы</Button>
                 </Border>
                 <Border Grid.Column="4" Margin="5, 10, 5, 10">
                     <Button Command="{Binding OpenWindowCommand}"
