@@ -67,6 +67,7 @@ namespace AutoPartsStore.DataBaseConnector
         private ProductOEMNumberRepository productOEMNumberRepository;
         private UserRepository userRepository;
         private OrderRepository orderRepository;
+        private ReviewRepository reviewRepository;
 
         #region Properties
 
@@ -87,6 +88,15 @@ namespace AutoPartsStore.DataBaseConnector
                 if (orderRepository == null)
                     orderRepository = new OrderRepository(db);
                 return orderRepository;
+            }
+        }
+        public IRepository<Review, long> ReviewRepository
+        {
+            get
+            {
+                if (reviewRepository == null)
+                    reviewRepository = new ReviewRepository(db);
+                return reviewRepository;
             }
         }
 

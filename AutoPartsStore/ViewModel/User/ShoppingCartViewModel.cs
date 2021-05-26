@@ -95,7 +95,6 @@ namespace AutoPartsStore.ViewModel
                             orderPart.ProductCount++;
                             ShoppingCart.UpdateTotalPrice();
                         }
-
                     }
                 }, func =>
                 {

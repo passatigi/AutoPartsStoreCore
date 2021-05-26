@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Text;
 using System.Windows.Media;
@@ -9,17 +10,38 @@ namespace AutoPartsStore.Model
 {
     public class Review : BasicModel
     {
+
         public long Id { get; set; }
 
         public Product Product { get; set; }
-        public Customer Customer { get; set; }
+
+        public int CustomerId { get; set; }
+
+        private Customer customer;
+        public Customer Customer
+        {
+            get
+            {
+                return customer;
+            }
+            set
+            {
+                customer = value;
+                if (value != null)
+                {
+                    CustomerId = value.Id;
+                }
+            }
+        }
+        [NotMapped]
+        public DateTime DateTime { get; set; }
 
         private byte rating;
         public byte Rating
         {
             get
             {
-                return Rating;
+                return rating;
             }
             set
             {

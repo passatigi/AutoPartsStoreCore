@@ -3,7 +3,9 @@ using AutoPartsStore.Command;
 using AutoPartsStore.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
 
 namespace AutoPartsStore.ViewModel
 {
@@ -22,7 +24,8 @@ namespace AutoPartsStore.ViewModel
 
             UpdateProduct();
             ProductCount = 1;
-
+            UserReview = new Review();
+            UpdateReviews();
 
         }
         public void UpdateProduct()
@@ -112,6 +115,85 @@ namespace AutoPartsStore.ViewModel
                 {
                     return true;
                 }));
+            }
+        }
+        private RelayCommand addReviewCommand;
+        public RelayCommand AddReviewCommand
+        {
+            get
+            {
+                return addReviewCommand ?? (addReviewCommand = new RelayCommand(action =>
+                {
+                    Customer customer = UserConfiguration.GetUserConfiguration().Customer;
+                    if (customer == null)
+                    {
+                        MessageBox.Show("Перед тем как оставлять отзывы войдите");
+                    }
+                    else
+                    {
+                        UserReview.Customer = customer;
+                        UserReview.Product = product;
+                        try
+                        {
+                            storeService.ReviewService.TryAddReview(UserReview);
+                            UpdateReviews();
+                            UserReview = new Review();
+                            MessageBox.Show("отзыв успешно добавлен");
+                        }
+                        catch (ReviewExistsException re)
+                        {
+                            MessageBox.Show(re.Message);
+                        }
+                        catch (Exception e)
+                        {
+
+                        }
+
+                    }
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
+        public void UpdateReviews()
+        {
+            Reviews.Clear();
+            foreach(Review review in storeService.ReviewService.GetReviews(product))
+            {
+                Reviews.Add(review);
+            }
+        }
+
+        private Review userReview;
+        public Review UserReview
+        {
+            get
+            {
+                return userReview;
+            }
+            set
+            {
+                SetProperty(ref userReview, value);
+            }
+        }
+        public int ReviewsCount
+        {
+            get
+            {
+                return reviews.Count;
+            }
+        }
+        private ObservableCollection<Review> reviews;
+        public ObservableCollection<Review> Reviews
+        {
+            get
+            {
+                return reviews ?? (reviews = new ObservableCollection<Review>());
+            }
+            set
+            {
+                SetProperty(ref reviews, value);
             }
         }
 
