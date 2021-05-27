@@ -81,6 +81,10 @@ namespace AutoPartsStore.ViewModel
             }
             return customer.Password.Equals(ConfirmPassword);
         }
+        public void UpdateUser()
+        {
+            Customer = UserConfiguration.GetUserConfiguration().Customer;
+        }
         private const string adminParm = "--admin";
         private RelayCommand authorizationCommand;
         public RelayCommand AuthorizationCommand
@@ -120,9 +124,14 @@ namespace AutoPartsStore.ViewModel
                                         {
                                             if (isAdmin)
                                             {
-                                                storeService.AdminService.SetAdministrator(tempCustomer);
-                                                //UserConfiguration.GetUserConfiguration().Customer = tempCustomer;
-                                                WindowProvider.OpenConfirmAdminWindow();
+                                                if (storeService.AdminService.SetAdministrator(tempCustomer))
+                                                {
+                                                    WindowProvider.OpenConfirmAdminWindow();
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Администратор отсутствует");
+                                                }            
                                             }
                                             else
                                             {
@@ -134,7 +143,7 @@ namespace AutoPartsStore.ViewModel
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Пользователь отсутсвует ( ");
+                                        MessageBox.Show("Пользователь отсутсвует");
 
                                     }
                                 }
@@ -150,7 +159,7 @@ namespace AutoPartsStore.ViewModel
                                 try {
                                     if (storeService.UserService.HasCustomer(Customer))
                                     {
-                                        MessageBox.Show("Пользователь занят");
+                                        MessageBox.Show("Мэйл занят");
                                     }
                                     else
                                     {
@@ -222,6 +231,8 @@ namespace AutoPartsStore.ViewModel
                         {
                             Customer = new Customer();
                             UserConfiguration.GetUserConfiguration().Customer = null;
+                            UserConfiguration.GetUserConfiguration().UnsetAdmin();
+
                         }
                         else if (str.Equals("back"))
                         {

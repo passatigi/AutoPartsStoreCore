@@ -29,8 +29,6 @@ namespace AutoPartsStore.ViewModel
 
         private UserConfiguration()
         {
-            isAdmin = false;
-            //isAdmin = true;
             UpdateShopingCart();
         }
 
@@ -38,13 +36,13 @@ namespace AutoPartsStore.ViewModel
         public Category SelectedCategory { get; set; }
         public Product SelectedProduct { get; set; }
 
-        private bool isAdmin;
+        //private bool isAdmin;
 
         public bool IsAdmin
         {
             get
             {
-                if(administrator != null)
+                if (administrator != null)
                 {
                     return true;
                 }

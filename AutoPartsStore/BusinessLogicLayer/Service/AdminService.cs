@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Media;
 
 namespace AutoPartsStore.BusinessLogicLayer.Service
 {
@@ -15,9 +16,10 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
             this.unitOfWork = unitOfWork;
         }
         Administrator administrator;
-        public void SetAdministrator(Customer customer)
+        public bool SetAdministrator(Customer customer)
         {
             administrator = unitOfWork.AdminRepository.GetAs(new Administrator { Customer = customer }).FirstOrDefault();
+            return administrator != null ? true : false;
         }
         public Administrator ConfirmAdminPassword(string password)
         {

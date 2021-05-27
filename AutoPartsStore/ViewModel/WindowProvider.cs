@@ -72,11 +72,20 @@ namespace AutoPartsStore.ViewModel
             else
                 throw new Exception("Chto nado");
         }
-        
+
+        public static ConfirmAdminWindow confirmAdminWindow;
         public static void OpenConfirmAdminWindow()
         {
-            ConfirmAdminWindow confirmAdminWindow = new ConfirmAdminWindow();
+            confirmAdminWindow = new ConfirmAdminWindow();
             confirmAdminWindow.Show();
+        }
+        public static void CloseConfirmAdminWindow()
+        {
+            if(confirmAdminWindow != null)
+            {
+                confirmAdminWindow.Close();
+                confirmAdminWindow = null;
+            }
         }
 
         public static void OpenProductPage()

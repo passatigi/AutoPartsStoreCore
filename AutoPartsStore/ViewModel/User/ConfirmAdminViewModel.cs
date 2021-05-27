@@ -35,6 +35,8 @@ namespace AutoPartsStore.ViewModel
                         UserConfiguration userConfiguration = UserConfiguration.GetUserConfiguration();
                         userConfiguration.Customer = administrator.Customer;
                         userConfiguration.SetAdmin(administrator, ConfirmPassword);
+                        MainViewModel.GetMainViewModel().UserViewModel.UpdateUser();
+                        WindowProvider.CloseConfirmAdminWindow();
                     }
                     else
                     {

@@ -19,7 +19,7 @@ namespace AutoPartsStore.ViewModel
 
         private void FilProducts()
         {
-            IEnumerable<Product> products = storeService.ProductService.GetAllProducts();
+            IEnumerable<Product> products = Products.AsEnumerable();
             if (isSortByManufacturer)
             {
                 if (isSortAcs)
@@ -217,7 +217,7 @@ namespace AutoPartsStore.ViewModel
             storeService = StoreService.GetStoreService();
 
             Products = new ObservableCollection<Product>();
-            //UpdateProductsList();
+            UpdateProductsList();
         }
        
     }
