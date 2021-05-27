@@ -1,4 +1,5 @@
-﻿using AutoPartsStore.View.Manufacturer;
+﻿using AutoPartsStore.View.Admin;
+using AutoPartsStore.View.Manufacturer;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -72,6 +73,12 @@ namespace AutoPartsStore.ViewModel
                 throw new Exception("Chto nado");
         }
         
+        public static void OpenConfirmAdminWindow()
+        {
+            ConfirmAdminWindow confirmAdminWindow = new ConfirmAdminWindow();
+            confirmAdminWindow.Show();
+        }
+
         public static void OpenProductPage()
         {
             if (WorkSpacePage != null)

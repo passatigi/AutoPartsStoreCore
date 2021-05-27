@@ -21,6 +21,9 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Interfaces
         IRepository<Customer, int> UserRepository { get; }
         IRepository<Order, long> OrderRepository { get; }
         IRepository<Review, long> ReviewRepository { get; }
+
+        public IRepository<Administrator, int> AdminRepository { get; }
+
         void Save();
     }
 }

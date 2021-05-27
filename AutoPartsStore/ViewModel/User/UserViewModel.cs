@@ -81,7 +81,7 @@ namespace AutoPartsStore.ViewModel
             }
             return customer.Password.Equals(ConfirmPassword);
         }
-
+        private const string adminParm = "--admin";
         private RelayCommand authorizationCommand;
         public RelayCommand AuthorizationCommand
         {
@@ -101,46 +101,71 @@ namespace AutoPartsStore.ViewModel
                             }
                             else
                             {
-
-                                if (storeService.UserService.HasCustomer(Customer))
+                                try
                                 {
-                                    Customer tempCustomer = storeService.UserService.TryLogIn(Customer);
-                                    if (tempCustomer == null)
+                                    bool isAdmin = false;
+                                    if (customer.Mail.StartsWith(adminParm))
                                     {
-                                        MessageBox.Show("Неправильный пароль");
+                                        isAdmin = true;
+                                        customer.Mail = customer.Mail.Substring(adminParm.Length);
+                                    }
+                                    if (storeService.UserService.HasCustomer(Customer))
+                                    {
+                                        Customer tempCustomer = storeService.UserService.TryLogIn(Customer);
+                                        if (tempCustomer == null)
+                                        {
+                                            MessageBox.Show("Неправильный пароль");
+                                        }
+                                        else
+                                        {
+                                            if (isAdmin)
+                                            {
+                                                storeService.AdminService.SetAdministrator(tempCustomer);
+                                                //UserConfiguration.GetUserConfiguration().Customer = tempCustomer;
+                                                WindowProvider.OpenConfirmAdminWindow();
+                                            }
+                                            else
+                                            {
+                                                UserConfiguration.GetUserConfiguration().Customer = tempCustomer;
+                                                Customer = tempCustomer;
+                                            }
+                                            
+                                        }
                                     }
                                     else
                                     {
-                                        UserConfiguration.GetUserConfiguration().Customer = tempCustomer;
-                                        Customer = tempCustomer;
-                                        IsLogined = true;
+                                        MessageBox.Show("Пользователь отсутсвует ( ");
 
                                     }
                                 }
-                                else
+                                catch (Exception e)
                                 {
-                                    MessageBox.Show("Пользователь отсутсвует ( ");
-
+                                    MessageBox.Show(e.Message);
                                 }
                             }
                         }
                         else if (str.Equals("reg")){
                             if (CheckFields())
                             {
-                              if (storeService.UserService.HasCustomer(Customer))
-                                {
-                                    MessageBox.Show("Пользователь занят ( ");
-                                }
-                                else
-                                {
-                                    if (storeService.UserService.AddCustomer(Customer))
+                                try {
+                                    if (storeService.UserService.HasCustomer(Customer))
                                     {
-                                        MessageBox.Show("Успешно добавлен");
-                                        ConfirmPassword = "";
-                                        Customer = new Customer();
-                                        ConfirmPassword = "";
-
+                                        MessageBox.Show("Пользователь занят");
                                     }
+                                    else
+                                    {
+                                        if (storeService.UserService.AddCustomer(Customer))
+                                        {
+                                            MessageBox.Show("Успешно добавлен");
+                                            ConfirmPassword = "";
+                                            Customer = new Customer();
+                                            ConfirmPassword = "";
+                                        }
+                                    }
+                                }
+                                catch (Exception e)
+                                {
+                                    MessageBox.Show(e.Message);
                                 }
                             }
                             else

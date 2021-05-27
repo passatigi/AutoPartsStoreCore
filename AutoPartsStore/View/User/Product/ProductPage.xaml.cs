@@ -33,12 +33,19 @@ namespace AutoPartsStore.View.Product
 
             if (dlg.ShowDialog() == true)
             {
-                string selectedFileName = dlg.FileName;
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(selectedFileName);
-                bitmap.EndInit();
-                ProductImage.Source = bitmap;
+                if (new FileInfo(dlg.FileName).Length > 80000000)
+                {
+                    throw new Exception("Слишком большой файл");
+                }
+                else
+                {
+                    string selectedFileName = dlg.FileName;
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(selectedFileName);
+                    bitmap.EndInit();
+                    ProductImage.Source = bitmap;
+                }
             }
         }
 
@@ -48,7 +55,15 @@ namespace AutoPartsStore.View.Product
             if (openFileDialog.ShowDialog() == true)
                 try
                 {
-                    NewReviewText.Text = File.ReadAllText(openFileDialog.FileName).Trim();
+                    if(new FileInfo(openFileDialog.FileName).Length > 1000)
+                    {
+                        throw new Exception("Слишком большой файл");
+                    }
+                    else
+                    {
+                        NewReviewText.Focus();
+                        NewReviewText.Text = File.ReadAllText(openFileDialog.FileName).Trim();
+                    }
                 }
                 catch(Exception er)
                 {

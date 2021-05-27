@@ -13,6 +13,7 @@
     
     <vm:OrdersViewModel x:Key="OrdersViewModel"/>
     <vm:AdminOrdersViewModel x:Key="AdminOrdersViewModel"/>
+    <vm:ConfirmAdminViewModel x:Key="ConfirmAdminViewModel"/>
     
     <vm:CategoriesViewModel x:Key="CategoriesViewModel"/>
     <vm:ProductsViewModel x:Key="ProductsViewModel"/>

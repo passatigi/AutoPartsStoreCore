@@ -68,8 +68,19 @@ namespace AutoPartsStore.DataBaseConnector
         private UserRepository userRepository;
         private OrderRepository orderRepository;
         private ReviewRepository reviewRepository;
+        private AdminRepository adminRepository;
 
         #region Properties
+
+        public IRepository<Administrator, int> AdminRepository
+        {
+            get
+            {
+                if (adminRepository == null)
+                    adminRepository = new AdminRepository(db);
+                return adminRepository;
+            }
+        }
 
         public IRepository<Customer, int> UserRepository
         {

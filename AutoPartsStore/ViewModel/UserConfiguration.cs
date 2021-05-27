@@ -44,14 +44,33 @@ namespace AutoPartsStore.ViewModel
         {
             get
             {
-                return isAdmin;
+                if(administrator != null)
+                {
+                    return true;
+                }
+                return false;
             }
             private set
             {
 
             }
         }
-
+        public void SetAdmin(Administrator administrator, string password)
+        {
+            if (administrator.AdminPassword.Equals(password))
+            {
+                this.administrator = administrator;
+            }
+            else
+            {
+                this.administrator = null;
+            }
+        }
+        public void UnsetAdmin()
+        {
+            this.administrator = null;
+        }
+        private Administrator administrator;
         public Customer Customer { get; set; }
         public Order ShoppingCart { get; private set; }
 

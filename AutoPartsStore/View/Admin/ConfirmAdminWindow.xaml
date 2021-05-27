@@ -1,0 +1,17 @@
+﻿<Window x:Class="AutoPartsStore.View.Admin.ConfirmAdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoPartsStore.View.Admin"
+        mc:Ignorable="d"
+        Title="ConfirmAdminWindow" Height="100" Width="300">
+    <Grid>
+        <StackPanel DataContext="{Binding Source={StaticResource ConfirmAdminViewModel}}">
+            <TextBlock FontSize="15" Text="Введите пароль администратора"/>
+            <TextBox Text="{Binding ConfirmPassword}"/>
+            <Button Command="{Binding ConfirmAdminCommand}"
+                Content="Подтвердить"/>
+        </StackPanel>
+    </Grid>
+</Window>
