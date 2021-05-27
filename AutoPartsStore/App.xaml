@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary x:Name="lanquage" Source="View\Resources\DictionaryDefault.xaml"/>
+                <ResourceDictionary x:Name="dic" Source="View\Resources\DictionaryDefault.xaml"/>
                 <ResourceDictionary x:Name="theme" Source="View\Resources\DictionaryWhite.xaml"/>
                 <ResourceDictionary x:Name="lanquage" Source="View\Resources\RusDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>

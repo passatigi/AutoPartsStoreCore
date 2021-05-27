@@ -121,7 +121,9 @@ namespace AutoPartsStore.ViewModel
             }
             set
             {
-                SetProperty(ref products, value);
+                products = value;
+                NotifyPropertyChanged(nameof(Products));
+                //SetProperty(ref products, value);
             }
         }
         private VehiclePart vehiclePart;
@@ -201,7 +203,7 @@ namespace AutoPartsStore.ViewModel
             storeService = StoreService.GetStoreService();
 
             Products = new ObservableCollection<Product>();
-            //FilProducts();
+            UpdateProductsList();
         }
        
     }

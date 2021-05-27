@@ -23,27 +23,13 @@ namespace AutoPartsStore.View
         {
             InitializeComponent();
             WindowProvider.WorkSpacePage = WorkSpacePage;
+            WindowProvider.EditDataBaseFrame = EditDataBaseFrame;
+            WindowProvider.CategoryFrame = CategoryFrame;
+            WindowProvider.ChoiceCarFrame = ChoiceCarFrame;
+            WindowProvider.FillUserPage();
         }
        
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button)
-            {
-                Button button = sender as Button;
-                if (button == AddCarButton)
-                {
-                    WorkSpacePage.Source = new Uri("Vehicle/AddNewCarPage.xaml", UriKind.Relative);
-                }
-                else if (button == AddProductButton)
-                {
-                    WorkSpacePage.Source = new Uri("Product/NewProductPage.xaml", UriKind.Relative);
-                }
-                else if (button == ProductsListButton)
-                {
-                    WorkSpacePage.Source = new Uri("Product/ProductsShowPage.xaml", UriKind.Relative);
-                }
-            }
-        }
+        
     }
 
 }

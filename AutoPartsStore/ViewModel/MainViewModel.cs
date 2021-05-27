@@ -94,7 +94,7 @@ namespace AutoPartsStore.ViewModel
 
                 }
                 userConfiguration.UpdateShopingCart();
-                ShoppingCartViewModel.UpdateShoppingCart();
+                
             }    
         }
     }

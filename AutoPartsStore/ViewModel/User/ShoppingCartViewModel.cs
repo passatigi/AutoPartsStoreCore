@@ -10,6 +10,21 @@ namespace AutoPartsStore.ViewModel
 {
     class ShoppingCartViewModel : BaseViewModel
     {
+        public int ProductsCount
+        {
+            get
+            {
+                if(ShoppingCart != null)
+                {
+                    return ShoppingCart.OrderParts.Count();
+                }
+                return 0;
+            }
+            set
+            {
+                NotifyPropertyChanged(nameof(ProductsCount));
+            }
+        }
         private Order shoppingCart;
         public Order ShoppingCart
         {
@@ -40,8 +55,8 @@ namespace AutoPartsStore.ViewModel
 
         public void UpdateShoppingCart()
         {
-            ShoppingCart.OrderParts.Clear();
             ShoppingCart = UserConfiguration.GetUserConfiguration().ShoppingCart;
+            NotifyPropertyChanged(nameof(ProductsCount));
         }
 
         private RelayCommand placeOrderCommand;
@@ -52,6 +67,7 @@ namespace AutoPartsStore.ViewModel
                 return placeOrderCommand ?? (placeOrderCommand = new RelayCommand(action =>
                 {
                     mainViewModel.MakeNewOrder();
+                    UpdateShoppingCart();
 
                 }, func =>
                 {
@@ -66,11 +82,12 @@ namespace AutoPartsStore.ViewModel
             {
                 return deleteOrderPartCommand ?? (deleteOrderPartCommand = new RelayCommand(action =>
                 {
+
                     if(action is long)
                     {
                         long id = (long)action;
                         shoppingCart.RemoveOrderPart(id);
-                        
+                        NotifyPropertyChanged(nameof(ProductsCount));
                     }
                 }, func =>
                 {

@@ -11,6 +11,22 @@ namespace AutoPartsStore.ViewModel
 {
     public class OrdersViewModel : BaseViewModel
     {
+        public int OrdersCount
+        {
+            get
+            {
+                if (Orders != null)
+                {
+                    return Orders.Count();
+                }
+                return 0;
+            }
+            set
+            {
+                NotifyPropertyChanged(nameof(OrdersCount));
+            }
+        }
+
         private ObservableCollection<Order> orders;
         public ObservableCollection<Order> Orders
         {

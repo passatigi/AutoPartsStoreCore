@@ -1,0 +1,270 @@
+﻿<Page x:Class="AutoPartsStore.View.Admin.Product.AdminProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoPartsStore.View.Admin.Product"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="800"
+      Title="AdminProductPage">
+
+    <ScrollViewer>
+        <Grid DataContext="{Binding Source={StaticResource ProductViewModel}}" Background="{DynamicResource SecondItemBackGround}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <!--<ColumnDefinition Width="3*" MinWidth="270" MaxWidth="350"></ColumnDefinition>-->
+                <ColumnDefinition  Width="10*" MinWidth="770" MaxWidth="1150"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock FontSize="20" Margin="5" Text="{Binding Product.Manufacturer.Name}"/>
+                    <TextBlock FontSize="20" Margin="5" Text="{Binding Product.VendorCode}"/>
+                    <TextBlock FontSize="20" Margin="5" Text="{Binding Product.Category.Name}"/>
+                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid  Grid.Column="0" Margin="10" Background="{DynamicResource SecondItemBackGround}">
+                        <Grid.Effect>
+                            <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
+                        </Grid.Effect>
+                        <Image Grid.Row="2" MinHeight="100" MinWidth="100" MaxHeight="500" MaxWidth="500" Source="{Binding Product.Image}"></Image>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Margin="10" Background="{DynamicResource SecondItemBackGround}">
+                        <StackPanel.Effect>
+                            <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
+                        </StackPanel.Effect>
+                        <StackPanel Grid.Row="1" Margin="15">
+                            <TextBlock FontSize="15" Text="{Binding Path=Product.Manufacturer.Name, StringFormat=Бренд: {0}}" HorizontalAlignment="Center"/>
+                            <TextBlock FontSize="15" Text="{Binding Path=Product.VendorCode, StringFormat=Артикул: {0}}" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="1" FontSize="20"  FontWeight="Bold" Text="{Binding Path=Product.Price, StringFormat={}{0} р.}" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="4"  Text="{Binding Path=Product.Availability, StringFormat=Наличие {0} шт.}" HorizontalAlignment="Center"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border MaxWidth="100"
+                            Grid.Column="0" Margin="5" BorderThickness="1" BorderBrush="{StaticResource ItemBackGround}">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Style="{DynamicResource ButtonStyleSelectProductCount}" 
+                                                Command="{Binding UpdateProductCount}"
+                                                CommandParameter="-"
+                                                Grid.Column="0" Content="&lt;"/>
+                                        <TextBox Style="{DynamicResource TextboxNoBorder}" Grid.Column="1" FontSize="15"
+                                             Text="{Binding ProductCount, Mode=TwoWay}"
+                                             HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                        <Button Style="{DynamicResource ButtonStyleSelectProductCount}"
+                                                Command="{Binding UpdateProductCount}"
+                                                CommandParameter="+"
+                                                Grid.Column="2" Content="&gt;"/>
+                                    </Grid>
+                                </Border>
+                                <Button Command="{Binding AddToShoppingCartCommand}"
+                                    
+                                    Margin="5" Grid.Column="1" MinWidth="70" MaxWidth="150"  Style="{DynamicResource BuyButtonStyle}">
+                                    <StackPanel 
+                                        Orientation="Horizontal">
+                                        <Image HorizontalAlignment="Right" Grid.Column="0"
+                        x:Name="buttonImage" Width="12" Height="12" Source="{DynamicResource BuyBascetIcon}"/>
+                                        <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"
+                                                                          Grid.Column="1" Style="{DynamicResource RedButtonTextStyle}"  Text="Сохранить изменения"/>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                            <Grid>
+                                <TextBlock Margin="5" Text="Оригинальные номера"/>
+                            </Grid>
+                            <Grid>
+                                <ScrollViewer>
+                                    <ItemsControl ItemsSource="{Binding Product.ProductOEMNumbers}"
+                             HorizontalAlignment="Stretch"
+                             AlternationCount="2"
+                                  Margin="5">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid x:Name="PropertyItem">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=VehicleBrand.Brand}" HorizontalAlignment="Left"/>
+                                                    <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=OEM}" HorizontalAlignment="Right"/>
+                                                </Grid>
+                                                <DataTemplate.Triggers>
+                                                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                        <Setter TargetName="PropertyItem" Property="Background" Value="{StaticResource ItemBackGround}"/>
+                                                    </Trigger>
+                                                </DataTemplate.Triggers>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </ScrollViewer>
+                            </Grid>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="10"  Background="{DynamicResource SecondItemBackGround}">
+                        <StackPanel.Effect>
+                            <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
+                        </StackPanel.Effect>
+                        <Grid x:Name="PropertyItem">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Margin="5" FontStretch="Expanded" Grid.Column="0" Text="Параметр" HorizontalAlignment="Left"/>
+                            <TextBlock Margin="5" FontStretch="Expanded" Grid.Column="0" Text="Характеристика" HorizontalAlignment="Right"/>
+                        </Grid>
+                        <ItemsControl Grid.Row="2" x:Name="featureList" ItemsSource="{Binding Product.Features}"
+                             HorizontalAlignment="Stretch"
+                             AlternationCount="2"
+                                  Margin="5">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid x:Name="PropertyItem">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=Parameter}" HorizontalAlignment="Left"/>
+                                        <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=Description}" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <DataTemplate.Triggers>
+                                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                            <Setter TargetName="PropertyItem" Property="Background" Value="{StaticResource ItemBackGround}"/>
+                                        </Trigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                    <Grid Grid.Column="1" Margin="10" Background="{DynamicResource SecondItemBackGround}">
+                        <Grid.Effect>
+                            <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
+                        </Grid.Effect>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Margin="10" FontSize="15" Text="{Binding Path=Product.Manufacturer.Name, StringFormat=О производителе: {0}}" HorizontalAlignment="Left"/>
+                            <TextBlock Margin="10" Text="{Binding Product.Manufacturer.Description}" TextWrapping="Wrap"></TextBlock>
+                        </StackPanel>
+                        <Image Grid.Column="1" Margin="10" Source="{Binding Product.Manufacturer.Image}"></Image>
+                    </Grid>
+                </Grid>
+                <StackPanel Margin="10" Background="{DynamicResource SecondItemBackGround}">
+                    <StackPanel.Effect>
+                        <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
+                    </StackPanel.Effect>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="20" Margin="5" Text="Отзывы на "/>
+                        <TextBlock FontSize="20" Margin="5" Text="{Binding Product.Manufacturer.Name}"/>
+                        <TextBlock FontSize="20" Margin="5" Text="{Binding Product.VendorCode}"/>
+                        <TextBlock FontSize="20" Margin="5" Text="{Binding Product.Category.Name}"/>
+                        <Grid>
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Margin" Value="5"/>
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ReviewsCount}" Value="0">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                            <TextBlock  FontSize="20" Text="пока отсутствуют"/>
+                        </Grid>
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{Binding Reviews}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="0, 1, 0, 0">
+                                    <StackPanel Margin="10">
+                                        <StackPanel.Effect>
+                                            <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
+                                        </StackPanel.Effect>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0">
+                                                <StackPanel>
+                                                    <TextBlock FontSize="20" Margin="10" Text="{Binding Path=CustomerId, StringFormat=Пользователь {0}}"/>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock FontSize="20" Margin="10, 5, 5, 5" Text="Оценка: "/>
+                                                        <TextBlock  FontSize="20" Width="25"  Margin="5" Text="{Binding Rating}"/>
+                                                        <TextBlock FontSize="20" Margin="5"  Text="из 10"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <TextBlock 
+                                                 TextWrapping="Wrap"
+                                                FontSize="15" Margin="10" Text="{Binding ReviewText}"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                <Image Margin="10" Name="ProductImage" Source="{Binding Image, Mode=TwoWay}" MaxHeight="150"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+                <StackPanel Margin="10" Background="{DynamicResource SecondItemBackGround}">
+                    <StackPanel.Effect>
+                        <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
+                    </StackPanel.Effect>
+                    <TextBlock FontSize="20" Margin="10" Text="Добавить отзыв на товар"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="20" Margin="10, 5, 5, 5" Text="Ваша оценка"/>
+                                <TextBlock FontSize="20" Margin="5" Text="{Binding Product.Category.Name}"/>
+                                <TextBox Width="25" FontSize="20" Margin="5" Text="{Binding UserReview.Rating}"/>
+                                <TextBlock FontSize="20" Margin="5" Text="из 10"/>
+                            </StackPanel>
+                            <TextBlock FontSize="15" Margin="10" Text="Текст отзыва"/>
+                            <TextBox 
+                                TextWrapping="Wrap"
+                                AcceptsReturn="True"
+                                FontSize="15" Margin="10" Text="{Binding UserReview.ReviewText}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                            <Image Margin="10" Name="ProductImage" Source="{Binding UserReview.Image, Mode=TwoWay}" MaxHeight="200"/>
+                            <Button Margin="10" Height="23" Name="BrowseButton" Click="BrowseButton_Click" Content="{DynamicResource AddImageButtonText}"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Margin="10" Height="23" 
+                                Command="{Binding AddReviewCommand}"
+                                Content="Опубликовать отзыв"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

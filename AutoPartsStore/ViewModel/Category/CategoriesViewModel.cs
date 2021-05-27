@@ -82,8 +82,12 @@ namespace AutoPartsStore.ViewModel
                     else
                     {
                         UserConfiguration.GetUserConfiguration().SelectedCategory = storeService.CategoryService.GetCategoryById((int)action);
-                        WindowProvider.OpenCategoryProductListWindow();
-                        mainViewModel.ProductsViewModel.UpdateProductsList();
+                        WindowProvider.OpenProductsList();
+                        if (mainViewModel.ProductsViewModel != null)
+                        {
+                            mainViewModel.ProductsViewModel.UpdateProductsList();
+                        }
+                        
                     }
                 }, func =>
                 {

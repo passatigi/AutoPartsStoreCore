@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock FontSize="20" Margin="5" Text="{Binding Product.Manufacturer.Name}"/>
                     <TextBlock FontSize="20" Margin="5" Text="{Binding Product.VendorCode}"/>
                     <TextBlock FontSize="20" Margin="5" Text="{Binding Product.Category.Name}"/>
@@ -75,7 +75,7 @@
                                         <Image HorizontalAlignment="Right" Grid.Column="0"
                         x:Name="buttonImage" Width="12" Height="12" Source="{DynamicResource BuyBascetIcon}"/>
                                         <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"
-                                                                          Grid.Column="1" Style="{DynamicResource RedButtonTextStyle}"  Text="КУПИТЬ"/>
+                                                                          Grid.Column="1" Style="{DynamicResource RedButtonTextStyle}"  Text="Добавить в корзину"/>
                                     </StackPanel>
                                 </Button>
                             </Grid>
@@ -191,33 +191,26 @@
                     <ItemsControl ItemsSource="{Binding Reviews}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border BorderBrush="Black" BorderThickness="1">
+                                <Border BorderBrush="Black" BorderThickness="0, 1, 0, 0">
                                 <StackPanel Margin="10">
-                                    <StackPanel.Effect>
-                                        <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
-                                    </StackPanel.Effect>
-                                        <TextBlock FontSize="20" Margin="10" Text="{Binding Path=CustomerId, StringFormat=Пользователь {0}}"/>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
+                                        <StackPanel.Effect>
+                                            <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
+                                        </StackPanel.Effect>
                                         <Grid>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock FontSize="20" Margin="10, 5, 5, 5" Text="Оценка: "/>
-                                                <TextBlock  FontSize="20" Width="25"  Margin="5" Text="{Binding Rating}"/>
-                                                <TextBlock FontSize="20" Margin="5"  Text="из 10"/>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <StackPanel Grid.Column="0">
-                                            <TextBlock 
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0">
+                                                <StackPanel>
+                                                    <TextBlock FontSize="20" Margin="10" Text="{Binding Path=CustomerId, StringFormat=Пользователь {0}}"/>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock FontSize="20" Margin="10, 5, 5, 5" Text="Оценка: "/>
+                                                        <TextBlock  FontSize="20" Width="25"  Margin="5" Text="{Binding Rating}"/>
+                                                        <TextBlock FontSize="20" Margin="5"  Text="из 10"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <TextBlock 
                                                  TextWrapping="Wrap"
                                                 FontSize="15" Margin="10" Text="{Binding ReviewText}"/>
                                         </StackPanel>
@@ -238,25 +231,17 @@
                     <TextBlock FontSize="20" Margin="10" Text="Добавить отзыв на товар"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid>
+
+                        <StackPanel Grid.Column="0">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontSize="20" Margin="10, 5, 5, 5" Text="Ваша оценка"/>
                                 <TextBlock FontSize="20" Margin="5" Text="{Binding Product.Category.Name}"/>
                                 <TextBox Width="25" FontSize="20" Margin="5" Text="{Binding UserReview.Rating}"/>
                                 <TextBlock FontSize="20" Margin="5" Text="из 10"/>
                             </StackPanel>
-                        </Grid>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel Grid.Column="0">
                             <TextBlock FontSize="15" Margin="10" Text="Текст отзыва"/>
                             <TextBox 
                                 TextWrapping="Wrap"

@@ -10,7 +10,10 @@ namespace AutoPartsStore.Model
 {
     public class Review : BasicModel
     {
-
+        public Review()
+        {
+            rating = 5;
+        }
         public long Id { get; set; }
 
         public Product Product { get; set; }
@@ -45,7 +48,14 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                SetProperty(ref rating, value);
+                if(value < 0 || value > 10)
+                {
+                    
+                }
+                else
+                {
+                    SetProperty(ref rating, value);
+                }
             }
         }
 

@@ -26,7 +26,7 @@
                         <RadioButton GroupName="DescAsc" Content="{DynamicResource SortDescText}" />
                     </StackPanel>
                 </Border>
-                <Border Grid.Row="1">
+                <Border Grid.Row="1" x:Name="productCont">
                     <!--<Grid.ColumnDefinitions>
                             <ColumnDefinition Width="7*"/>
                             <ColumnDefinition Width="3*"/>
@@ -106,7 +106,7 @@
                                             <TextBlock Grid.Row="1" FontSize="20"  FontWeight="Bold" Text="{Binding Path=Price, StringFormat={}{0} р.}" HorizontalAlignment="Center"/>
 
                                             <Button Margin="5" Grid.Row="2" MinWidth="70" MaxWidth="150"  Style="{DynamicResource BuyButtonStyle}"
-                                                    Command="{Binding Source={StaticResource ProductsViewModelDataProvider}, Path=AddToShoppingCartCommand}"
+                                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.AddToShoppingCartCommand}"
                                                     CommandParameter="{Binding Id}"
                                                     >
                                                 <StackPanel Orientation="Horizontal">
@@ -117,7 +117,7 @@
                                                 </StackPanel>
                                             </Button>
                                             <Button Margin="5" Grid.Row="3" MinWidth="70" MaxWidth="150"  Style="{DynamicResource ButtonStyleSelectProductCount}"
-                                                    Command="{Binding Source={StaticResource ProductsViewModelDataProvider}, Path=AboutProductCommand}"
+                                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.AboutProductCommand}"
                                                     CommandParameter="{Binding Id}"
                                                     >
                                                 <StackPanel Orientation="Horizontal">

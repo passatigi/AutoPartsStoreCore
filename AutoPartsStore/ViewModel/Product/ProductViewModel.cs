@@ -4,6 +4,7 @@ using AutoPartsStore.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 
@@ -111,6 +112,10 @@ namespace AutoPartsStore.ViewModel
                 return addToShoppingCartCommand ?? (addToShoppingCartCommand = new RelayCommand(action =>
                 {
                     mainViewModel.AddProductToShoppingCart(product, productCount);
+                    //if (mainViewModel.ShoppingCartViewModel != null)
+                    //{
+                    //    mainViewModel.ShoppingCartViewModel.UpdateShoppingCart();
+                    //} 
                 }, func =>
                 {
                     return true;
@@ -159,7 +164,7 @@ namespace AutoPartsStore.ViewModel
         public void UpdateReviews()
         {
             Reviews.Clear();
-            foreach(Review review in storeService.ReviewService.GetReviews(product))
+            foreach(Review review in storeService.ReviewService.GetReviews(product).OrderByDescending(p => p.DateTime))
             {
                 Reviews.Add(review);
             }

@@ -12,11 +12,6 @@
         MinWidth="600"
         MinHeight="300">
     <Window.Resources>
-        <!--AddIntoCategoryMenuItemText}" >
-        </MenuItem>
-        <MenuItem Header="{DynamicResource AddWithCategoryMenuItemText-->
-
-
         <Style x:Key="MainTextStyle">
             <Setter Property="Control.FontSize" Value="16"/>
             <Setter Property="Control.FontFamily" Value="Verdana" />
@@ -25,10 +20,6 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="127*"/>
-            <ColumnDefinition Width="766*"/>
-        </Grid.ColumnDefinitions>-->
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -36,13 +27,14 @@
         <Grid  DataContext="{Binding Source={StaticResource HeaderViewModel}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition MinWidth="770" MaxWidth="1150"/>
+                <ColumnDefinition MinWidth="770" MaxWidth="1200"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="0.5*"/>
@@ -77,9 +69,14 @@
                              CommandParameter="User">Пользователь</Button>
 
                 </Border>
+                <Border Grid.Column="5" Margin="5, 10, 5, 10">
+                    <Button Command="{Binding OpenWindowCommand}"
+                             CommandParameter="FirstPage">На главную</Button>
+
+                </Border>
             </Grid>
         </Grid>
-        <Frame Grid.Row="1" x:Name="MainFrame" Source="{DynamicResource FirstPagePath}"/>
+        <Frame Grid.Row="1" x:Name="MainFrame"/>
     </Grid>
 
 </Window>

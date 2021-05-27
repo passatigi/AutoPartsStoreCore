@@ -31,7 +31,18 @@
             </Border>
             <Border>
                 <Grid>
-                    <TextBlock Text="У вас пока еще нет заказов" FontSize="20"/>
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding OrdersCount, Mode=TwoWay}" Value="0">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <TextBlock Text="У вас пока еще нет заказов" FontSize="20"/>
                 </Grid>
             </Border>
             <ItemsControl ItemsSource="{Binding Orders}">

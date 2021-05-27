@@ -26,18 +26,14 @@ namespace AutoPartsStore
         public MainWindow()
         {
             InitializeComponent();
-            //AutoPartsStoreContext aut = AutoPartsStoreContext.GetStoreContext();
-            //aut.Database.Delete();
-            //aut.Database.Initialize(false);
             WindowProvider.MainFrame = MainFrame;
+            WindowProvider.OpenFirstPage();
 
             Closing += OnWindowClosing;
         }
 
         public void OnWindowClosing(object sender, CancelEventArgs e)
         {
-            //AutoPartsStoreContext.GetStoreContext().Dispose();
-
         }
        
     }
