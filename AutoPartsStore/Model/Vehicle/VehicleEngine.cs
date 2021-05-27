@@ -66,7 +66,7 @@ namespace AutoPartsStore.Model.Vehicle
             }
             set
             {
-                SetProperty(ref volume, value);
+                SetProperty(ref type, value);
             }
         }
         public float Volume

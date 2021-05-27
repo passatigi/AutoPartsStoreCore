@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,6 +40,20 @@ namespace AutoPartsStore.View.Product
                 bitmap.EndInit();
                 ProductImage.Source = bitmap;
             }
+        }
+
+        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                try
+                {
+                    NewReviewText.Text = File.ReadAllText(openFileDialog.FileName).Trim();
+                }
+                catch(Exception er)
+                {
+                    MessageBox.Show(er.Message);
+                }
         }
     }
 }

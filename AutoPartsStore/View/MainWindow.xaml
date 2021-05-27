@@ -49,7 +49,10 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <TextBox FontSize="20" Text="{Binding SearchString}"/>
-                        <Button Grid.Column="1">Найти</Button>
+                        <Button 
+                              Command="{Binding SearchCommand}"
+                             CommandParameter="orders"
+                            Grid.Column="1">Найти</Button>
                     </Grid>
                 </Border>
                 <Border Grid.Column="2" Margin="5, 10, 5, 10">

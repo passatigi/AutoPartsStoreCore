@@ -27,6 +27,12 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
                 unitOfWork.Save();
             }
         }
+        public void AddReview(Review review)
+        {
+                review.DateTime = DateTime.Now;
+                unitOfWork.ReviewRepository.Add(review);
+                unitOfWork.Save();
+        }
         public void UpdateReview(Review review)
         {
             Review tempReview = unitOfWork.ReviewRepository.GetAs(review).FirstOrDefault();

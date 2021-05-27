@@ -36,7 +36,6 @@ namespace AutoPartsStore.Model
                 }
             }
         }
-        [NotMapped]
         public DateTime DateTime { get; set; }
 
         private byte rating;

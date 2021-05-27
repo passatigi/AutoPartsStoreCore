@@ -143,12 +143,26 @@ namespace AutoPartsStore.ViewModel
             {
                 Products.Add(product);
             }
+            
+            NotifyPropertyChanged("Products");
+
+        }
+        public void UpdateProductsList(IEnumerable<Product> products)
+        {
+            if (Products == null)
+            {
+                Products = new ObservableCollection<Product>();
+            }
+            Products.Clear();
+            foreach (Product product in products)
+            {
+                Products.Add(product);
+            }
             //Products.Add(new Product());
             NotifyPropertyChanged("Products");
 
             //Products.
         }
-
 
         private RelayCommand aboutProductCommand;
         public RelayCommand AboutProductCommand
@@ -203,7 +217,7 @@ namespace AutoPartsStore.ViewModel
             storeService = StoreService.GetStoreService();
 
             Products = new ObservableCollection<Product>();
-            UpdateProductsList();
+            //UpdateProductsList();
         }
        
     }

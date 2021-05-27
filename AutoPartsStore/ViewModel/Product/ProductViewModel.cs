@@ -140,7 +140,7 @@ namespace AutoPartsStore.ViewModel
                         UserReview.Product = product;
                         try
                         {
-                            storeService.ReviewService.TryAddReview(UserReview);
+                            storeService.ReviewService.AddReview(UserReview);
                             UpdateReviews();
                             UserReview = new Review();
                             MessageBox.Show("отзыв успешно добавлен");

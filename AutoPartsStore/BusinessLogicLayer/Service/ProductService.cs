@@ -25,6 +25,11 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
         {
             return unitOfWork.ProductRepository.GetAll();
         }
+        public IEnumerable<Product> SearchProductByString(string str)
+        {
+            return unitOfWork.ProductRepository.GetAll()
+                .Where(p => p.VendorCode.Contains(str) || p.ProductOEMNumbers.Where(n => n.OEM.Contains(str)).Count() != 0);
+        }
         public IEnumerable<Product> GetProductsByVehiclePart(VehiclePart vehiclePart)
         {
             ProductOEMNumber productOEMNumber = new ProductOEMNumber();

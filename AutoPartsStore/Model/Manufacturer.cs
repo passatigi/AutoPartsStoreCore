@@ -11,7 +11,7 @@ namespace AutoPartsStore.Model
 {
     public class Manufacturer : BasicModel
     {
-        public int ManufacturerId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public byte[] ImageByteArray

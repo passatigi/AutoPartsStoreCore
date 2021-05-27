@@ -100,10 +100,6 @@ namespace AutoPartsStore.Model
             }
         }
 
-        //public Category GetNodeById(string id)
-        //{
-        //    return nodes.Where(n => n.categoryId.Equals(id)).First();
-        //}
 
     }
 }

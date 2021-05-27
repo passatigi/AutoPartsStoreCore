@@ -37,7 +37,6 @@ namespace AutoPartsStore.Model
         }
 
         private Decimal totalPrice;
-        [NotMapped]
         public Decimal TotalPrice
         {
             get

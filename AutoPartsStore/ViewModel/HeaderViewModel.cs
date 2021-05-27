@@ -1,11 +1,12 @@
-﻿using AutoPartsStore.Command;
+﻿using AutoPartsStore.BusinessLogicLayer.Service;
+using AutoPartsStore.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AutoPartsStore.ViewModel
 {
-    class HeaderViewModel : BaseViewModel
+    public class HeaderViewModel : BaseViewModel
     {
         private string searchString;
         public string SearchString
@@ -43,6 +44,10 @@ namespace AutoPartsStore.ViewModel
                         {
                             WindowProvider.OpenOrderWindow();
                         }
+                        else if (parm.Equals("FirstPage"))
+                        {
+                            WindowProvider.OpenFirstPage();
+                        }
                     }
 
                 }, func =>
@@ -52,5 +57,27 @@ namespace AutoPartsStore.ViewModel
             }
         }
 
+        private RelayCommand searchCommand;
+        public RelayCommand SearchCommand
+        {
+            get
+            {
+                return searchCommand ?? (searchCommand = new RelayCommand(action =>
+                {
+                    mainViewModel.SearchString(searchString);
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
+
+        MainViewModel mainViewModel;
+        public HeaderViewModel()
+        {
+
+            mainViewModel = MainViewModel.GetMainViewModel();
+            mainViewModel.HeaderViewModel = this;
+        }
     }
 }

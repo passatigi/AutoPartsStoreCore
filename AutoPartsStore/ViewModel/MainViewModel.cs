@@ -14,6 +14,8 @@ namespace AutoPartsStore.ViewModel
         private static MainViewModel mainViewModel;
         private static object syncRoot = new Object();
 
+        public HeaderViewModel HeaderViewModel { get; set; }
+
         public CategoriesViewModel CategoriesViewModel { get; set; }
         public ProductsViewModel ProductsViewModel { get; set; }
         public ProductViewModel ProductViewModel { get; set; }
@@ -96,6 +98,16 @@ namespace AutoPartsStore.ViewModel
                 userConfiguration.UpdateShopingCart();
                 
             }    
+        }
+
+        public void SearchString(string str)
+        {
+            WindowProvider.OpenFirstPage();
+            WindowProvider.OpenProductsList();
+            if (mainViewModel.ProductsViewModel != null)
+            {
+                mainViewModel.ProductsViewModel.UpdateProductsList(_StoreService.ProductService.SearchProductByString(str));
+            }
         }
     }
 }

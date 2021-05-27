@@ -243,10 +243,11 @@
                                 <TextBlock FontSize="20" Margin="5" Text="из 10"/>
                             </StackPanel>
                             <TextBlock FontSize="15" Margin="10" Text="Текст отзыва"/>
-                            <TextBox 
+                            <TextBox x:Name="NewReviewText"
                                 TextWrapping="Wrap"
                                 AcceptsReturn="True"
-                                FontSize="15" Margin="10" Text="{Binding UserReview.ReviewText}"/>
+                                FontSize="15" Margin="10" Text="{Binding UserReview.ReviewText, Mode=TwoWay}"/>
+                            <Button  Margin="10,0,10,0" Name="btnOpenFile" Click="btnOpenFile_Click">Окрыть файл отзыва</Button>
                         </StackPanel>
                         <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
                             <Image Margin="10" Name="ProductImage" Source="{Binding UserReview.Image, Mode=TwoWay}" MaxHeight="200"/>
