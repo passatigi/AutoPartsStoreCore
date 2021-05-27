@@ -10,12 +10,17 @@
 
     <Grid  DataContext="{Binding Source={StaticResource UserViewModel}}" Background="{DynamicResource SecondItemBackGround}">
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23*"></RowDefinition>
+                <RowDefinition Height="314*"></RowDefinition>
+                <RowDefinition Height="23*"></RowDefinition>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="stack" Grid.Column="1"> 
+            <StackPanel x:Name="stack" Grid.Column="1" Grid.Row="1">
                 <StackPanel>
                     <StackPanel.Style>
                         <Style TargetType="{x:Type StackPanel}">
@@ -31,49 +36,50 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Style>
-                    <TabControl HorizontalAlignment="Center">
-                        <TabItem Header="Вход">
+                    <TabControl BorderThickness="0">
+                        <TabItem Header="Вход" FontSize="20">
                             <StackPanel>
-                                <Border Margin="5">
+                                <Border Margin="0,20,0,0">
                                     <StackPanel>
-                                        <TextBlock Text="Email"/>
-                                        <TextBox Text="{Binding Customer.Mail}"/>
-                                        <TextBlock Text="Пароль"/>
-                                        <TextBox Text="{Binding Customer.Password}"/>
+                                        <TextBlock Text="Email" Style="{DynamicResource mainText}"/>
+                                        <TextBox Text="{Binding Customer.Mail}" Style="{DynamicResource textBox}"/>
+                                        <TextBlock Text="Пароль" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                                        <TextBox Text="{Binding Customer.Password}" Style="{DynamicResource textBox}"/>
                                     </StackPanel>
                                 </Border>
-                                <Button
+                                <Button Style="{DynamicResource standartButton}"
                             Command="{Binding AuthorizationCommand}"
-                              CommandParameter="login"
+                              CommandParameter="login" Margin="0,20,0,0" Height="45"
                             >Войти</Button>
                             </StackPanel>
                         </TabItem>
-                        <TabItem Header="Регистрация">
+                        <TabItem Header="Регистрация" FontSize="20" Margin="20,0,-19,0" Cursor="Hand">
                             <StackPanel>
-                                <Border Margin="5">
+                                <Border Margin="0,20,0,0">
                                     <StackPanel>
-                                        <TextBlock Text="Имя"/>
+                                        <TextBlock Text="Имя" Style="{DynamicResource mainText}"/>
+                                        <TextBox Text="{Binding Customer.FullName}" Style="{DynamicResource textBox}"/>
 
-                                        <TextBox Text="{Binding Customer.FullName}"/>
-                                        <TextBlock Text="Эмэйл"/>
+                                        <TextBlock Text="Email" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                                        <TextBox Text="{Binding Customer.Mail}" Style="{DynamicResource textBox}"/>
 
-                                        <TextBox Text="{Binding Customer.Mail}"/>
-                                        <TextBlock Text="Номер телефона"/>
+                                        <TextBlock Text="Номер телефона" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                                        <TextBox Text="{Binding Customer.PhoneNumber}" Style="{DynamicResource textBox}"/>
 
-                                        <TextBox Text="{Binding Customer.PhoneNumber}"/>
-                                        <TextBlock Text="Адрес"/>
+                                        <TextBlock Text="Адрес" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                                        <TextBox Text="{Binding Customer.Address}" Style="{DynamicResource textBox}"/>
 
-                                        <TextBox Text="{Binding Customer.Address}"/>
-                                        <TextBlock Text="Пароль"/>
-                                        <TextBox Text="{Binding Customer.Password}"/>
-                                        <TextBlock Text="Подтвердите пароль"/>
-                                        <TextBox Text="{Binding ConfirmPassword}"/>
+                                        <TextBlock Text="Пароль" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                                        <TextBox Text="{Binding Customer.Password}" Style="{DynamicResource textBox}"/>
+
+                                        <TextBlock Text="Подтвердите пароль" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                                        <TextBox Text="{Binding ConfirmPassword}" Style="{DynamicResource textBox}"/>
                                     </StackPanel>
                                 </Border>
-                                <Button
+                                <Button Style="{DynamicResource standartButton}"
                             Command="{Binding AuthorizationCommand}"
-                              CommandParameter="reg"
-                            >Зарегестрироваться</Button>
+                              CommandParameter="reg" Margin="0,20,0,0" Height="45"
+                            >Зарегистрироваться</Button>
                             </StackPanel>
                         </TabItem>
                     </TabControl>
@@ -97,29 +103,29 @@
                         <StackPanel>
                             <StackPanel.Style>
                                 <Style TargetType="{x:Type StackPanel}">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                                <Style.Triggers>
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
                                         <DataTrigger Binding="{Binding EditCustomer}" Value="{x:Null}">
                                             <Setter Property="Visibility" Value="Visible"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </StackPanel.Style>
-                            
 
-                            <TextBlock Text="Имя"/>
-                            <TextBlock Text="{Binding Customer.FullName}"/>
-                            <TextBlock Text="Эмэйл"/>
-                            <TextBlock Text="{Binding Customer.Mail}"/>
-                            <TextBlock Text="Номер телефона"/>
-                            <TextBlock Text="{Binding Customer.PhoneNumber}"/>
-                            <TextBlock Text="Адрес"/>
-                            <TextBlock Text="{Binding Customer.Address}"/>
-                            <Button Command="{Binding EditUserCommand}"
-                                CommandParameter="edit"
+
+                            <TextBlock Text="Имя" Style="{DynamicResource mainText}" FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding Customer.FullName}" Style="{DynamicResource secondaryText}" Margin="0,5,0,0"/>
+                            <TextBlock Text="Email" Style="{DynamicResource mainText}" Margin="0,10,0,0" FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding Customer.Mail}" Style="{DynamicResource secondaryText}" Margin="0,5,0,0"/>
+                            <TextBlock Text="Номер телефона" Style="{DynamicResource mainText}" Margin="0,10,0,0" FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding Customer.PhoneNumber}" Style="{DynamicResource secondaryText}" Margin="0,5,0,0"/>
+                            <TextBlock Text="Адрес" Style="{DynamicResource mainText}" Margin="0,10,0,0" FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding Customer.Address}" Style="{DynamicResource secondaryText}" Margin="0,5,0,0"/>
+                            <Button Command="{Binding EditUserCommand}" Margin="0,20,0,0"
+                                CommandParameter="edit" Style="{DynamicResource standartButton}" Height="45"
                                 >Редактировать</Button>
-                            <Button Command="{Binding EditUserCommand}"
-                                CommandParameter="logout"
+                            <Button Command="{Binding EditUserCommand}" Height="45"
+                                CommandParameter="logout" Style="{DynamicResource secondaryButton}" Margin="0,10,0,0"
                                 >Выйти</Button>
                         </StackPanel>
                         <StackPanel>
@@ -134,23 +140,20 @@
                                 </Style>
                             </StackPanel.Style>
 
-                            <TextBlock Text="Имя"/>
-                        <TextBox Text="{Binding EditCustomer.FullName}"/>
-                        <TextBlock Text="Эмэйл"/>
-                            <TextBox Text="{Binding EditCustomer.Mail}"/>
-                        <TextBlock Text="Номер телефона"/>
-                            <TextBox Text="{Binding EditCustomer.PhoneNumber}"/>
-                        <TextBlock Text="Адрес"/>
-                            <TextBox Text="{Binding EditCustomer.Address}"/>
-                        <TextBlock Text="Старый пароль"/>
-                        <TextBox Text="{Binding ConfirmPassword}"/>
-                        <TextBlock Text="Новый пароль"/>
-                            <TextBox Text="{Binding EditCustomer.Password}"/>
-                            <Button Command="{Binding EditUserCommand}"
-                                CommandParameter="back"
-                                >Назад</Button>
-                            <Button Command="{Binding EditUserCommand}"
-                                CommandParameter="save"
+                            <TextBlock Text="Имя" Style="{DynamicResource mainText}"/>
+                            <TextBox Text="{Binding EditCustomer.FullName}" Style="{DynamicResource textBox}"/>
+                            <TextBlock Text="Email" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                            <TextBox Text="{Binding EditCustomer.Mail}" Style="{DynamicResource textBox}"/>
+                            <TextBlock Text="Номер телефона" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                            <TextBox Text="{Binding EditCustomer.PhoneNumber}" Style="{DynamicResource textBox}"/>
+                            <TextBlock Text="Адрес" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                            <TextBox Text="{Binding EditCustomer.Address}" Style="{DynamicResource textBox}"/>
+                            <TextBlock Text="Старый пароль" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                            <TextBox Text="{Binding ConfirmPassword}" Style="{DynamicResource textBox}"/>
+                            <TextBlock Text="Новый пароль" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
+                            <TextBox Text="{Binding EditCustomer.Password}" Style="{DynamicResource textBox}"/>
+                            <Button Command="{Binding EditUserCommand}" Style="{DynamicResource standartButton}"
+                                CommandParameter="save" Margin="0,20,0,0" Height="45"
                                 >Сохранить изменения</Button>
                         </StackPanel>
                     </StackPanel>

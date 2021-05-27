@@ -12,19 +12,25 @@
         MinWidth="600"
         MinHeight="300">
     <Window.Resources>
+
         <Style x:Key="MainTextStyle">
             <Setter Property="Control.FontSize" Value="16"/>
             <Setter Property="Control.FontFamily" Value="Verdana" />
             <Setter Property="Control.Foreground" Value="Black" />
             <Setter Property="Control.Margin" Value="5" />
         </Style>
+
+        <Image x:Key="userImage" Source="Resources/user.png"/>
+        <Image x:Key="cartImage" Source="Resources/cart.png"/>
+        <Image x:Key="ordersImage" Source="Resources/orders.png"/>
+        <Image x:Key="logoImage" Source="Resources/logo.png"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid  DataContext="{Binding Source={StaticResource HeaderViewModel}}">
+        <!--<Grid  DataContext="{Binding Source={StaticResource HeaderViewModel}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition MinWidth="770" MaxWidth="1200"/>
@@ -40,7 +46,7 @@
                     <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0">
-                    <!--<Image>-->
+                    --><!--<Image>--><!--
                 </Border>
                 <Border Grid.Column="1" Margin="10">
                     <Grid>
@@ -75,6 +81,62 @@
                 <Border Grid.Column="5" Margin="5, 10, 5, 10">
                     <Button Command="{Binding OpenWindowCommand}"
                              CommandParameter="FirstPage">На главную</Button>
+
+                </Border>
+            </Grid>
+        </Grid>-->
+        <Grid  DataContext="{Binding Source={StaticResource HeaderViewModel}}" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="208*"/>
+                <ColumnDefinition Width="1045*"/>
+                <ColumnDefinition Width="208*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="13*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="161*"/>
+                    <ColumnDefinition Width="610*"/>
+                    <ColumnDefinition Width="54*"/>
+                    <ColumnDefinition Width="54*"/>
+                    <ColumnDefinition Width="54*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Margin="0,0,8,0">
+                    <Button Content="{StaticResource logoImage}" Background="Transparent" BorderThickness="0"></Button>
+                </Border>
+                <Border VerticalAlignment="Center" Grid.Column="1" Margin="70,0,50,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Text="{Binding SearchString}" Style="{DynamicResource searchTextBox}" FontSize="12"/>
+                        <Button 
+                              Command="{Binding SearchCommand}"
+                             CommandParameter="orders"
+                            Grid.Column="1" Style="{DynamicResource standartButton}" FontSize="12" Content="Найти"></Button>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="2" Background="Transparent" HorizontalAlignment="Center">
+                    <Button 
+                            Command="{Binding OpenWindowCommand}"
+                             CommandParameter="shoppingCart"                        
+                        Content="{StaticResource cartImage}"
+                            Style="{DynamicResource imgButton}" Cursor="Hand"></Button>
+                </Border>
+                <Border Grid.Column="3" HorizontalAlignment="Center">
+                    <Button 
+                        Command="{Binding OpenWindowCommand}"
+                             CommandParameter="orders"
+                        Content="{StaticResource ordersImage}" Style="{DynamicResource imgButton}" Cursor="Hand"></Button>
+                </Border>
+                <Border Grid.Column="4" Background="Transparent">
+                    <Button Command="{Binding OpenWindowCommand}"
+                             CommandParameter="User" Content="{StaticResource userImage}"
+                            Style="{DynamicResource imgButton}">
+                    </Button>
 
                 </Border>
             </Grid>

@@ -11,9 +11,9 @@
 
     <Grid Margin="10 10 0 10"  DataContext="{Binding Source={StaticResource ChooseCarViewModel}}">
         <Border Background="{DynamicResource SecondItemBackGround}">
-            <Border.Effect>
+            <!--<Border.Effect>
                 <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
-            </Border.Effect>
+            </Border.Effect>-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -21,35 +21,35 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox  ItemsSource="{Binding Path=VehicleBrands}"
+                <StackPanel Orientation="Vertical"  Grid.Column="0">
+                    <TextBlock Style="{DynamicResource secondaryText}">Выберите марку</TextBlock>
+                    <ComboBox  ItemsSource="{Binding Path=VehicleBrands}"
                   SelectedValue="{Binding Path=SelectedVehicleBrand}"
-                    Grid.Column="0" x:Name="CarBrandName" FontSize="16"
-                           Margin="10" ></ComboBox>
-                <ComboBox  ItemsSource="{Binding Path=VehicleModifications}"
+                    x:Name="CarBrandName" FontSize="16"
+                           Margin="0,10,10,0" ></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <TextBlock Style="{DynamicResource secondaryText}">Выберите модель</TextBlock>
+                    <ComboBox  ItemsSource="{Binding Path=VehicleModifications}"
                             SelectedValue="{Binding Path=SelectedVehicleModification}"
-                    Grid.Column="1" x:Name="CarModification" 
-                           Margin="0,10,10,10" ></ComboBox>
-                <ComboBox ItemsSource="{Binding Path=VehicleEngines}"
-                  SelectedValue="{Binding Path=SelectedVehicleEngine}"
-                    Grid.Column="2" x:Name="CarEngine" 
-                          Margin="0,10,0,10" ></ComboBox>
-                <Grid Grid.Column="3" Margin="10">
+                            x:Name="CarModification" 
+                           Margin="0,10,10,0" FontSize="16"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="2">
+                    <TextBlock Style="{DynamicResource secondaryText}">Выберите модель</TextBlock>
+                    <ComboBox ItemsSource="{Binding Path=VehicleEngines}" FontSize="16"
+                    SelectedValue="{Binding Path=SelectedVehicleEngine}" x:Name="CarEngine" 
+                          Margin="0,10,10,0" ></ComboBox>
+                </StackPanel>
+
+                <Grid Grid.Column="3" Margin="10,15,10,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="7*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Style="{DynamicResource ButtonStyleSelectProductCount}"
+                    <Button Style="{DynamicResource secondaryButton}"
                             Command="{Binding VehicleRelayCommand}"
                             CommandParameter="refresh"
-                        Grid.Column="0" Margin="0,0,5,0">Обновить</Button>
-                    <Button Style="{DynamicResource ButtonStyleSelectProductCount}"
-                        Grid.Column="1" Margin="0,0,5,0"></Button>
-                    <Button Style="{DynamicResource ButtonStyleSelectProductCount}"
-                        Grid.Column="2" Margin="0,0,5,0"></Button>
-                    <Button Style="{DynamicResource ButtonStyleSelectProductCount}"
-                        Grid.Column="3" Margin="0,0,0,0"></Button>
+                        Grid.Column="0" Margin="0,5,5,0" FontSize="12">Обновить</Button>
                 </Grid>
             </Grid>
         </Border>
