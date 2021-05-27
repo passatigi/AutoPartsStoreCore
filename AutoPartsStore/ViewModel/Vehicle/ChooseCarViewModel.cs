@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.ViewModel
 {
-    class ChooseCarViewModel : BaseViewModel
+    public class ChooseCarViewModel : BaseViewModel
     {
         IStoreService storeService;
         MainViewModel mainViewModel;

@@ -11,7 +11,6 @@
 
     <Grid>
         <Grid x:Name="CategoriesTree" DataContext="{Binding Source={StaticResource CategoriesViewModel}}">
-            
             <Grid Margin="10 10 0 10">
                 <Border Background="{DynamicResource SecondItemBackGround}" Padding="0,0,0,10">
                     <Border.Effect>

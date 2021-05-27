@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace AutoPartsStore.ViewModel
 {
-    class UserViewModel : BaseViewModel
+    public class UserViewModel : BaseViewModel
     {
 
         MainViewModel mainViewModel;

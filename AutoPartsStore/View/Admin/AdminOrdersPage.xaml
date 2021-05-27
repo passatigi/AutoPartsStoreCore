@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AutoPartsStore.View.Admin"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrdersPage">
@@ -15,7 +16,7 @@
                 <ColumnDefinition MinWidth="770" MaxWidth="1150"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1" Background="{DynamicResource SecondItemBackGround}" DataContext="{Binding Source={StaticResource OrdersViewModel}}">
+            <StackPanel Grid.Column="1" Background="{DynamicResource SecondItemBackGround}" DataContext="{Binding Source={StaticResource AdminOrdersViewModel}}">
                 <Border>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -25,14 +26,8 @@
                         <TextBlock Grid.Column="0" Text="Список заказов" FontSize="20"/>
                         <Border Grid.Column="1" Margin="5">
                             <Button Command="{Binding UpdateOrdersCommand}"
-                            
                             >Обновить</Button>
                         </Border>
-                    </Grid>
-                </Border>
-                <Border>
-                    <Grid>
-                        <TextBlock Text="У вас пока еще нет заказов" FontSize="20"/>
                     </Grid>
                 </Border>
                 <ItemsControl ItemsSource="{Binding Orders}">
@@ -69,6 +64,38 @@
                                             <TextBlock Text="Статус заказа: " FontSize="20" Margin="5"/>
                                             <TextBlock Text="{Binding Status}" FontSize="20" Margin="5"/>
                                         </StackPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Border Grid.Column="0" Margin="5">
+                                                <Button Content="Подтвердить заказ" 
+                                                             Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.ConfirmOrderCommand}"
+                                                                    CommandParameter="{Binding Id}"
+                                                            />
+                                            </Border>
+                                            <Border Grid.Column="1" Margin="5">
+                                                <Button Content="Отклонить заказ" 
+                                                             Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.RevokeOrderCommand}"
+                                                                    CommandParameter="{Binding Id}"
+                                                            />
+                                            </Border>
+                                            <Border Grid.Column="2" Margin="5">
+                                                <Button Content="Оповестить о выполнении" 
+                                                             Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.NotifyDoneOrderCommand}"
+                                                                    CommandParameter="{Binding Id}"
+                                                            />
+                                            </Border>
+                                            <Border Grid.Column="3" Margin="5">
+                                                <Button Content="Заказ принят клиентом" 
+                                                             Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.NotifyOrderPickedCommand}"
+                                                                    CommandParameter="{Binding Id}"
+                                                            />
+                                            </Border>
+                                        </Grid>
                                     </StackPanel>
                                 </Border>
                                 <StackPanel>

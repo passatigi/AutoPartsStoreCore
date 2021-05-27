@@ -29,7 +29,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 
         public IEnumerable<Order> GetAll()
         {
-            return db.Orders.AsEnumerable();
+            return db.Orders.Include(o => o.Customer).Include(o => o.OrderParts).ThenInclude(p => p.Product).ThenInclude(p => p.Manufacturer);
         }
 
         public IEnumerable<Order> GetAllWithCondition(object condition)
@@ -46,12 +46,12 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 
         public Order GetById(long id)
         {
-            throw new NotImplementedException();
+            return db.Orders.Where(o => o.Id == id).FirstOrDefault();
         }
 
         public void Update(Order item)
         {
-            throw new NotImplementedException();
+            db.Orders.Update(item);
         }
     }
 }

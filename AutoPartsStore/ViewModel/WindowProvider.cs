@@ -21,6 +21,7 @@ namespace AutoPartsStore.ViewModel
 
 
         private static string _AdminProductPagePath = "Admin/Product/AdminProductPage.xaml";
+        private static string _AdminOrdersPagePath = "Admin/AdminOrdersPage.xaml";
 
         private static string _AdminCategoryPagePath = "Admin/Category/AdminCategoryPage.xaml";
         private static string _AdminEditDataBasePagePath = "Admin/EditDataBasePage.xaml";
@@ -219,7 +220,7 @@ namespace AutoPartsStore.ViewModel
             {
                 if (_userConfiguration.IsAdmin)
                 {
-
+                    MainFrame.Source = new Uri(_AdminOrdersPagePath, UriKind.Relative);
                 }
                 else
                 {

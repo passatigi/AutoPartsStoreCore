@@ -39,7 +39,7 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref orders, value);
             }
         }
-        public void UpdateOrders()
+        public virtual void UpdateOrders()
         {
             if(userConfiguration.Customer != null)
             {
@@ -67,11 +67,11 @@ namespace AutoPartsStore.ViewModel
             }
         }
 
-        MainViewModel mainViewModel;
+        protected MainViewModel mainViewModel;
 
-        IStoreService storeService;
+        protected IStoreService storeService;
 
-        UserConfiguration userConfiguration;
+        protected UserConfiguration userConfiguration;
 
 
         public OrdersViewModel()

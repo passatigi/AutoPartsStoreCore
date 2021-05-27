@@ -8,7 +8,7 @@ using System.Text;
 
 namespace AutoPartsStore.ViewModel
 {
-    class ShoppingCartViewModel : BaseViewModel
+    public class ShoppingCartViewModel : BaseViewModel
     {
         public int ProductsCount
         {

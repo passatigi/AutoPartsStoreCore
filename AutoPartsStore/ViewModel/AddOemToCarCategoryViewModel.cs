@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.ViewModel
 {
-    class AddOemToCarCategoryViewModel : BaseViewModel
+    public class AddOemToCarCategoryViewModel : BaseViewModel
     {
         IStoreService storeService;
         MainViewModel mainViewModel;

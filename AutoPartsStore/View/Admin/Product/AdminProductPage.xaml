@@ -31,7 +31,11 @@
                         <Grid.Effect>
                             <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
                         </Grid.Effect>
-                        <Image Grid.Row="2" MinHeight="100" MinWidth="100" MaxHeight="500" MaxWidth="500" Source="{Binding Product.Image}"></Image>
+                        <StackPanel>
+                            <Image x:Name="ProductImage"
+                            Grid.Row="2" MinHeight="100" MinWidth="100" MaxHeight="500" MaxWidth="500" Source="{Binding Product.Image}"></Image>
+                            <Button Margin="10" Height="23" Name="BrowseButton" Click="BrowseButton_Click" Content="Изменить изображение"/>
+                        </StackPanel>
                     </Grid>
                     <StackPanel Grid.Column="1" Margin="10" Background="{DynamicResource SecondItemBackGround}">
                         <StackPanel.Effect>
@@ -224,45 +228,6 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                </StackPanel>
-                <StackPanel Margin="10" Background="{DynamicResource SecondItemBackGround}">
-                    <StackPanel.Effect>
-                        <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
-                    </StackPanel.Effect>
-                    <TextBlock FontSize="20" Margin="10" Text="Добавить отзыв на товар"/>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel Grid.Column="0">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="20" Margin="10, 5, 5, 5" Text="Ваша оценка"/>
-                                <TextBlock FontSize="20" Margin="5" Text="{Binding Product.Category.Name}"/>
-                                <TextBox Width="25" FontSize="20" Margin="5" Text="{Binding UserReview.Rating}"/>
-                                <TextBlock FontSize="20" Margin="5" Text="из 10"/>
-                            </StackPanel>
-                            <TextBlock FontSize="15" Margin="10" Text="Текст отзыва"/>
-                            <TextBox 
-                                TextWrapping="Wrap"
-                                AcceptsReturn="True"
-                                FontSize="15" Margin="10" Text="{Binding UserReview.ReviewText}"/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
-                            <Image Margin="10" Name="ProductImage" Source="{Binding UserReview.Image, Mode=TwoWay}" MaxHeight="200"/>
-                            <Button Margin="10" Height="23" Name="BrowseButton" Click="BrowseButton_Click" Content="{DynamicResource AddImageButtonText}"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button Margin="10" Height="23" 
-                                Command="{Binding AddReviewCommand}"
-                                Content="Опубликовать отзыв"/>
-                    </Grid>
                 </StackPanel>
             </StackPanel>
         </Grid>

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AutoPartsStore.ViewModel
 {
-    class UserConfiguration
+    public class UserConfiguration
     {
         #region singleton
 
@@ -29,8 +29,8 @@ namespace AutoPartsStore.ViewModel
 
         private UserConfiguration()
         {
-            //isAdmin = false;
-            isAdmin = true;
+            isAdmin = false;
+            //isAdmin = true;
             UpdateShopingCart();
         }
 

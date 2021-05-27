@@ -10,7 +10,9 @@
     <vm:HeaderViewModel x:Key="HeaderViewModel"/>
     <vm:UserViewModel x:Key="UserViewModel"/>
     <vm:ShoppingCartViewModel x:Key="ShoppingCartViewModel"/>
+    
     <vm:OrdersViewModel x:Key="OrdersViewModel"/>
+    <vm:AdminOrdersViewModel x:Key="AdminOrdersViewModel"/>
     
     <vm:CategoriesViewModel x:Key="CategoriesViewModel"/>
     <vm:ProductsViewModel x:Key="ProductsViewModel"/>

@@ -15,6 +15,7 @@ namespace AutoPartsStore.Model
         public const string Confirmed = "Подтвержден";
         public const string Completed = "Выполнен";
         public const string Rejected = "Отклонен";
+        public const string Picked = "Передан клиенту";
 
         public long Id { get; set; }
 

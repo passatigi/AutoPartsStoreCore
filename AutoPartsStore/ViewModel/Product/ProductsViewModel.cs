@@ -14,7 +14,7 @@ using System.Windows.Media;
 
 namespace AutoPartsStore.ViewModel
 {
-    class ProductsViewModel : BaseViewModel
+    public class ProductsViewModel : BaseViewModel
     {
 
         private void FilProducts()

@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace AutoPartsStore.ViewModel
 {
-    class ProductViewModel : BaseViewModel
+    public class ProductViewModel : BaseViewModel
     {
 
         MainViewModel mainViewModel;

@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace AutoPartsStore.ViewModel
 {
-    class MainViewModel
+    public class MainViewModel
     {
         private static MainViewModel mainViewModel;
         private static object syncRoot = new Object();

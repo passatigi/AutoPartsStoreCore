@@ -17,7 +17,7 @@ using AutoPartsStore.BusinessLogicLayer.Interfaces;
 
 namespace AutoPartsStore.ViewModel
 {
-    class CategoriesViewModel : BaseViewModel
+    public class CategoriesViewModel : BaseViewModel
     {
         
         private string inputCategoryString;

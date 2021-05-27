@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace AutoPartsStore.ViewModel
 {
-    class AddEntityPanelViewModel
+    public class AddEntityPanelViewModel
     {
         MainViewModel mainViewModel;
         public AddEntityPanelViewModel()
