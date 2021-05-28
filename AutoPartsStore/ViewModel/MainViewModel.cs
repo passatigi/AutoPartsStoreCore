@@ -84,7 +84,7 @@ namespace AutoPartsStore.ViewModel
             order.Customer = UserConfiguration.Customer;
             if(order.Customer == null)
             {
-                MessageBox.Show("В начале войдите или зарегестрируйтесь");
+                WindowProvider.NotifynWindow("В начале войдите или зарегестрируйтесь");
             }
             else
             {

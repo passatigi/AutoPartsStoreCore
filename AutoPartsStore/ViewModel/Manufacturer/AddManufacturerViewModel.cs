@@ -41,7 +41,7 @@ namespace AutoPartsStore.ViewModel
                     }
                     else
                     {
-                        MessageBox.Show("gde ima");
+                        WindowProvider.NotifynWindow("gde ima");
                     }
                 }, func =>
                 {

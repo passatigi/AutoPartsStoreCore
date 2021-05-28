@@ -108,7 +108,7 @@ namespace AutoPartsStore.ViewModel
                 {
                     if (selectedCategory == null)
                     {
-                        MessageBox.Show("В начале выберите категорию");
+                        WindowProvider.NotifynWindow("В начале выберите категорию");
                     }
                     else
                     {
@@ -128,7 +128,7 @@ namespace AutoPartsStore.ViewModel
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Неправильно заполнено поле");
+                                        WindowProvider.NotifynWindow("Неправильно заполнено поле");
                                     }
                                 }
                                 else if (str.Equals("insert"))
@@ -142,7 +142,7 @@ namespace AutoPartsStore.ViewModel
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Неправильно заполнено поле");
+                                        WindowProvider.NotifynWindow("Неправильно заполнено поле");
                                     }
 
                                 }
@@ -154,13 +154,13 @@ namespace AutoPartsStore.ViewModel
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Невозможно удалить главную категорию");
+                                    WindowProvider.NotifynWindow("Невозможно удалить главную категорию");
                                 }
                             }
                             //}
                             //catch (Exception e)
                             //{
-                            //    MessageBox.Show(e.Message);
+                            //    WindowProvider.NotifynWindow(e.Message);
                             //}
 
                         }
@@ -185,7 +185,7 @@ namespace AutoPartsStore.ViewModel
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show(e.Message);
+                        WindowProvider.NotifynWindow(e.Message);
                     }
                 }, func =>
                 {

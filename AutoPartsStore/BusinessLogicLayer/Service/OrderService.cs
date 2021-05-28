@@ -6,6 +6,7 @@ using System.Text;
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
+using AutoPartsStore.ViewModel;
 
 namespace AutoPartsStore.BusinessLogicLayer.Service
 {
@@ -67,7 +68,7 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.Message);
+                WindowProvider.NotifynWindow(e.Message);
             }
         }
     }

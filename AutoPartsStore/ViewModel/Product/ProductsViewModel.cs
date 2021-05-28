@@ -158,12 +158,12 @@ namespace AutoPartsStore.ViewModel
                 }
                 catch(Exception e)
                 {
-                    MessageBox.Show(e.Message);
+                    WindowProvider.NotifynWindow(e.Message);
                 }
             }
             else
             {
-                MessageBox.Show("Автомобиль не выбран");
+                WindowProvider.NotifynWindow("Автомобиль не выбран");
             }
         }
         private void FillProducts(IEnumerable<Product> products)

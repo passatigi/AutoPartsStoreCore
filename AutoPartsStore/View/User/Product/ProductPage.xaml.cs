@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using AutoPartsStore.ViewModel;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -67,7 +68,7 @@ namespace AutoPartsStore.View.Product
                 }
                 catch(Exception er)
                 {
-                    MessageBox.Show(er.Message);
+                    WindowProvider.NotifynWindow(er.Message);
                 }
         }
     }

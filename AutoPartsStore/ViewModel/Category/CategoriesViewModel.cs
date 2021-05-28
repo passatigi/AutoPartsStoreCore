@@ -51,7 +51,7 @@ namespace AutoPartsStore.ViewModel
                     {
                         if (mainViewModel.ChooseCarViewModel.SelectedVehicleEngine == null)
                         {
-                            MessageBox.Show("В начале выберите тачку");
+                            WindowProvider.NotifynWindow("В начале выберите тачку");
                         }
                         else
                         {
@@ -77,7 +77,7 @@ namespace AutoPartsStore.ViewModel
                 {
                     if (mainViewModel.ChooseCarViewModel.SelectedVehicleEngine == null)
                     {
-                        MessageBox.Show("В начале выберите тачку");
+                        WindowProvider.NotifynWindow("В начале выберите тачку");
                     }
                     else
                     {
@@ -135,7 +135,7 @@ namespace AutoPartsStore.ViewModel
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.Message);
+                WindowProvider.NotifynWindow(e.Message);
             }
         }
 

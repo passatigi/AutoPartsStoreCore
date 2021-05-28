@@ -40,7 +40,7 @@ namespace AutoPartsStore.ViewModel
                     }
                     else
                     {
-                        MessageBox.Show("Не верный пароль администратора");
+                        WindowProvider.NotifynWindow("Не верный пароль администратора");
                     }
                 }, func =>
                 {

@@ -136,13 +136,13 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                         }
                         catch(Exception e)
                         {
-                            MessageBox.Show(e.Message);
+                            WindowProvider.NotifynWindow(e.Message);
                         }
 
                     }
                     else
                     {
-                        MessageBox.Show("ne zapolnena modificathia");
+                        WindowProvider.NotifynWindow("ne zapolnena modificathia");
                     }
                 },
                 newCarViewModel.ModificationAccessible
@@ -170,17 +170,17 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                             }
                             catch (Exception e)
                             {
-                                MessageBox.Show(e.Message);
+                                WindowProvider.NotifynWindow(e.Message);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Перед изменением выберите нужный двигатель");
+                            WindowProvider.NotifynWindow("Перед изменением выберите нужный двигатель");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("ne zapolnena modificathia");
+                        WindowProvider.NotifynWindow("ne zapolnena modificathia");
                     }
                 },
                 newCarViewModel.ModificationAccessible
@@ -207,12 +207,12 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                             }
                             catch (Exception e)
                             {
-                                MessageBox.Show(e.Message);
+                                WindowProvider.NotifynWindow(e.Message);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Необходимо выбрать двигатель");
+                            WindowProvider.NotifynWindow("Необходимо выбрать двигатель");
                         }
                 },
                 newCarViewModel.ModificationAccessible

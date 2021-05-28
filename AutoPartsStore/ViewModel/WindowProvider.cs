@@ -66,7 +66,7 @@ namespace AutoPartsStore.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Недостаточно прав");
+                    WindowProvider.NotifynWindow("Недостаточно прав");
                 }
             }
             else
@@ -138,6 +138,11 @@ namespace AutoPartsStore.ViewModel
         }
 
 
+        public static void NotifynWindow(string text)
+        {
+            NotificationWindow notificationWindow = new NotificationWindow(text);
+            notificationWindow.ShowDialog();
+        }
         public static void OpenAddOemToVehicleCategoryWindow()
         {
             if (WorkSpacePage != null)
@@ -153,7 +158,7 @@ namespace AutoPartsStore.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Недостаточно прав");
+                    WindowProvider.NotifynWindow("Недостаточно прав");
                 }
                 
             }
