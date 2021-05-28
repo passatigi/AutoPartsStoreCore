@@ -144,10 +144,17 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                 {
                     if (CheckVehicleEngine(NewVehicleEngine))
                     {
-                        VehicleEngine VehicleEngine = new VehicleEngine(newCarViewModel.GetSelectedVehicleModification(), NewVehicleEngine);
-                        storeService.VehicleService.AddEngine(VehicleEngine);
-                        VehicleEngines.Add(VehicleEngine);
-                        SelectedVehicleEngine = VehicleEngine;
+                        try
+                        {
+                            VehicleEngine VehicleEngine = new VehicleEngine(newCarViewModel.GetSelectedVehicleModification(), NewVehicleEngine);
+                            storeService.VehicleService.AddEngine(VehicleEngine);
+                            VehicleEngines.Add(VehicleEngine);
+                            SelectedVehicleEngine = VehicleEngine;
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(e.Message);
+                        }
                     }
                     else
                     {
@@ -155,6 +162,75 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                     }
                 },
                 newCarViewModel.EngineAccessible
+                ));
+            }
+        }
+
+        private RelayCommand editVehicleEngineCommand;
+        public RelayCommand EditVehicleEngineCommand
+        {
+            get
+            {
+                return editVehicleEngineCommand ?? (editVehicleEngineCommand = new RelayCommand(action =>
+                {
+                    if (CheckVehicleEngine(NewVehicleEngine))
+                    {
+                        if (SelectedVehicleEngine != null)
+                        {
+                            try
+                            {
+                                SelectedVehicleEngine.CloneProperties(newVehicleEngine);
+                                storeService.VehicleService.EditEgnine(SelectedVehicleEngine);
+                                NotifyPropertyChanged(nameof(SelectedVehicleEngine));
+                                FillVehicleEngines(newCarViewModel.GetSelectedVehicleModification());
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show(e.Message);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Перед изменением выберите нужный двигатель");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("ne zapolnena modificathia");
+                    }
+                },
+                newCarViewModel.ModificationAccessible
+                ));
+            }
+        }
+        private RelayCommand deleteVehicleModificationCommand;
+        public RelayCommand DeleteVehicleModificationCommand
+        {
+            get
+            {
+                return deleteVehicleModificationCommand ?? (deleteVehicleModificationCommand = new RelayCommand(action =>
+                {
+
+                    if (SelectedVehicleEngine != null)
+                    {
+                        try
+                        {
+                            storeService.VehicleService.DeleteVehicleEgnine(SelectedVehicleEngine);
+                            NotifyPropertyChanged(nameof(SelectedVehicleEngine));
+                            FillVehicleEngines(newCarViewModel.GetSelectedVehicleModification());
+
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(e.Message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Необходимо выбрать модификацию");
+                    }
+                },
+                newCarViewModel.ModificationAccessible
                 ));
             }
         }

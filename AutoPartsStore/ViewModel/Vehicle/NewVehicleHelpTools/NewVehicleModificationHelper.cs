@@ -64,7 +64,7 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
         private RelayCommand addVehicleModificationPropertyCommand;
         private RelayCommand addVehicleModificationCommand;
 
-        #region command realization
+        #region command
         public RelayCommand AddVehicleModificationPropertyCommand
         {
             get
@@ -126,11 +126,18 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                 {
                     if (CheckVehicleModification(NewVehicleModification))
                     {
-                        VehicleModification vehicleModification = new VehicleModification(NewVehicleModification);
-                        vehicleModification.VehicleBrand = newCarViewModel.GetSelectedVehicleBrand();
-                        storeService.VehicleService.AddModification(vehicleModification);
-                        vehicleModifications.Add(vehicleModification);
-                        SelectedVehicleModification = vehicleModification;
+                        try
+                        {
+                            VehicleModification vehicleModification = new VehicleModification(NewVehicleModification);
+                            vehicleModification.VehicleBrand = newCarViewModel.GetSelectedVehicleBrand();
+                            storeService.VehicleService.AddModification(vehicleModification);
+                            vehicleModifications.Add(vehicleModification);
+                            SelectedVehicleModification = vehicleModification;
+                        }
+                        catch(Exception e)
+                        {
+                            MessageBox.Show(e.Message);
+                        }
 
                     }
                     else
@@ -142,6 +149,78 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                 ));
             }
         }
+        private RelayCommand editVehicleModificationCommand;
+        public RelayCommand EditVehicleModificationCommand
+        {
+            get
+            {
+                return editVehicleModificationCommand ?? (editVehicleModificationCommand = new RelayCommand(action =>
+                {
+                    if (CheckVehicleModification(NewVehicleModification))
+                    {
+                        if (SelectedVehicleModification != null) 
+                        {
+                            try
+                            {
+                                SelectedVehicleModification.CloneProperties(NewVehicleModification);
+                                storeService.VehicleService.EditModification(SelectedVehicleModification);
+                                NotifyPropertyChanged(nameof(SelectedVehicleModification));
+                                FillVehicleModifications(newCarViewModel.GetSelectedVehicleBrand());
+
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show(e.Message);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Перед изменением выберите нужный двигатель");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("ne zapolnena modificathia");
+                    }
+                },
+                newCarViewModel.ModificationAccessible
+                ));
+            }
+        }
+
+        private RelayCommand deleteVehicleModificationCommand;
+        public RelayCommand DeleteVehicleModificationCommand
+        {
+            get
+            {
+                return deleteVehicleModificationCommand ?? (deleteVehicleModificationCommand = new RelayCommand(action =>
+                {
+
+                        if (SelectedVehicleModification != null)
+                        {
+                            try
+                            {
+                                storeService.VehicleService.DeleteVehicleModification(SelectedVehicleModification);
+                                NotifyPropertyChanged(nameof(SelectedVehicleModification));
+                                FillVehicleModifications(newCarViewModel.GetSelectedVehicleBrand());
+
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show(e.Message);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Необходимо выбрать двигатель");
+                        }
+                },
+                newCarViewModel.ModificationAccessible
+                ));
+            }
+        }
+
+
         #endregion
 
         #region  methods

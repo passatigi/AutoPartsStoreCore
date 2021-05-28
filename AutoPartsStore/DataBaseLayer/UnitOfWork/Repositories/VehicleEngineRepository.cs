@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 {
-    public class VehicleEngineRepository : IRepository<VehicleEngine, int>
+    public class VehicleEngineRepository : IRepository<VehicleEngine, long>
     {
         AutoPartsStoreContext db;
         public VehicleEngineRepository(AutoPartsStoreContext db)
@@ -22,9 +22,9 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             db.VehicleEngines.Add(item);
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
-            throw new NotImplementedException();
+            db.VehicleEngines.Remove(GetById(id));
         }
 
         public IEnumerable<VehicleEngine> GetAll()
@@ -49,14 +49,14 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             throw new NotImplementedException();
         }
 
-        public VehicleEngine GetById(int id)
+        public VehicleEngine GetById(long id)
         {
             throw new NotImplementedException();
         }
 
         public void Update(VehicleEngine item)
         {
-            throw new NotImplementedException();
+            db.VehicleEngines.Update(item);
         }
     }
 }

@@ -50,7 +50,13 @@ namespace AutoPartsStore.Model.Vehicle
             this.releaseStart = vehicleModification.releaseStart;
             this.releaseEnd = vehicleModification.releaseEnd;
         }
-
+        public void CloneProperties(VehicleModification vehicleModification)
+        {
+            this.model = vehicleModification.model;
+            this.modelCode = vehicleModification.modelCode;
+            this.releaseStart = vehicleModification.releaseStart;
+            this.releaseEnd = vehicleModification.releaseEnd;
+        }
         public override string ToString()
         {
             return $"{model} ({modelCode}) ({releaseStart} - {releaseEnd})";

@@ -48,6 +48,7 @@ namespace AutoPartsStore.ViewModel
             return true;
         }
         #endregion
+        
 
         IStoreService storeService;
         MainViewModel mainViewModel;

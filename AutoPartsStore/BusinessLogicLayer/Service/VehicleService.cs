@@ -42,5 +42,27 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
             unitOfWork.VehicleEngineRepository.Add(vehicleEngine);
             unitOfWork.Save();
         }
+
+        public void EditModification(VehicleModification vehicleModification)
+        {
+            unitOfWork.VehicleModificationRepository.Update(vehicleModification);
+            unitOfWork.Save();
+        }
+        public void EditEgnine(VehicleEngine vehicleEngine)
+        {
+            unitOfWork.VehicleEngineRepository.Update(vehicleEngine);
+            unitOfWork.Save();
+        }
+        public void DeleteVehicleModification(VehicleModification vehicleModification)
+        {
+            unitOfWork.VehicleModificationRepository.Delete(vehicleModification.Id);
+            unitOfWork.Save();
+        }
+
+        public void DeleteVehicleEgnine(VehicleEngine vehicleEngine)
+        {
+            unitOfWork.VehicleEngineRepository.Delete(vehicleEngine.Id);
+            unitOfWork.Save();
+        }
     }
 }

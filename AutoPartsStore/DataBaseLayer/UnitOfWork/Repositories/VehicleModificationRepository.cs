@@ -54,7 +54,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 
         public void Update(VehicleModification item)
         {
-            throw new NotImplementedException();
+            db.Update(item);
         }
     }
 }

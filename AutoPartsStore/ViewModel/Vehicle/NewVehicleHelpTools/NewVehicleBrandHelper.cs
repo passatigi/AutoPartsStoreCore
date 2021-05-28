@@ -72,6 +72,28 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                 }));
             }
         }
+        private RelayCommand updateBrandListCommand;
+        public RelayCommand UpdateBrandListCommand
+        {
+            get
+            {
+                return updateBrandListCommand ?? (updateBrandListCommand = new RelayCommand(action =>
+                {
+                    UpdateBrands();
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
+        public void UpdateBrands()
+        {
+            VehicleBrands.Clear();
+            foreach (VehicleBrand vehicleBrand in storeService.VehicleService.GetAllBrands())
+            {
+                vehicleBrands.Add(vehicleBrand);
+            }
+        }
         IStoreService storeService;
 
         NewCarViewModel newCarViewModel;
@@ -81,12 +103,8 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
             this.newCarViewModel = newCarViewModel;
 
             NewVehicleBrandText = "";
-            //selectedVehicleBrand = new VehicleBrand();
             vehicleBrands = new ObservableCollection<VehicleBrand>();
-            foreach (VehicleBrand vehicleBrand in storeService.VehicleService.GetAllBrands())
-            {
-                vehicleBrands.Add(vehicleBrand);
-            }
+            UpdateBrands();
         }
     }
 

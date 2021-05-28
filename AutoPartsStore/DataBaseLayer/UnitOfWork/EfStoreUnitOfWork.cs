@@ -131,7 +131,7 @@ namespace AutoPartsStore.DataBaseConnector
                 return vehicleModificationRepository;
             }
         }
-        public IRepository<VehicleEngine, int> VehicleEngineRepository
+        public IRepository<VehicleEngine, long> VehicleEngineRepository
         {
             get
             {

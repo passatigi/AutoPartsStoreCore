@@ -36,7 +36,15 @@ namespace AutoPartsStore.Model.Vehicle
             this.releaseEnd = vehicleEngine.releaseEnd;
         }
 
-
+        public void CloneProperties(VehicleEngine vehicleEngine)
+        {
+            this.volume = vehicleEngine.volume;
+            this.modification = vehicleEngine.modification;
+            this.power = vehicleEngine.power;
+            this.modelCode = vehicleEngine.modelCode;
+            this.releaseStart = vehicleEngine.releaseStart;
+            this.releaseEnd = vehicleEngine.releaseEnd;
+        }
 
         public override string ToString()
         {
