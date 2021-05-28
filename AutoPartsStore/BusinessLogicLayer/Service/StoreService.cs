@@ -1,4 +1,4 @@
-﻿using AutoPartsStore.BusinessLogicLayer.Interfaces;
+﻿
 using AutoPartsStore.DataBaseConnector;
 using AutoPartsStore.DataBaseLayer.UnitOfWork.Interfaces;
 using System;
@@ -7,20 +7,7 @@ using System.Text;
 
 namespace AutoPartsStore.BusinessLogicLayer.Service
 {
-    public interface IStoreService
-    {
-        public ICategoryService CategoryService { get; }
-        public VehicleService VehicleService { get; }
-        public ManufacturerService ManufacturerService { get; }
-
-        public ProductService ProductService { get; }
-
-        public VehiclePartService VehiclePartService { get; }
-        public UserService UserService { get; }
-        public OrderService OrderService { get; }
-        public ReviewService ReviewService { get; }
-        public AdminService AdminService { get; }
-    }
+    
     class StoreService : IStoreService
     {
         #region singleton
@@ -49,7 +36,7 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
         }
 
         private CategoryService categoryService;
-        public ICategoryService CategoryService
+        public CategoryService CategoryService
         {
             get
             {

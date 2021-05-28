@@ -135,16 +135,21 @@ namespace AutoPartsStore.ViewModel
                 Products = new ObservableCollection<Product>(); 
             }
             Products.Clear();
-            vehiclePart = storeService.VehiclePartService.GetVehiclePart(
-                UserConfiguration.GetUserConfiguration().SelectedVehicleEngine,
-                UserConfiguration.GetUserConfiguration().SelectedCategory
-                );
-            foreach(Product product in storeService.ProductService.GetProductsByVehiclePart(vehiclePart))
+            VehicleEngine vehicleEngine = UserConfiguration.GetUserConfiguration().SelectedVehicleEngine;
+              Category category = UserConfiguration.GetUserConfiguration().SelectedCategory;
+            if(vehicleEngine != null && category != null)
             {
-                Products.Add(product);
+                vehiclePart = storeService.VehiclePartService.GetVehiclePart(
+                vehicleEngine, category);
+                foreach (Product product in storeService.ProductService.GetProductsByVehiclePart(vehiclePart))
+                {
+                    Products.Add(product);
+                }
+
+                NotifyPropertyChanged("Products");
             }
             
-            NotifyPropertyChanged("Products");
+            
 
         }
         public void UpdateProductsList(IEnumerable<Product> products)

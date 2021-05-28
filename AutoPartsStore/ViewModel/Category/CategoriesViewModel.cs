@@ -13,7 +13,7 @@ using System.Windows;
 using AutoPartsStore.View;
 using System.Runtime.CompilerServices;
 using AutoPartsStore.BusinessLogicLayer.Service;
-using AutoPartsStore.BusinessLogicLayer.Interfaces;
+
 
 namespace AutoPartsStore.ViewModel
 {
@@ -268,7 +268,7 @@ namespace AutoPartsStore.ViewModel
         MainViewModel mainViewModel;
 
         IStoreService storeService;
-        ICategoryService categoryService;
+        CategoryService categoryService;
 
        
         public CategoriesViewModel()

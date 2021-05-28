@@ -1,4 +1,4 @@
-﻿using AutoPartsStore.BusinessLogicLayer.Interfaces;
+﻿
 using AutoPartsStore.DataBaseLayer.UnitOfWork.Interfaces;
 using AutoPartsStore.Model;
 using System;
@@ -8,7 +8,7 @@ using System.Text;
 
 namespace AutoPartsStore.BusinessLogicLayer.Service
 {
-    class CategoryService : ICategoryService
+    public class CategoryService
     {
         IUnitOfWork unitOfWork;
         public CategoryService(IUnitOfWork unitOfWork)
