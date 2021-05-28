@@ -29,8 +29,8 @@
                                     Grid.Column="2" Margin="25, 5, 25, 5" Content="{DynamicResource NewProductButtonText}" 
                                     Click="Button_Click"
                                         Style="{DynamicResource menuButton}" FontSize="13"></Button>
-            <Button  x:Name="ProductsListButton"
-                                    Grid.Column="3" Margin="25, 5, 25, 5" Content="{DynamicResource ProductListButtonText}" 
+            <Button  x:Name="manufacturerButton"
+                                    Grid.Column="3" Margin="20, 5, 20, 5" Content="Добавить производителя" 
                                         Click="Button_Click"
                                     Style="{DynamicResource menuButton}" FontSize="13" Cursor="Hand"></Button>
 

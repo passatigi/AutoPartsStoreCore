@@ -11,13 +11,20 @@
     <Grid>
         <Grid DataContext="{Binding Source={StaticResource AddManufacturerViewModel}}">
             <StackPanel>
-                <TextBox Text="{Binding Manufacturer.Name}"/>
-                <StackPanel>
-                    <Image Name="ProductImage" Source="{Binding Manufacturer.Image, Mode=TwoWay}" MaxHeight="150"/>
-                    <Button Height="23" Name="BrowseButton" Click="BrowseButton_Click" Content="{DynamicResource AddImageButtonText}"/>
+                <TextBlock FontSize="20" Text="Добавление производителя товаров" Margin="10, 5, 5, 5"/>
+                <TextBlock Text="Название компании" Margin="10, 5, 5, 5"/>
+                <TextBox Text="{Binding Manufacturer.Name}" Margin="10"/>
+                <StackPanel Margin="10">
+                    <Image Name="ProductImage" Source="{Binding Manufacturer.Image, Mode=TwoWay}" Margin="5" MaxWidth="300"/>
+                    <Button Style="{DynamicResource secondaryButton}"
+                        Height="30" Name="BrowseButton" Click="BrowseButton_Click" Content="{DynamicResource AddImageButtonText}"/>
                 </StackPanel>
-                <TextBox Text="{Binding Manufacturer.Description}"/>
-                <Button Height="23" Command="{Binding AddManufacturerCommand}"/>
+                <TextBlock Text="Описание" Margin="10, 5, 5, 5"/>
+                <TextBox TextWrapping="Wrap"
+                                AcceptsReturn="True"
+                    Text="{Binding Manufacturer.Description}" Margin="10"/>
+                <Button Style="{DynamicResource standartButton}" Content="Добавить"
+                    Height="30" Command="{Binding AddManufacturerCommand}" Margin="10"/>
             </StackPanel>
         </Grid>
     </Grid>

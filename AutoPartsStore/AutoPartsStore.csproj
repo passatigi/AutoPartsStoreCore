@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="View\Resources\cart.png" />
+    <None Remove="View\Resources\home.png" />
     <None Remove="View\Resources\logo.png" />
     <None Remove="View\Resources\orders.png" />
     <None Remove="View\Resources\user.png" />
@@ -26,6 +27,7 @@
 
   <ItemGroup>
     <Resource Include="View\Resources\cart.png" />
+    <Resource Include="View\Resources\home.png" />
     <Resource Include="View\Resources\logo.png" />
     <Resource Include="View\Resources\orders.png" />
     <Resource Include="View\Resources\user.png" />

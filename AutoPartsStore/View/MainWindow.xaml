@@ -20,6 +20,7 @@
             <Setter Property="Control.Margin" Value="5" />
         </Style>
 
+        <Image x:Key="homeImage" Source="Resources/home.png"/>
         <Image x:Key="userImage" Source="Resources/user.png"/>
         <Image x:Key="cartImage" Source="Resources/cart.png"/>
         <Image x:Key="ordersImage" Source="Resources/orders.png"/>
@@ -102,6 +103,7 @@
                     <ColumnDefinition Width="54*"/>
                     <ColumnDefinition Width="54*"/>
                     <ColumnDefinition Width="54*"/>
+                    <ColumnDefinition Width="54*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" Margin="0,0,8,0">
                     <Button Content="{StaticResource logoImage}" Background="Transparent" BorderThickness="0"></Button>
@@ -137,6 +139,13 @@
                              CommandParameter="User" Content="{StaticResource userImage}"
                             Style="{DynamicResource imgButton}">
                     </Button>
+
+                </Border>
+                <Border Grid.Column="5" Background="Transparent">
+                    <Button Command="{Binding OpenWindowCommand}"
+                             CommandParameter="FirstPage"
+                            Content="{StaticResource homeImage}"
+                             Style="{DynamicResource imgButton}"/>
 
                 </Border>
             </Grid>

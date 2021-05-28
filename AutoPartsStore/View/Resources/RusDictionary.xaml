@@ -19,7 +19,7 @@
     <sys:String x:Key="NewCarButtonText">Добавить автомобиль</sys:String>
     <sys:String x:Key="NewProductButtonText">Добавить товар</sys:String>
     <sys:String x:Key="FindCategoryButtonText">Искать</sys:String>
-    <sys:String x:Key="AddImageButtonText">Добавить изображение</sys:String>
+    <sys:String x:Key="AddImageButtonText">Загрузить изображение</sys:String>
     <sys:String x:Key="AddManufacturerButtonText">Добавить производителя</sys:String>
     <sys:String x:Key="ProductListButtonText">Список товаров</sys:String>
 

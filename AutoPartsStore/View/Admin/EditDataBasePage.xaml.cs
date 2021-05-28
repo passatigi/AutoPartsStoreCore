@@ -30,15 +30,15 @@ namespace AutoPartsStore.View
                 Button button = sender as Button;
                 if (button == AddCarButton)
                 {
-                    WindowProvider.AdminOpenEditEntityPage("AddCar");
+                    WindowProvider.AdminOpenEditEntityPage("EditCar");
                 }
                 else if (button == AddProductButton)
                 {
                     WindowProvider.AdminOpenEditEntityPage("AddProduct");
                 }
-                else if (button == ProductsListButton)
+                else if (button == manufacturerButton)
                 {
-                    WindowProvider.OpenProductsList();
+                    WindowProvider.AdminOpenEditEntityPage("EditManufacturer");
                 }
             }
         }

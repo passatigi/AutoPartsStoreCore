@@ -47,7 +47,7 @@ namespace AutoPartsStore.ViewModel
             {
                 if (_userConfiguration.IsAdmin)
                 {
-                    if (pageName.Equals("AddCar"))
+                    if (pageName.Equals("EditCar"))
                     {
                         WorkSpacePage.Source = new Uri(_AdminAddNewCarPagePath, UriKind.Relative);
                     }
