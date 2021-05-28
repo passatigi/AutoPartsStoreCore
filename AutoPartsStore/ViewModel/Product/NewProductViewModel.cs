@@ -19,7 +19,7 @@ namespace AutoPartsStore.ViewModel
 
 
         IStoreService storeService;
-            public NewProductViewModel()
+        public NewProductViewModel()
         {
             storeService = StoreService.GetStoreService();
             Categories = new ObservableCollection<Category>();

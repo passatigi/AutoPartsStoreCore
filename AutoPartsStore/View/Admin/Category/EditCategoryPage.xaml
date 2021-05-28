@@ -12,15 +12,75 @@
         <Grid DataContext="{Binding Source={StaticResource EditCategoryViewModel}}" 
               Background="{DynamicResource SecondItemBackGround}">
             <StackPanel>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="30"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="{DynamicResource EditCategoryTitleLableText}"/>
-                </Grid>
+
                 <StackPanel Margin="30">
-                    <TextBlock Text="{Binding Category}"/>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="20" Text="{DynamicResource EditCategoryTitleLableText}" Margin="5"/>
+                        <Button  Grid.Column="1" Command="{Binding UpdateCategoryListCommand}" Style="{DynamicResource secondaryButton}"
+                                            CommandParameter="rename" Content="Обновить"
+                            />
+                    </Grid>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox 
+                        ItemsSource="{Binding Categories, Mode=TwoWay}"
+                                  SelectedItem="{Binding SelectedCategory}"
+                        />
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox  Grid.Column="0" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Path=SearchCategoryString}" />
+                            <Button Grid.Column="1" Command="{Binding FindStringCommand}" Style="{DynamicResource secondaryButton}"
+                                            CommandParameter="{Binding Categories}" Content="Найти"
+                            />
+                        </Grid>
+                        
+                    </Grid>
+                    <Grid Margin="10">
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox  Grid.Column="0" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Path=RenameCategoryString}" />
+                            <Button Grid.Column="1" Command="{Binding EditCategoryCommand}" Style="{DynamicResource secondaryButton}"
+                                            CommandParameter="rename" Content="Переименовать"
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid Margin="10">
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox  Grid.Column="0" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Path=InsertCategoryString}" />
+                            <Button Grid.Column="1" Command="{Binding EditCategoryCommand}" Style="{DynamicResource secondaryButton}"
+                                            CommandParameter="insert" Content="Добавить категорию в"
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid Margin="10">
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock  Grid.Column="0" FontSize="18"  Grid.Row="0" Text="* Удаление может быть недопуступным" />
+                            <Button Grid.Column="1" Command="{Binding EditCategoryCommand}" Style="{DynamicResource secondaryButton}"
+                                            CommandParameter="delete" Content="Удалить"
+                            />
+                        </Grid>
+                    </Grid>
                     
                 </StackPanel>
                 

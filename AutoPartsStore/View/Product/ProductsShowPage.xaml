@@ -10,23 +10,57 @@
 
     <Grid>
         <Grid Grid.Column="2" Grid.Row="1" DataContext="{Binding Source={StaticResource ProductsViewModel}}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Border Background="{DynamicResource SecondItemBackGround}" Grid.Row="0">
+            <StackPanel>
+                <Border Background="{DynamicResource SecondItemBackGround}"  Margin="10">
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
                     </Border.Effect>
-                    <StackPanel>
-                        <RadioButton GroupName="Parms" IsChecked="{Binding IsSortByManufacturer}" Content="{DynamicResource SortByManufacturerText}" />
-                        <RadioButton GroupName="Parms" Content="{DynamicResource SortByPriceText}" />
-                        <RadioButton GroupName="DescAsc" IsChecked="{Binding IsSortAcs}" Content="{DynamicResource SortAscText}" />
-                        <RadioButton GroupName="DescAsc" Content="{DynamicResource SortDescText}" />
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Border Margin="5">
+                            <TextBlock Text="Выберите производителя"/>
+                        </Border>
+                        <Border Margin="5" Grid.Column="1" Grid.ColumnSpan="2">
+                            <TextBlock Text="Параметры сортировки"/>
+                        </Border>
+                        <WrapPanel Grid.Column="0" Grid.Row="1">
+                            <Border Margin="5">
+                                <Button Command="{Binding ShowManufacturerProductCommand}"
+                                                    CommandParameter="0"
+                                                Content="Все производители"/>
+                            </Border>
+                            <ItemsControl ItemsSource="{Binding Manufacturers}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="5">
+                                            <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.ShowManufacturerProductCommand}"
+                                                    CommandParameter="{Binding Id}"
+                                                Content="{Binding Name}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </WrapPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="1" Margin="5">
+                            <RadioButton GroupName="Parms" IsChecked="{Binding IsSortByManufacturer}" Content="{DynamicResource SortByManufacturerText}" />
+                            <RadioButton GroupName="Parms" Content="{DynamicResource SortByPriceText}" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Grid.Row="1" Margin="5">
+                            <RadioButton GroupName="DescAsc" IsChecked="{Binding IsSortAcs}" Content="{DynamicResource SortAscText}" />
+                            <RadioButton GroupName="DescAsc" Content="{DynamicResource SortDescText}" />
+                        </StackPanel>
+                    </Grid>
+                    
                 </Border>
-                <Border Grid.Row="1" x:Name="productCont">
+                <Border  x:Name="productCont">
                     <!--<Grid.ColumnDefinitions>
                             <ColumnDefinition Width="7*"/>
                             <ColumnDefinition Width="3*"/>
@@ -136,7 +170,7 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </Border>
-            </Grid>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

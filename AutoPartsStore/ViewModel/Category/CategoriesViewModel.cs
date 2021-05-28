@@ -119,47 +119,26 @@ namespace AutoPartsStore.ViewModel
             }
         }
 
-        private RelayCommand addCategoryCommand;
-        public RelayCommand AddCategoryCommand
-        {
-            get
-            {
-                return addCategoryCommand ?? (addCategoryCommand = new RelayCommand(action =>
-                {
-                    //if(newCategory.ParentCategory.Nodes == null)
-                    //{
-                    //    newCategory.ParentCategory.Nodes = new ObservableCollection<Category>();
-                    //}
-                    Category category = categoryService.AddCategory(newCategory.ParentCategory, newCategory.Name);
-                    category.Nodes = new ObservableCollection<Category>();
-                    MainCategoryNode = storeService.CategoryService.GetMainCategory();
 
-                    ClearNewCategory();
-
-                }, func =>
-                {
-                    return true;
-                }));
-            }
-        }
 
         public void OpenNewCategoryWindow(int parentId)
         {
-           
-            NewCategoryWindow newCategoryWindow = new NewCategoryWindow();
-            if (newCategory == null)
+            try
             {
-                newCategory = new Category();
+                mainViewModel.UserConfiguration.SelectedCategory = categoryService.GetCategoryById(parentId);
+                WindowProvider.AdminOpenEditCategoryWindow();
+                if (mainViewModel.EditCategoryViewModel != null)
+                {
+                    mainViewModel.EditCategoryViewModel.UpdateSelectedCategory();
+                }
+
             }
-            newCategory.ParentCategory = categoryService.GetCategoryById(parentId);
-            ClearNewCategory();
-            newCategoryWindow.Show();
-            NotifyPropertyChanged(nameof(NewCategory));
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
-        private void ClearNewCategory()
-        {
-            newCategory.Name = "";
-        }
+
 
         private RelayCommand addIntoCategoryCommand;
         public RelayCommand AddIntoCategoryCommand
@@ -168,8 +147,10 @@ namespace AutoPartsStore.ViewModel
             {
                 return addIntoCategoryCommand ?? (addIntoCategoryCommand = new RelayCommand(action =>
                 {
-                    MessageBox.Show((int)action + " добавить в");
-                    OpenNewCategoryWindow((int)action);
+                    if (action is int)
+                    {
+                        OpenNewCategoryWindow((int)action);
+                    }
                 }, func =>
                 {
                     return true;
@@ -184,8 +165,10 @@ namespace AutoPartsStore.ViewModel
             {
                 return addWithCategoryCommand ?? (addWithCategoryCommand = new RelayCommand(action =>
                 {
-                    MessageBox.Show((int)action + "добавить с");
-                    OpenNewCategoryWindow(categoryService.GetParentId((int)action));
+                    if(action is int)
+                    {
+                        OpenNewCategoryWindow(categoryService.GetParentId((int)action));
+                    }
                 }, func =>
                 {
                     return true;
@@ -194,16 +177,17 @@ namespace AutoPartsStore.ViewModel
         }
 
 
-        private RelayCommand renameCategoryCommand;
-        public RelayCommand RenameCategoryCommand
+        private RelayCommand editCategoryCommand;
+        public RelayCommand EditCategoryCommand
         {
             get
             {
-                return renameCategoryCommand ?? (renameCategoryCommand = new RelayCommand(action =>
+                return editCategoryCommand ?? (editCategoryCommand = new RelayCommand(action =>
                 {
-                    MessageBox.Show((int)action + " переименовать ");
-
-                    
+                    if(action is int)
+                    {
+                        OpenNewCategoryWindow((int)action);
+                    }
                 }, func =>
                 {
                     return true;
@@ -211,29 +195,13 @@ namespace AutoPartsStore.ViewModel
             }
         }
 
-       
-        private RelayCommand deleteCategoryCommand;
-        public RelayCommand DeleteCategoryCommand
-        {
-            get
-            {
-                return deleteCategoryCommand ?? (deleteCategoryCommand = new RelayCommand(action =>
-                {
-                    //выполнить проверку
-                    MessageBox.Show((int)action + "удалить");
-                    storeService.CategoryService.DeleteCategoryById((int)action);
-                    //categoryАccess.DeleteCategory((int)action);
-                }, func =>
-                {
-                    return true;
-                }));
-            }
-        }
         #endregion
-
+        public void UpdateCategoryList()
+        {
+            MainCategoryNode = storeService.CategoryService.GetMainCategory();
+        }
 
         private Category mainCategoryNode;
-        private ObservableCollection<Category> categoryTree;
 
 
         private Category newCategory;

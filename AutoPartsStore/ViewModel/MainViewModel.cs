@@ -31,22 +31,23 @@ namespace AutoPartsStore.ViewModel
 
         public ShoppingCartViewModel ShoppingCartViewModel { get; set; }
         public OrdersViewModel OrdersViewModel { get; set; }
+        public EditCategoryViewModel EditCategoryViewModel { get; set; }
 
-        IStoreService storeService;
-        IStoreService _StoreService
+        private IStoreService storeService;
+        public IStoreService StoreService
         {
             get
             {
                 if (storeService == null)
                 {
-                    storeService = StoreService.GetStoreService();
+                    storeService = BusinessLogicLayer.Service.StoreService.GetStoreService();
                 }
                 return storeService;
             }
         }
         public MainViewModel()
         {
-            userConfiguration =  UserConfiguration.GetUserConfiguration();
+            UserConfiguration =  UserConfiguration.GetUserConfiguration();
             
         }
         public static MainViewModel GetMainViewModel()
@@ -62,7 +63,7 @@ namespace AutoPartsStore.ViewModel
             return mainViewModel;
         }
 
-        UserConfiguration userConfiguration;
+        public UserConfiguration UserConfiguration;
 
 
         public void AddCarPartOemNumberIntoCategory(int categoryId)
@@ -75,12 +76,12 @@ namespace AutoPartsStore.ViewModel
             OrderPart orderPart = new OrderPart();
             orderPart.Product = product;
             orderPart.ProductCount = productCount;
-            userConfiguration.ShoppingCart.AddOrderPart(orderPart);
+            UserConfiguration.ShoppingCart.AddOrderPart(orderPart);
         }
         public void MakeNewOrder()
         {
-            Order order = userConfiguration.ShoppingCart;
-            order.Customer = userConfiguration.Customer;
+            Order order = UserConfiguration.ShoppingCart;
+            order.Customer = UserConfiguration.Customer;
             if(order.Customer == null)
             {
                 MessageBox.Show("В начале войдите или зарегестрируйтесь");
@@ -89,13 +90,13 @@ namespace AutoPartsStore.ViewModel
             {
                 try
                 {
-                    _StoreService.OrderService.AddOrder(order);
+                    StoreService.OrderService.AddOrder(order);
                 }
                 catch(Exception e)
                 {
 
                 }
-                userConfiguration.UpdateShopingCart();
+                UserConfiguration.UpdateShopingCart();
                 
             }    
         }
@@ -106,7 +107,7 @@ namespace AutoPartsStore.ViewModel
             WindowProvider.OpenProductsList();
             if (mainViewModel.ProductsViewModel != null)
             {
-                mainViewModel.ProductsViewModel.UpdateProductsList(_StoreService.ProductService.SearchProductByString(str));
+                mainViewModel.ProductsViewModel.UpdateProductsList(StoreService.ProductService.SearchProductByString(str));
             }
         }
     }

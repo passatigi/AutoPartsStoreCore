@@ -31,13 +31,15 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
                 throw new Exception("Category is null");
             }
             db.Categories.Remove(category);
-            db.Categories.RemoveRange(db.Categories.Where(c => c.ParentCategory == null && c.Id != 1));
+            IEnumerable<Category> deleteCategories = db.Categories.Where(c => c.ParentCategory == null && c.Id != 1);
+            db.Categories.RemoveRange(deleteCategories);
+           
         }
 
         public IEnumerable<Category> GetAll()
         {
             //.AsNoTracking()
-            return db.Categories.Include(c => c.ParentCategory);
+            return db.Categories.Where(c => c.ParentCategory != null || c.Id == 1).Include(c => c.ParentCategory);
         }
 
         public IEnumerable<Category> GetAllWithCondition(object condition)
@@ -64,7 +66,6 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             }
             category.Name = item.Name;
             db.Categories.Update(category);
-            //db.SaveChanges();
         }
     }
 }

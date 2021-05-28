@@ -32,6 +32,10 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
         {
             return unitOfWork.CategoryRepository.GetAll().Where(c => c.Id != 1);
         }
+        public IEnumerable<Category> GetAllCategoriesWithTop()
+        {
+            return unitOfWork.CategoryRepository.GetAll();
+        }
         public void DeleteCategoryById(int id)
         {
             unitOfWork.CategoryRepository.Delete(id);
@@ -57,7 +61,8 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
 
         public void UpdateCategory(Category category)
         {
-            throw new NotImplementedException();
+            unitOfWork.CategoryRepository.Update(category);
+            unitOfWork.Save();
         }
     }
 }

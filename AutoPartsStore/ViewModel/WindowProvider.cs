@@ -249,6 +249,21 @@ namespace AutoPartsStore.ViewModel
         }
 
        
+        public static void AdminOpenEditCategoryWindow() {
+            if (WorkSpacePage != null)
+            {
+                if (_userConfiguration.IsAdmin)
+                {
+                    WorkSpacePage.Source = new Uri(_AdminEditCategoryPagePath, UriKind.Relative);
+                }
+                else
+                {
+                    
+                }
 
+            }
+            else
+                throw new Exception("Chto nado");
+        }
     }
 }

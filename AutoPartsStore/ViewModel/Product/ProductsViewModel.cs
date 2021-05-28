@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace AutoPartsStore.ViewModel
@@ -19,35 +20,36 @@ namespace AutoPartsStore.ViewModel
 
         private void FilProducts()
         {
-            IEnumerable<Product> products = Products.AsEnumerable();
+            List<Product> tempProducts = Products.ToList();
             if (isSortByManufacturer)
             {
                 if (isSortAcs)
                 {
-                    products = products.OrderBy(p => p.Manufacturer.Name);
+                    tempProducts = tempProducts.OrderBy(p => p.Manufacturer.Name).ToList();
                  }
                 else
                 {
-                    products = products.OrderByDescending((p => p.Manufacturer.Name));
+                    tempProducts = tempProducts.OrderByDescending((p => p.Manufacturer.Name)).ToList();
                 }
             }
             else
             {
                 if (isSortAcs)
                 {
-                    products = products.OrderBy(p => p.Price);
+                    tempProducts = tempProducts.OrderBy(p => p.Price).ToList();
                 }
                 else
                 {
-                    products = products.OrderByDescending((p => p.Price));
+                    tempProducts = tempProducts.OrderByDescending((p => p.Price)).ToList();
                 }
             }
 
             Products.Clear();
-            foreach (Product product in products)
+            foreach (Product product in tempProducts)
             {
                 Products.Add(product);
             }
+            NotifyPropertyChanged("Products");
         }
 
 
@@ -97,7 +99,18 @@ namespace AutoPartsStore.ViewModel
                 }
             }
         }
-
+        private ObservableCollection<Manufacturer> manufacturers;
+        public ObservableCollection<Manufacturer> Manufacturers
+        {
+            get
+            {
+                return manufacturers;
+            }
+            set
+            {
+                SetProperty(ref manufacturers, value);
+            }
+        }
 
         private Product product;
         public Product Product
@@ -130,43 +143,68 @@ namespace AutoPartsStore.ViewModel
 
         public void UpdateProductsList()
         {
-            if(Products == null)
-            {
-                Products = new ObservableCollection<Product>(); 
-            }
             Products.Clear();
+            Manufacturers.Clear();
             VehicleEngine vehicleEngine = UserConfiguration.GetUserConfiguration().SelectedVehicleEngine;
-              Category category = UserConfiguration.GetUserConfiguration().SelectedCategory;
+            Category category = UserConfiguration.GetUserConfiguration().SelectedCategory;
             if(vehicleEngine != null && category != null)
             {
-                vehiclePart = storeService.VehiclePartService.GetVehiclePart(
-                vehicleEngine, category);
-                foreach (Product product in storeService.ProductService.GetProductsByVehiclePart(vehiclePart))
+                try
                 {
-                    Products.Add(product);
+                    vehiclePart = storeService.VehiclePartService.GetVehiclePart(
+                    vehicleEngine, category);
+                    FillProducts(storeService.ProductService.GetProductsByVehiclePart(vehiclePart));
+                    NotifyPropertyChanged("Products");
                 }
-
-                NotifyPropertyChanged("Products");
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
-            
-            
-
-        }
-        public void UpdateProductsList(IEnumerable<Product> products)
-        {
-            if (Products == null)
+            else
             {
-                Products = new ObservableCollection<Product>();
+                MessageBox.Show("Автомобиль не выбран");
             }
-            Products.Clear();
+        }
+        private void FillProducts(IEnumerable<Product> products)
+        {
+            unshowedProducs = null;
             foreach (Product product in products)
             {
                 Products.Add(product);
+                if (!Manufacturers.Contains(product.Manufacturer))
+                {
+                    Manufacturers.Add(product.Manufacturer);
+                }
             }
-            //Products.Add(new Product());
-            NotifyPropertyChanged("Products");
+        }
+        private List<Product> unshowedProducs;
+        private void FillManufacturerProducts(int manufacturerId)
+        {
+            if (manufacturerId != 0)
+            {
+                if (unshowedProducs == null)
+                {
+                    unshowedProducs = products.ToList();
+                }
+                Products.Clear();
+                foreach (Product product in unshowedProducs)
+                {
+                    if (product.Manufacturer.Id == manufacturerId)
+                    {
+                        Products.Add(product);
+                    }
+                }
+                NotifyPropertyChanged("Products");
+            }
+        }
 
-            //Products.
+        public void UpdateProductsList(IEnumerable<Product> products)
+        {
+            Products.Clear();
+            Manufacturers.Clear();
+            FillProducts(products);
+            NotifyPropertyChanged("Products");
         }
 
         private RelayCommand aboutProductCommand;
@@ -211,6 +249,31 @@ namespace AutoPartsStore.ViewModel
             }
         }
 
+        private RelayCommand showManufacturerProductCommand;
+        public RelayCommand ShowManufacturerProductCommand
+        {
+            get
+            {
+                return showManufacturerProductCommand ?? (showManufacturerProductCommand = new RelayCommand(action =>
+                {
+                    if(action is int)
+                    {
+                        FillManufacturerProducts((int)action);
+                    }
+                    if(action is string)
+                    {
+                        if(unshowedProducs != null)
+                        {
+                            UpdateProductsList(unshowedProducs);
+                        } 
+                    }
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
+
         MainViewModel mainViewModel;
         
         IStoreService storeService;
@@ -222,6 +285,7 @@ namespace AutoPartsStore.ViewModel
             storeService = StoreService.GetStoreService();
 
             Products = new ObservableCollection<Product>();
+            Manufacturers = new ObservableCollection<Manufacturer>();
             UpdateProductsList();
         }
        
