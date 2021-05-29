@@ -21,6 +21,11 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
             unitOfWork.ProductRepository.Add(product);
             unitOfWork.Save();
         }
+        public void UpdateProduct(Product product)
+        {   
+            unitOfWork.ProductRepository.Update(product);
+            unitOfWork.Save();
+        }
         public IEnumerable<Product> GetAllProducts()
         {
             return unitOfWork.ProductRepository.GetAll();

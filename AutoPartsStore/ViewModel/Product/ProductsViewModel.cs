@@ -143,27 +143,34 @@ namespace AutoPartsStore.ViewModel
 
         public void UpdateProductsList()
         {
-            Products.Clear();
-            Manufacturers.Clear();
-            VehicleEngine vehicleEngine = UserConfiguration.GetUserConfiguration().SelectedVehicleEngine;
-            Category category = UserConfiguration.GetUserConfiguration().SelectedCategory;
-            if(vehicleEngine != null && category != null)
+            try
             {
-                try
+                Products.Clear();
+                Manufacturers.Clear();
+                VehicleEngine vehicleEngine = UserConfiguration.GetUserConfiguration().SelectedVehicleEngine;
+                Category category = UserConfiguration.GetUserConfiguration().SelectedCategory;
+                if (vehicleEngine != null && category != null)
                 {
-                    vehiclePart = storeService.VehiclePartService.GetVehiclePart(
-                    vehicleEngine, category);
-                    FillProducts(storeService.ProductService.GetProductsByVehiclePart(vehiclePart));
-                    NotifyPropertyChanged("Products");
+                    try
+                    {
+                        vehiclePart = storeService.VehiclePartService.GetVehiclePart(
+                        vehicleEngine, category);
+                        FillProducts(storeService.ProductService.GetProductsByVehiclePart(vehiclePart));
+                        NotifyPropertyChanged("Products");
+                    }
+                    catch (Exception e)
+                    {
+                        WindowProvider.NotifyWindow(e.Message);
+                    }
                 }
-                catch(Exception e)
+                else
                 {
-                    WindowProvider.NotifyWindow(e.Message);
+                    WindowProvider.NotifyWindow("Автомобиль не выбран");
                 }
             }
-            else
+            catch(Exception e)
             {
-                WindowProvider.NotifyWindow("Автомобиль не выбран");
+                WindowProvider.NotifyWindow(e.Message);
             }
         }
         private void FillProducts(IEnumerable<Product> products)

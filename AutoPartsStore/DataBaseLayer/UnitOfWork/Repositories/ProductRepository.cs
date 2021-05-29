@@ -51,7 +51,9 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 
         public void Update(Product item)
         {
-            throw new NotImplementedException();
+            db.Products.Update(item);
+            db.SaveChanges();
+            db.ProductOEMNumbers.RemoveRange(db.ProductOEMNumbers.Where(n => n.Product == null));
         }
 
         public IEnumerable<Product> GetAs(Product item)

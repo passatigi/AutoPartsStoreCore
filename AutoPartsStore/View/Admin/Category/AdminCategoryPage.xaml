@@ -63,23 +63,17 @@
                                                 <MenuItem Header="{DynamicResource AddIntoCategoryMenuItemText}" 
                                                           Command="{Binding Source={StaticResource CategoriesViewModelDataProvider}, Path=AddIntoCategoryCommand}" 
                                                           CommandParameter="{Binding Id}">
-                                                    <MenuItem.Icon>
-                                                        <Image Source="{DynamicResource BuyBascetIcon}" />
-                                                    </MenuItem.Icon>
+                                                    
                                                 </MenuItem>
                                                 <MenuItem Header="{DynamicResource AddWithCategoryMenuItemText}"  
                                                           Command="{Binding Source={StaticResource CategoriesViewModelDataProvider}, Path=AddWithCategoryCommand}" 
                                                           CommandParameter="{Binding Id}">
-                                                    <MenuItem.Icon>
-                                                        <Image Source="{DynamicResource BuyBascetIcon}" />
-                                                    </MenuItem.Icon>
+                                                   
                                                 </MenuItem>
                                                 <MenuItem Header="Редактировать категорию"  
                                                           Command="{Binding Source={StaticResource CategoriesViewModelDataProvider}, Path=EditCategoryCommand}" 
                                                           CommandParameter="{Binding Id}">
-                                                    <MenuItem.Icon>
-                                                        <Image Source="{DynamicResource BuyBascetIcon}" />
-                                                    </MenuItem.Icon>
+                                                    
                                                 </MenuItem>
                                             </ContextMenu>
                                         </Label.ContextMenu>

@@ -28,7 +28,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
         }
         public IEnumerable<Review> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Reviews.AsEnumerable();
         }
 
         public IEnumerable<Review> GetAllWithCondition(object condition)

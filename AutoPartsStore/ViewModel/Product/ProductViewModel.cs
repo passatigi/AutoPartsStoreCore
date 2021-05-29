@@ -13,7 +13,7 @@ namespace AutoPartsStore.ViewModel
     public class ProductViewModel : BaseViewModel
     {
 
-        MainViewModel mainViewModel;
+        protected MainViewModel mainViewModel;
 
         IStoreService storeService;
         public ProductViewModel()
@@ -29,7 +29,7 @@ namespace AutoPartsStore.ViewModel
             UpdateReviews();
 
         }
-        public void UpdateProduct()
+        public virtual void UpdateProduct()
         {
             Product = UserConfiguration.GetUserConfiguration().SelectedProduct;
             ProductCount = 0;
@@ -45,6 +45,14 @@ namespace AutoPartsStore.ViewModel
             set
             {
                 SetProperty(ref product, value);
+                try
+                {
+                    UpdateReviews();
+                }
+                catch(Exception e)
+                {
+                    WindowProvider.NotifyWindow(e.Message);
+                }
             }
         }
         private short productCount;
@@ -70,33 +78,34 @@ namespace AutoPartsStore.ViewModel
                 
             }
         }
-        
-        private RelayCommand updateProductCount;
-        public RelayCommand UpdateProductCount
+        public virtual void UpdateProductCount(object obj)
+        {
+                if (obj is string)
+                {
+                    string parm = obj as string;
+                    if (parm.Equals("+"))
+                    {
+                        if (productCount != product.Availability)
+                        {
+                            ProductCount++;
+                        }
+                    }
+                    else if (parm.Equals("-"))
+                    {
+                        if (productCount != 0)
+                        {
+                            ProductCount--;
+                        }
+                    }
+                }
+        }
+        private RelayCommand updateProductCountCommand;
+        public RelayCommand UpdateProductCountCommand
         {
             get
             {
-                return updateProductCount ?? (updateProductCount = new RelayCommand(action =>
-                {
-                    if(action is string)
-                    {
-                        string parm = action as string;
-                        if (parm.Equals("+"))
-                        {
-                            if(productCount != product.Availability)
-                            {
-                                ProductCount++;
-                            }
-                        }
-                        else if(parm.Equals("-"))
-                        {
-                            if(productCount != 0)
-                            {
-                                ProductCount--;
-                            }
-                        }
-                    }
-                }, func =>
+                return updateProductCountCommand ?? (updateProductCountCommand = new RelayCommand(action => UpdateProductCount(action) 
+                , func =>
                 {
                     return true;
                 }));
@@ -141,13 +150,9 @@ namespace AutoPartsStore.ViewModel
                             UserReview = new Review();
                             WindowProvider.NotifyWindow("отзыв успешно добавлен");
                         }
-                        catch (ReviewExistsException re)
-                        {
-                            WindowProvider.NotifyWindow(re.Message);
-                        }
                         catch (Exception e)
                         {
-
+                            WindowProvider.NotifyWindow(e.Message);
                         }
 
                     }
@@ -159,6 +164,7 @@ namespace AutoPartsStore.ViewModel
         }
         public void UpdateReviews()
         {
+
             Reviews.Clear();
             foreach(Review review in storeService.ReviewService.GetReviews(product).OrderByDescending(p => p.DateTime))
             {

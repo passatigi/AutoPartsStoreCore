@@ -14,11 +14,12 @@
     <vm:OrdersViewModel x:Key="OrdersViewModel"/>
     <vm:AdminOrdersViewModel x:Key="AdminOrdersViewModel"/>
     <vm:ConfirmAdminViewModel x:Key="ConfirmAdminViewModel"/>
+    <vm:AdminProductViewModel x:Key="AdminProductViewModel"/>
     
     <vm:CategoriesViewModel x:Key="CategoriesViewModel"/>
     <vm:ProductsViewModel x:Key="ProductsViewModel"/>
     <vm:ProductViewModel x:Key="ProductViewModel"/>
-    <vm:NewProductViewModel x:Key="NewProductViewModel"/>
+    <vm:EditProductViewModel x:Key="NewProductViewModel"/>
     <vm:NewCategoryViewModel x:Key="NewCategoryViewModel"/>
     <vm:NewCarViewModel x:Key="NewCarViewModel"/>
     <vm:ChooseCarViewModel x:Key="ChooseCarViewModel"/>
@@ -32,7 +33,6 @@
     <!--<ObjectDataProvider x:Key="ProductsViewModelDataProvider" ObjectType="{x:Type vm:ProductsViewModel}" IsAsynchronous="True"/>-->
     <ObjectDataProvider x:Key="ShoppingCartViewModelDataProvider" ObjectType="{x:Type vm:ShoppingCartViewModel}" IsAsynchronous="True"/>
     
-    <BitmapImage x:Key="BuyBascetIcon" UriSource="\TempElements\icons\buyIcon.png" />
     
 
     

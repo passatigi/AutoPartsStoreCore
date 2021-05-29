@@ -14,12 +14,12 @@ using System.Windows.Media.Imaging;
 
 namespace AutoPartsStore.ViewModel
 {
-    class NewProductViewModel : BaseViewModel
+    class EditProductViewModel : BaseViewModel
     {
 
 
         IStoreService storeService;
-        public NewProductViewModel()
+        public EditProductViewModel()
         {
             storeService = StoreService.GetStoreService();
             Categories = new ObservableCollection<Category>();
@@ -35,6 +35,28 @@ namespace AutoPartsStore.ViewModel
             FillCategories();
             FillManufacturers();
             FillVehicleBrands();
+        }
+        public EditProductViewModel(Product product)
+        {
+            storeService = StoreService.GetStoreService();
+            Categories = new ObservableCollection<Category>();
+            Manufacturers = new ObservableCollection<Manufacturer>();
+            VehicleBrands = new ObservableCollection<VehicleBrand>();
+            Feature = new Feature();
+
+            FillCategories();
+            FillManufacturers();
+            FillVehicleBrands();
+            this.Product = product;
+        }
+        public void UpdateProductInfo(Product product)
+        {
+            Feature = new Feature();
+
+            FillCategories();
+            FillManufacturers();
+            FillVehicleBrands();
+            this.Product = product;
         }
         private void FillCategories()
         {

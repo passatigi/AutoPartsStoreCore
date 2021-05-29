@@ -43,12 +43,11 @@ namespace AutoPartsStore.ViewModel
             get
             {
                 return true;
-
-                //if (administrator != null)
-                //{
-                //    return true;
-                //}
-                //return false;
+                if (administrator != null)
+                {
+                    return true;
+                }
+                return false;
             }
             private set
             {

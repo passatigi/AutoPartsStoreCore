@@ -4,6 +4,7 @@ using AutoPartsStore.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace AutoPartsStore.ViewModel
@@ -70,7 +71,7 @@ namespace AutoPartsStore.ViewModel
 
         bool CheckFields()
         {
-            if(customer.FullName == null || customer.FullName == "" ||
+            if (customer.FullName == null || customer.FullName == "" ||
                 customer.Address == null || customer.Address == "" ||
                 customer.Mail == null || customer.Mail == "" ||
                 customer.PhoneNumber == null || customer.PhoneNumber == "" ||
@@ -79,6 +80,34 @@ namespace AutoPartsStore.ViewModel
             {
                 return false;
             }
+            string patternEmail = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                       @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
+            string patternName = @"^([a-zA-Z-А-Яа-я])+$";
+            string patternPassword = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$";
+            string name = customer.FullName;
+            string email = customer.Mail;
+            string password = customer.Password;
+            if (!Regex.IsMatch(name, patternName, RegexOptions.IgnoreCase))
+            {
+                throw new Exception("Неправильный формат имени");
+            }
+
+            if (!Regex.IsMatch(email, patternEmail, RegexOptions.IgnoreCase))
+            {
+
+                throw new Exception("Неправильный формат электронной почты");
+            }
+            //if (!Regex.IsMatch(password, patternPassword, RegexOptions.IgnoreCase))
+            //{
+            //    throw new Exception("Неправильный формат пароля \n " +
+            //                                        "Пароль должен соответствовать следующим требованиям \n " +
+            //                                        "- длина должна составлять от 8 до 15 символов \n" +
+            //                                        "- строка должна содержать хотя бы одну цифру \n" +
+            //                                        "- строка должна содержать хотя бы одну строчную букву");
+            //}
+
+
+
             return customer.Password.Equals(ConfirmPassword);
         }
         public void UpdateUser()
@@ -101,7 +130,7 @@ namespace AutoPartsStore.ViewModel
                             customer.Password == null || customer.Password == ""
                             )
                             {
-                                WindowProvider.NotifyWindow("неправильно поля заполненгы ");
+                                WindowProvider.NotifyWindow("Заполните поля");
                             }
                             else
                             {
@@ -154,9 +183,11 @@ namespace AutoPartsStore.ViewModel
                             }
                         }
                         else if (str.Equals("reg")){
-                            if (CheckFields())
+                            try
                             {
-                                try {
+                                if (CheckFields())
+                                {
+
                                     if (storeService.UserService.HasCustomer(Customer))
                                     {
                                         WindowProvider.NotifyWindow("Мэйл занят");
@@ -172,14 +203,15 @@ namespace AutoPartsStore.ViewModel
                                         }
                                     }
                                 }
-                                catch (Exception e)
+
+                                else
                                 {
-                                    WindowProvider.NotifyWindow(e.Message);
+                                    WindowProvider.NotifyWindow("неправильно поля заполненгы ");
                                 }
                             }
-                            else
+                            catch (Exception e)
                             {
-                                WindowProvider.NotifyWindow("неправильно поля заполненгы ");
+                                WindowProvider.NotifyWindow(e.Message);
                             }
 
                         }

@@ -18,7 +18,7 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
         {
             if (unitOfWork.ReviewRepository.GetAs(review).Where(r => r.CustomerId== review.CustomerId).Count() != 0)
             {
-                throw new ReviewExistsException("Вы уже оставляли отзыв");
+                throw new Exception("Вы уже оставляли отзыв");
             }
             else
             {
@@ -46,8 +46,12 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
         }
         public IEnumerable<Review> GetReviews(Product product)
         {
-            Review tempReview = new Review { Product = product };
-            return unitOfWork.ReviewRepository.GetAs(tempReview);
+            return unitOfWork.ReviewRepository.GetAll().Where(r => r.Product != null && r.Product.Id == product.Id);
+        }
+        public void DeleteReview(Review review)
+        {
+            unitOfWork.ReviewRepository.Delete(review.Id);
+            unitOfWork.Save();
         }
     }
 }
