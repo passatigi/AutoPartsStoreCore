@@ -13,7 +13,17 @@
     <Grid>
         <!--<Border Style="{DynamicResource borderStyle}">-->
         <StackPanel Background="White" DataContext="{Binding Source={StaticResource NewProductViewModel}}">
-            <TextBlock Margin="10" FontSize="20" Text="Добавление товара"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="10" FontSize="20" Text="Добавление товара"/>
+                <Button Margin="10" Grid.Column="1" Command="{Binding UpdateCommand}" Style="{DynamicResource secondaryButton}"
+                                             Content="Обновить"
+                            />
+            </Grid>
+            
             <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -70,7 +80,8 @@
                                     <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=Parameter}" HorizontalAlignment="Left"/>
                                     <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=Description}" HorizontalAlignment="Right"/>
                                     <Border Grid.Column="1" Margin="3">
-                                        <Button Content="{DynamicResource DeleteText}"
+                                        <Button Style="{DynamicResource smallButton}"
+                                            Content="{DynamicResource DeleteText}"
                                                 Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.DeleteOemNumberCommand}"
                                                 CommandParameter="{Binding}"
                                                 />
@@ -152,7 +163,8 @@
                                     <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=VehicleBrand}" HorizontalAlignment="Left"/>
                                     <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=OEM}" HorizontalAlignment="Right"/>
                                     <Border Grid.Column="1" Margin="3">
-                                        <Button Content="{DynamicResource DeleteText}"
+                                        <Button Style="{DynamicResource smallButton}"
+                                            Content="{DynamicResource DeleteText}"
                                                 Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.DeleteOemNumberCommand}"
                                                 CommandParameter="{Binding}"
                                                 />

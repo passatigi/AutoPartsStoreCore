@@ -68,7 +68,7 @@ namespace AutoPartsStore.BusinessLogicLayer.Service
             }
             catch(Exception e)
             {
-                WindowProvider.NotifynWindow(e.Message);
+                WindowProvider.NotifyWindow(e.Message);
             }
         }
     }

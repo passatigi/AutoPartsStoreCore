@@ -187,8 +187,36 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref searchManufacturerString, value);
             }
         }
-
+        public void UpdateProductComboboxes()
+        {
+            FillCategories();
+            FillManufacturers();
+            FillVehicleBrands();
+        }
         #region command
+
+        private RelayCommand updateCommand;
+        public RelayCommand UpdateCommand
+        {
+            get
+            {
+                return updateCommand ?? (updateCommand = new RelayCommand(action =>
+                {
+                    try
+                    {
+                        UpdateProductComboboxes();
+                    }
+                    catch(Exception e)
+                    {
+                        WindowProvider.NotifyWindow(e.Message);
+                    }
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
+
         private RelayCommand addOemCommand;
         public RelayCommand AddOemCommand
         {
@@ -251,7 +279,7 @@ namespace AutoPartsStore.ViewModel
                     }
                     catch(Exception e)
                     {
-                        WindowProvider.NotifynWindow(e.Message);
+                        WindowProvider.NotifyWindow(e.Message);
                     }
                     
                 }, func =>
@@ -282,7 +310,7 @@ namespace AutoPartsStore.ViewModel
                     }
                     catch(Exception e)
                     {
-                        WindowProvider.NotifynWindow(e.Message);
+                        WindowProvider.NotifyWindow(e.Message);
                     }
                     
                 }, func =>

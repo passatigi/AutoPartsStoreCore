@@ -66,9 +66,16 @@ namespace AutoPartsStore.ViewModel
             {
                 return placeOrderCommand ?? (placeOrderCommand = new RelayCommand(action =>
                 {
-                    mainViewModel.MakeNewOrder();
-                    UpdateShoppingCart();
-
+                    try
+                    {
+                        mainViewModel.MakeNewOrder();
+                        UpdateShoppingCart();
+                        WindowProvider.NotifyWindow("Успешно добавлен, перейдите к списку заказов для дополнительной информации");
+                    }
+                    catch(Exception e)
+                    {
+                        WindowProvider.NotifyWindow(e.Message);
+                    }
                 }, func =>
                 {
                     return true;

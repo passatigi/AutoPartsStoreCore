@@ -27,49 +27,12 @@ namespace AutoPartsStore.View.Product
         }
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.InitialDirectory = "c:\\";
-            dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
-            dlg.RestoreDirectory = true;
-
-            if (dlg.ShowDialog() == true)
-            {
-                if (new FileInfo(dlg.FileName).Length > 80000000)
-                {
-                    throw new Exception("Слишком большой файл");
-                }
-                else
-                {
-                    string selectedFileName = dlg.FileName;
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(selectedFileName);
-                    bitmap.EndInit();
-                    ProductImage.Source = bitmap;
-                }
-            }
+            WindowProvider.OpenImgFileDialog(ProductImage);
         }
 
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
-                try
-                {
-                    if(new FileInfo(openFileDialog.FileName).Length > 1000)
-                    {
-                        throw new Exception("Слишком большой файл");
-                    }
-                    else
-                    {
-                        NewReviewText.Focus();
-                        NewReviewText.Text = File.ReadAllText(openFileDialog.FileName).Trim();
-                    }
-                }
-                catch(Exception er)
-                {
-                    WindowProvider.NotifynWindow(er.Message);
-                }
+            WindowProvider.OpenTextFileDialog(NewReviewText);
         }
     }
 }

@@ -108,14 +108,14 @@ namespace AutoPartsStore.ViewModel
                 {
                     if (selectedCategory == null)
                     {
-                        WindowProvider.NotifynWindow("В начале выберите категорию");
+                        WindowProvider.NotifyWindow("В начале выберите категорию");
                     }
                     else
                     {
                         if (action is string)
                         {
-                            //try
-                            //{
+                            try
+                            {
                                 string str = action as string;
                                 if (str.Equals("rename"))
                                 {
@@ -128,7 +128,7 @@ namespace AutoPartsStore.ViewModel
                                     }
                                     else
                                     {
-                                        WindowProvider.NotifynWindow("Неправильно заполнено поле");
+                                        WindowProvider.NotifyWindow("Неправильно заполнено поле");
                                     }
                                 }
                                 else if (str.Equals("insert"))
@@ -142,7 +142,7 @@ namespace AutoPartsStore.ViewModel
                                     }
                                     else
                                     {
-                                        WindowProvider.NotifynWindow("Неправильно заполнено поле");
+                                        WindowProvider.NotifyWindow("Неправильно заполнено поле");
                                     }
 
                                 }
@@ -154,16 +154,16 @@ namespace AutoPartsStore.ViewModel
                                 }
                                 else
                                 {
-                                    WindowProvider.NotifynWindow("Невозможно удалить главную категорию");
+                                    WindowProvider.NotifyWindow("Невозможно удалить главную категорию");
                                 }
                             }
-                            //}
-                            //catch (Exception e)
-                            //{
-                            //    WindowProvider.NotifynWindow(e.Message);
-                            //}
-
                         }
+                            catch (Exception e)
+                        {
+                            WindowProvider.NotifyWindow(e.Message);
+                        }
+
+                    }
                     }
                 }, func =>
                 {
@@ -185,7 +185,7 @@ namespace AutoPartsStore.ViewModel
                     }
                     catch (Exception e)
                     {
-                        WindowProvider.NotifynWindow(e.Message);
+                        WindowProvider.NotifyWindow(e.Message);
                     }
                 }, func =>
                 {

@@ -128,7 +128,7 @@ namespace AutoPartsStore.ViewModel
                     Customer customer = UserConfiguration.GetUserConfiguration().Customer;
                     if (customer == null)
                     {
-                        WindowProvider.NotifynWindow("Перед тем как оставлять отзывы войдите");
+                        WindowProvider.NotifyWindow("Перед тем как оставлять отзывы войдите");
                     }
                     else
                     {
@@ -139,11 +139,11 @@ namespace AutoPartsStore.ViewModel
                             storeService.ReviewService.AddReview(UserReview);
                             UpdateReviews();
                             UserReview = new Review();
-                            WindowProvider.NotifynWindow("отзыв успешно добавлен");
+                            WindowProvider.NotifyWindow("отзыв успешно добавлен");
                         }
                         catch (ReviewExistsException re)
                         {
-                            WindowProvider.NotifynWindow(re.Message);
+                            WindowProvider.NotifyWindow(re.Message);
                         }
                         catch (Exception e)
                         {

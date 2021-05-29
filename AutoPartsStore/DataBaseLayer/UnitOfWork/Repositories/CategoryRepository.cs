@@ -23,6 +23,17 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             db.Categories.Add(item);
         }
 
+        private void DeleteChildNodes(Category category)
+        {
+            foreach (Category node in category.Nodes)
+            {
+                DeleteChildNodes(node);
+                foreach(Category childNode in node.Nodes)
+                {
+                    db.Categories.Remove(childNode);
+                }
+            }
+        }
         public void Delete(int id)
         {
             Category category = GetById(id);
@@ -30,10 +41,8 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
             {
                 throw new Exception("Category is null");
             }
-            db.Categories.Remove(category);
-            IEnumerable<Category> deleteCategories = db.Categories.Where(c => c.ParentCategory == null && c.Id != 1);
-            db.Categories.RemoveRange(deleteCategories);
-           
+            DeleteChildNodes(category);
+            db.Categories.Remove(category);   
         }
 
         public IEnumerable<Category> GetAll()

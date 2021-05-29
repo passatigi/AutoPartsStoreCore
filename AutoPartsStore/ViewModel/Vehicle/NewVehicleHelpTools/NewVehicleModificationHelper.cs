@@ -136,13 +136,13 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                         }
                         catch(Exception e)
                         {
-                            WindowProvider.NotifynWindow(e.Message);
+                            WindowProvider.NotifyWindow(e.Message);
                         }
 
                     }
                     else
                     {
-                        WindowProvider.NotifynWindow("ne zapolnena modificathia");
+                        WindowProvider.NotifyWindow("ne zapolnena modificathia");
                     }
                 },
                 newCarViewModel.ModificationAccessible
@@ -170,17 +170,17 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                             }
                             catch (Exception e)
                             {
-                                WindowProvider.NotifynWindow(e.Message);
+                                WindowProvider.NotifyWindow(e.Message);
                             }
                         }
                         else
                         {
-                            WindowProvider.NotifynWindow("Перед изменением выберите нужный двигатель");
+                            WindowProvider.NotifyWindow("Перед изменением выберите нужный двигатель");
                         }
                     }
                     else
                     {
-                        WindowProvider.NotifynWindow("ne zapolnena modificathia");
+                        WindowProvider.NotifyWindow("ne zapolnena modificathia");
                     }
                 },
                 newCarViewModel.ModificationAccessible
@@ -207,12 +207,12 @@ namespace AutoPartsStore.ViewModel.NewVehicleHelpTools
                             }
                             catch (Exception e)
                             {
-                                WindowProvider.NotifynWindow(e.Message);
+                                WindowProvider.NotifyWindow(e.Message);
                             }
                         }
                         else
                         {
-                            WindowProvider.NotifynWindow("Необходимо выбрать двигатель");
+                            WindowProvider.NotifyWindow("Необходимо выбрать двигатель");
                         }
                 },
                 newCarViewModel.ModificationAccessible

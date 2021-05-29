@@ -158,7 +158,7 @@ namespace AutoPartsStore.ViewModel
                     }
                     catch(Exception e)
                     {
-                        WindowProvider.NotifynWindow(e.Message);
+                        WindowProvider.NotifyWindow(e.Message);
                     }
                     
                 }, func =>
@@ -180,7 +180,7 @@ namespace AutoPartsStore.ViewModel
                     }
                     catch(Exception e)
                     {
-                        WindowProvider.NotifynWindow(e.Message);
+                        WindowProvider.NotifyWindow(e.Message);
                     }
                 }, func =>
                 {
@@ -206,7 +206,7 @@ namespace AutoPartsStore.ViewModel
                     }
                     catch(Exception e)
                     {
-                        WindowProvider.NotifynWindow(e.Message);
+                        WindowProvider.NotifyWindow(e.Message);
                     }
                 }, func =>
                 {

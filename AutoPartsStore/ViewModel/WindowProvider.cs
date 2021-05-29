@@ -1,10 +1,13 @@
 ﻿using AutoPartsStore.View.Admin;
 using AutoPartsStore.View.Manufacturer;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace AutoPartsStore.ViewModel
 {
@@ -66,7 +69,7 @@ namespace AutoPartsStore.ViewModel
                 }
                 else
                 {
-                    WindowProvider.NotifynWindow("Недостаточно прав");
+                    WindowProvider.NotifyWindow("Недостаточно прав");
                 }
             }
             else
@@ -138,7 +141,7 @@ namespace AutoPartsStore.ViewModel
         }
 
 
-        public static void NotifynWindow(string text)
+        public static void NotifyWindow(string text)
         {
             NotificationWindow notificationWindow = new NotificationWindow(text);
             notificationWindow.ShowDialog();
@@ -158,7 +161,7 @@ namespace AutoPartsStore.ViewModel
                 }
                 else
                 {
-                    WindowProvider.NotifynWindow("Недостаточно прав");
+                    WindowProvider.NotifyWindow("Недостаточно прав");
                 }
                 
             }
@@ -269,6 +272,61 @@ namespace AutoPartsStore.ViewModel
             }
             else
                 throw new Exception("Chto nado");
+        }
+
+        public static void OpenImgFileDialog(Image image)
+        {
+            try
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.InitialDirectory = "c:\\";
+                dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
+                dlg.RestoreDirectory = true;
+
+                if (dlg.ShowDialog() == true)
+                {
+                    if (new FileInfo(dlg.FileName).Length > 80000000)
+                    {
+                        throw new Exception("Слишком большой файл");
+                    }
+                    else
+                    {
+                        string selectedFileName = dlg.FileName;
+                        BitmapImage bitmap = new BitmapImage();
+                        bitmap.BeginInit();
+                        bitmap.UriSource = new Uri(selectedFileName);
+                        bitmap.EndInit();
+                        image.Source = bitmap;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                NotifyWindow(e.Message);
+            }
+        }
+        public static void OpenTextFileDialog(TextBox textBox)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    if (new FileInfo(openFileDialog.FileName).Length > 1000)
+                    {
+                        throw new Exception("Слишком большой файл");
+                    }
+                    else
+                    {
+                        textBox.Focus();
+                        textBox.Text = File.ReadAllText(openFileDialog.FileName).Trim();
+                    }
+                }
+            }
+            catch (Exception er)
+            {
+                WindowProvider.NotifyWindow(er.Message);
+            }
         }
     }
 }

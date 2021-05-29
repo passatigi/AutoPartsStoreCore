@@ -101,7 +101,7 @@ namespace AutoPartsStore.ViewModel
                             customer.Password == null || customer.Password == ""
                             )
                             {
-                                WindowProvider.NotifynWindow("неправильно поля заполненгы ");
+                                WindowProvider.NotifyWindow("неправильно поля заполненгы ");
                             }
                             else
                             {
@@ -118,7 +118,7 @@ namespace AutoPartsStore.ViewModel
                                         Customer tempCustomer = storeService.UserService.TryLogIn(Customer);
                                         if (tempCustomer == null)
                                         {
-                                            WindowProvider.NotifynWindow("Неправильный пароль");
+                                            WindowProvider.NotifyWindow("Неправильный пароль");
                                         }
                                         else
                                         {
@@ -130,7 +130,7 @@ namespace AutoPartsStore.ViewModel
                                                 }
                                                 else
                                                 {
-                                                    WindowProvider.NotifynWindow("Администратор отсутствует");
+                                                    WindowProvider.NotifyWindow("Администратор отсутствует");
                                                 }            
                                             }
                                             else
@@ -143,13 +143,13 @@ namespace AutoPartsStore.ViewModel
                                     }
                                     else
                                     {
-                                        WindowProvider.NotifynWindow("Пользователь отсутсвует");
+                                        WindowProvider.NotifyWindow("Пользователь отсутсвует");
 
                                     }
                                 }
                                 catch (Exception e)
                                 {
-                                    WindowProvider.NotifynWindow(e.Message);
+                                    WindowProvider.NotifyWindow(e.Message);
                                 }
                             }
                         }
@@ -159,13 +159,13 @@ namespace AutoPartsStore.ViewModel
                                 try {
                                     if (storeService.UserService.HasCustomer(Customer))
                                     {
-                                        WindowProvider.NotifynWindow("Мэйл занят");
+                                        WindowProvider.NotifyWindow("Мэйл занят");
                                     }
                                     else
                                     {
                                         if (storeService.UserService.AddCustomer(Customer))
                                         {
-                                            WindowProvider.NotifynWindow("Успешно добавлен");
+                                            WindowProvider.NotifyWindow("Успешно добавлен");
                                             ConfirmPassword = "";
                                             Customer = new Customer();
                                             ConfirmPassword = "";
@@ -174,12 +174,12 @@ namespace AutoPartsStore.ViewModel
                                 }
                                 catch (Exception e)
                                 {
-                                    WindowProvider.NotifynWindow(e.Message);
+                                    WindowProvider.NotifyWindow(e.Message);
                                 }
                             }
                             else
                             {
-                                WindowProvider.NotifynWindow("неправильно поля заполненгы ");
+                                WindowProvider.NotifyWindow("неправильно поля заполненгы ");
                             }
 
                         }
@@ -224,7 +224,7 @@ namespace AutoPartsStore.ViewModel
                             }
                             catch (Exception e)
                             {
-                                WindowProvider.NotifynWindow(e.Message);
+                                WindowProvider.NotifyWindow(e.Message);
                             }
                         }
                         else if (str.Equals("logout"))
