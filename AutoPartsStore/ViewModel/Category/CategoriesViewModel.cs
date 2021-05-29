@@ -51,7 +51,7 @@ namespace AutoPartsStore.ViewModel
                     {
                         if (mainViewModel.ChooseCarViewModel.SelectedVehicleEngine == null)
                         {
-                            WindowProvider.NotifynWindow("В начале выберите тачку");
+                            MessageBox.Show("В начале выберите тачку");
                         }
                         else
                         {
@@ -77,7 +77,7 @@ namespace AutoPartsStore.ViewModel
                 {
                     if (mainViewModel.ChooseCarViewModel.SelectedVehicleEngine == null)
                     {
-                        WindowProvider.NotifynWindow("В начале выберите тачку");
+                        MessageBox.Show("В начале выберите тачку");
                     }
                     else
                     {
@@ -103,13 +103,34 @@ namespace AutoPartsStore.ViewModel
             {
                 return findCategoryCommand ?? (findCategoryCommand = new RelayCommand(action =>
                 {
-
-                    //ProductViewModel.ProductViewModelObject.
-                    mainCategoryNode.Nodes.Clear();
-                    foreach (Category category in 
-                    storeService.CategoryService.GetAllCategories().Where(c => c.Name.Contains(inputCategoryString)))
+                    if (inputCategoryString.Equals("") || inputCategoryString == null)
                     {
-                        mainCategoryNode.Nodes.Add(category);
+                        try
+                        {
+                            mainViewModel.CategoriesViewModel.UpdateCategoryList();
+                        }
+                        catch (Exception e)
+                        {
+                            WindowProvider.NotifynWindow(e.Message);
+                        }
+                    }
+                    else
+                    {
+                        
+                        try
+                        {
+                            //ProductViewModel.ProductViewModelObject.
+                            mainCategoryNode.Nodes.Clear();
+                            foreach (Category category in
+                            storeService.CategoryService.GetAllCategories().Where(c => c.Name.Contains(inputCategoryString)))
+                            {
+                                mainCategoryNode.Nodes.Add(category);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            WindowProvider.NotifynWindow(e.Message);
+                        }
                     }
 
                 }, func =>
@@ -135,7 +156,7 @@ namespace AutoPartsStore.ViewModel
             }
             catch(Exception e)
             {
-                WindowProvider.NotifynWindow(e.Message);
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -196,6 +217,7 @@ namespace AutoPartsStore.ViewModel
         }
 
         #endregion
+
         public void UpdateCategoryList()
         {
             MainCategoryNode = storeService.CategoryService.GetMainCategory();
@@ -245,9 +267,11 @@ namespace AutoPartsStore.ViewModel
             mainViewModel = MainViewModel.GetMainViewModel();
                 mainViewModel.CategoriesViewModel = this;
 
-                
-            
-            MainCategoryNode = storeService.CategoryService.GetMainCategory();
+
+
+            MainCategoryNode = new Category();
+
+            UpdateCategoryList();
             categoryService = storeService.CategoryService;
         }
 

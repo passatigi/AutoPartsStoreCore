@@ -8,44 +8,43 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CategoryPage">
-
+    <Page.Resources>
+        <Image x:Key="searchImage" Source="loupe.png" Width="15"></Image>
+    </Page.Resources>
     <Grid>
         <Grid x:Name="CategoriesTree" DataContext="{Binding Source={StaticResource CategoriesViewModel}}">
-            <Grid Margin="10 10 0 10">
-                <Border Background="{DynamicResource SecondItemBackGround}" Padding="0,0,0,10">
-                    <Border.Effect>
-                        <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
-                    </Border.Effect>
+            <Grid Background="#EBEBEB" Margin="10 10 0 10">
+                <Border Padding="0,0,0,10">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="60"/>
+                            <RowDefinition/>
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Grid  VerticalAlignment="Top" Grid.Row="0" Height="60" >
-                            <Border Padding="15, 5, 5, 5">
+                        <!--<Grid  VerticalAlignment="Top" Grid.Row="0" >
+                            <Border Margin="15,15,15,0" >
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*" />
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="50"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBox Grid.Column="0" VerticalAlignment="Center" 
-                                             MinWidth="210" MaxWidth="250" 
-                                             Padding="10" Style="{DynamicResource TextboxNoBorder}" 
-                                             Text="{Binding InputCategoryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                    <Button Grid.Column="1" Margin="10" 
-                        Command="{Binding FindCategoryCommand}"
-                         Style="{DynamicResource BuyButtonStyle}" Content="{DynamicResource FindCategoryButtonText}"/>
+                                    <TextBox Grid.Column="0" Height="35"
+                                             Padding="2" Style="{DynamicResource textBox}" 
+                                             Text="{Binding InputCategoryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0"/>
+                                    <Button Grid.Column="1" FontSize="13"
+                                            Command="{Binding FindCategoryCommand}" Height="35" Width="35"
+                                            Style="{DynamicResource standartButton}" Content="{DynamicResource searchImage}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                    </Button>
                                 </Grid>
                             </Border>
-                        </Grid>
-                        <TreeView Margin="0" Grid.Row="1"
+                        </Grid>-->
+                        <TreeView Margin="0" Grid.Row="1" Background="#EBEBEB"
                             BorderThickness="0" 
                              VerticalAlignment="Top"
                                   x:Name="treeView1" ItemsSource="{Binding MainCategoryNode.Nodes}" >
 
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate  ItemsSource="{Binding Nodes}">
-                                    <Label x:Name="CatLabel" Content="{Binding Name}" >
+                                    <Label x:Name="CatLabel" Content="{Binding Name}">
                                         <i:Interaction.Triggers >
                                             <i:EventTrigger EventName="MouseLeftButtonDown">
                                                 <i:InvokeCommandAction

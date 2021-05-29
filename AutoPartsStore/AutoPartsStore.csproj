@@ -8,11 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="View\Admin\Category\loupe.png" />
     <None Remove="View\Resources\cart.png" />
     <None Remove="View\Resources\home.png" />
     <None Remove="View\Resources\logo.png" />
+    <None Remove="View\Resources\loupe.png" />
     <None Remove="View\Resources\orders.png" />
     <None Remove="View\Resources\user.png" />
+    <None Remove="View\User\Product\folder.png" />
+    <None Remove="View\User\Product\image.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,11 +30,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="View\Admin\Category\loupe.png" />
     <Resource Include="View\Resources\cart.png" />
     <Resource Include="View\Resources\home.png" />
     <Resource Include="View\Resources\logo.png" />
+    <Resource Include="View\Resources\loupe.png" />
     <Resource Include="View\Resources\orders.png" />
     <Resource Include="View\Resources\user.png" />
+    <Resource Include="View\User\Product\folder.png" />
+    <Resource Include="View\User\Product\image.png" />
   </ItemGroup>
 
 </Project>

@@ -38,7 +38,7 @@ namespace AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories
 
         public IEnumerable<Category> GetAll()
         {
-            //.AsNoTracking()
+            //
             return db.Categories.Where(c => c.ParentCategory != null || c.Id == 1).Include(c => c.ParentCategory);
         }
 

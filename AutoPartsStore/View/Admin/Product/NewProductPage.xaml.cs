@@ -41,5 +41,6 @@ namespace AutoPartsStore.View.Product
                 ProductImage.Source = bitmap;
             }
         }
+
     }
 }

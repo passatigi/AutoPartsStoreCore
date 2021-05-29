@@ -189,22 +189,6 @@ namespace AutoPartsStore.ViewModel
         }
 
         #region command
-        //AddManufacturerCommand
-        private RelayCommand editVendorCodeCommand;
-        public RelayCommand EditVendorCodeCommand
-        {
-            get
-            {
-                return editVendorCodeCommand ?? (editVendorCodeCommand = new RelayCommand(action =>
-                {
-                    //WindowProvider.
-
-                }, func =>
-                {
-                    return true;
-                }));
-            }
-        }
         private RelayCommand addOemCommand;
         public RelayCommand AddOemCommand
         {
@@ -223,7 +207,35 @@ namespace AutoPartsStore.ViewModel
                 }));
             }
         }
-
+        public void ValidateProduct(Product product)
+        {
+            if (String.IsNullOrEmpty(product.VendorCode))
+            {
+                throw new Exception("Артикул должен быть указан");
+            }
+            else if (product.Price == 0)
+            {
+                throw new Exception("Укажите цену");
+            }
+            else if (product.Category == null)
+            {
+                throw new Exception("Выберите категорию");
+            }
+            else if (product.Manufacturer == null)
+            {
+                throw new Exception("Выберите производителя");
+            }
+            else if (product.ProductOEMNumbers != null && product.ProductOEMNumbers.Count() != 0)
+            {
+                foreach(ProductOEMNumber productOEMNumber in product.ProductOEMNumbers)
+                {
+                    if(String.IsNullOrEmpty(productOEMNumber.OEM) || productOEMNumber.VehicleBrand == null)
+                    {
+                        throw new Exception("Неправильно заполнены OEM номера");
+                    }
+                }
+            }
+        }
         private RelayCommand addProductCommand;
         public RelayCommand AddProductCommand
         {
@@ -231,8 +243,48 @@ namespace AutoPartsStore.ViewModel
             {
                 return addProductCommand ?? (addProductCommand = new RelayCommand(action =>
                 {
-                    storeService.ProductService.AddProduct(Product);
-                    Product = new Product();
+                    try
+                    {
+                        ValidateProduct(Product);
+                        storeService.ProductService.AddProduct(Product);
+                        Product = new Product(); 
+                    }
+                    catch(Exception e)
+                    {
+                        WindowProvider.NotifynWindow(e.Message);
+                    }
+                    
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
+        private RelayCommand deleteOemNumberCommand;
+        public RelayCommand DeleteOemNumberCommand
+        {
+            get
+            {
+                return deleteOemNumberCommand ?? (deleteOemNumberCommand = new RelayCommand(action =>
+                {
+                    try
+                    {
+                        if (action is ProductOEMNumber)
+                        {
+                            ProductOEMNumber oem = (ProductOEMNumber)action;
+                            product.ProductOEMNumbers.Remove(oem);
+                        }
+                        else if (action is Feature)
+                        {
+                            Feature feature = (Feature)action;
+                            product.Features.Remove(feature);
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        WindowProvider.NotifynWindow(e.Message);
+                    }
+                    
                 }, func =>
                 {
                     return true;
@@ -305,18 +357,31 @@ namespace AutoPartsStore.ViewModel
         }
         #endregion
 
-        //private BitmapImage bitmapImage;
-        //public BitmapImage BitmapImage
-        //{
-        //    get
-        //    {
-        //        return bitmapImage;
-        //    }
-        //    set
-        //    {
-        //        SetProperty(ref bitmapImage, value);
-        //    }
-        //}
+        private RelayCommand updateProductCount;
+        public RelayCommand UpdateProductCount
+        {
+            get
+            {
+                return updateProductCount ?? (updateProductCount = new RelayCommand(action =>
+                {
+                    if (action is string)
+                    {
+                        string parm = action as string;
+                        if (parm.Equals("+"))
+                        {
+                            Product.Availability++;
+                        }
+                        else if (parm.Equals("-"))
+                        {
+                            Product.Availability--;
+                        }
+                    }
+                }, func =>
+                {
+                    return true;
+                }));
+            }
+        }
 
     }
 }

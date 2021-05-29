@@ -11,10 +11,10 @@
     <Grid>
         <Grid Grid.Column="2" Grid.Row="1" DataContext="{Binding Source={StaticResource ProductsViewModel}}">
             <StackPanel>
-                <Border Background="{DynamicResource SecondItemBackGround}"  Margin="10">
-                    <Border.Effect>
+                <Border Background="#EBEBEB" Margin="0,10,0,0" Padding="15">
+                    <!--<Border.Effect>
                         <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
-                    </Border.Effect>
+                    </Border.Effect>-->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -26,23 +26,23 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Border Margin="5">
-                            <TextBlock Text="Выберите производителя"/>
+                            <TextBlock Style="{DynamicResource mainText}" Text="Выберите производителя"/>
                         </Border>
                         <Border Margin="5" Grid.Column="1" Grid.ColumnSpan="2">
-                            <TextBlock Text="Параметры сортировки"/>
+                            <TextBlock Style="{DynamicResource mainText}" Text="Параметры сортировки"/>
                         </Border>
                         <WrapPanel Grid.Column="0" Grid.Row="1">
                             <Border Margin="5">
-                                <Button Command="{Binding ShowManufacturerProductCommand}"
-                                                    CommandParameter="0"
-                                                Content="Все производители"/>
+                                <Button Command="{Binding ShowManufacturerProductCommand}" Padding="5"
+                                                    CommandParameter="0" Style="{DynamicResource smallButton}"
+                                                Content="Все" Cursor="Hand"/>
                             </Border>
                             <ItemsControl ItemsSource="{Binding Manufacturers}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Border Margin="5">
                                             <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.ShowManufacturerProductCommand}"
-                                                    CommandParameter="{Binding Id}"
+                                                    CommandParameter="{Binding Id}" Style="{DynamicResource smallButton}" Padding="5"
                                                 Content="{Binding Name}"/>
                                         </Border>
                                     </DataTemplate>
@@ -50,17 +50,30 @@
                             </ItemsControl>
                         </WrapPanel>
                         <StackPanel Grid.Column="1" Grid.Row="1" Margin="5">
-                            <RadioButton GroupName="Parms" IsChecked="{Binding IsSortByManufacturer}" Content="{DynamicResource SortByManufacturerText}" />
-                            <RadioButton GroupName="Parms" Content="{DynamicResource SortByPriceText}" />
+                            <RadioButton GroupName="Parms" IsChecked="{Binding IsSortByManufacturer}" Content="{DynamicResource SortByManufacturerText}" FontFamily="Verdana"/>
+                            <RadioButton GroupName="Parms" Content="{DynamicResource SortByPriceText}" FontFamily="Verdana"/>
                         </StackPanel>
                         <StackPanel Grid.Column="2" Grid.Row="1" Margin="5">
-                            <RadioButton GroupName="DescAsc" IsChecked="{Binding IsSortAcs}" Content="{DynamicResource SortAscText}" />
-                            <RadioButton GroupName="DescAsc" Content="{DynamicResource SortDescText}" />
+                            <RadioButton GroupName="DescAsc" IsChecked="{Binding IsSortAcs}" Content="{DynamicResource SortAscText}" FontFamily="Verdana"/>
+                            <RadioButton GroupName="DescAsc" Content="{DynamicResource SortDescText}" FontFamily="Verdana"/>
                         </StackPanel>
                     </Grid>
-                    
+
                 </Border>
-                <Border  x:Name="productCont">
+                <!--<Border Grid.Row="0" Margin="0,20,0,0" >
+                    -->
+                <!--<Border.Effect>
+                        <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
+                    </Border.Effect>-->
+                <!--
+                    <StackPanel>
+                        <RadioButton GroupName="Parms" IsChecked="{Binding IsSortByManufacturer}" Content="{DynamicResource SortByManufacturerText}" />
+                        <RadioButton GroupName="Parms" Content="{DynamicResource SortByPriceText}" />
+                        <RadioButton GroupName="DescAsc" IsChecked="{Binding IsSortAcs}" Content="{DynamicResource SortAscText}" />
+                        <RadioButton GroupName="DescAsc" Content="{DynamicResource SortDescText}" />
+                    </StackPanel>
+                </Border>-->
+                <Border Grid.Row="1" x:Name="productCont" Margin="0,10,0,0">
                     <!--<Grid.ColumnDefinitions>
                             <ColumnDefinition Width="7*"/>
                             <ColumnDefinition Width="3*"/>
@@ -70,102 +83,88 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <!--MinWidth="400" MaxWidth="600"-->
-                                <Grid Background="{DynamicResource SecondItemBackGround}" MinHeight="200" MaxHeight="600" Margin="0, 0, 0, 15">
-                                    <Grid.Effect>
+                                <Border Style="{DynamicResource borderStyle}" Margin="0,10,0,0">
+                                    <Grid MinHeight="200" MaxHeight="600">
+                                        <!--<Grid.Effect>
                                         <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
-                                    </Grid.Effect>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid>
+                                    </Grid.Effect>-->
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="40"></RowDefinition>
-                                            <RowDefinition Height="100"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <Image Grid.Row="1" Width="100" Height="40" Source="{Binding Manufacturer.Image}"></Image>
-                                        <Image Grid.Row="2" Width="100" Height="100" Source="{Binding Image}"></Image>
-                                    </Grid>
-                                    <Grid  Grid.Column="1" >
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="30"></RowDefinition>
-                                            <RowDefinition Height="55"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <TextBlock  Margin="5" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Category.Name}" HorizontalAlignment="Left"/>
-                                        <StackPanel Grid.Row="1" Margin="5">
-                                            <TextBlock FontSize="15" Text="{Binding Path=Manufacturer.Name, StringFormat=Бренд: {0}}" HorizontalAlignment="Left"/>
-                                            <TextBlock FontSize="15" Text="{Binding Path=VendorCode, StringFormat=Артикул: {0}}" HorizontalAlignment="Left"/>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel>
+                                            <StackPanel VerticalAlignment="Center">
+                                                <Image Margin="10" MaxHeight="70" Grid.Row="1" Source="{Binding Manufacturer.Image}"></Image>
+                                                <Image Margin="10, 0, 10 , 10" Grid.Row="2" Source="{Binding Image}"></Image>
+                                            </StackPanel>
                                         </StackPanel>
-                                        <ItemsControl Grid.Row="2" x:Name="featureList" ItemsSource="{Binding Features}"
-                             HorizontalAlignment="Stretch"
-                             AlternationCount="2"
-                                  Margin="5">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid x:Name="PropertyItem">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=Parameter}" HorizontalAlignment="Left"/>
-                                                        <TextBlock Margin="3" Grid.Column="0" Text="{Binding Path=Description}" HorizontalAlignment="Right"/>
-                                                    </Grid>
-                                                    <DataTemplate.Triggers>
-                                                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                                                            <Setter TargetName="PropertyItem" Property="Background" Value="{StaticResource ItemBackGround}"/>
-                                                        </Trigger>
-                                                    </DataTemplate.Triggers>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </Grid>
-                                    <Border Grid.Column="2" Padding="15 0 15 0" BorderBrush="{StaticResource ItemBackGround}"
-                        BorderThickness="2,0,0,0">
-                                        <Grid   >
+                                        <Grid Grid.Column="1" Margin="10, 0, 0, 0">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <!--<RowDefinition Height="40"></RowDefinition>-->
-                                                <RowDefinition Height="40"></RowDefinition>
-                                                <RowDefinition Height="40"></RowDefinition>
-                                                <RowDefinition Height="20"></RowDefinition>
+                                                <RowDefinition Height="15"></RowDefinition>
+                                                <RowDefinition Height="35"></RowDefinition>
+                                                <RowDefinition Height="55"></RowDefinition>
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Grid.Row="1" FontSize="20"  FontWeight="Bold" Text="{Binding Path=Price, StringFormat={}{0} р.}" HorizontalAlignment="Center"/>
-
-                                            <Button Margin="5" Grid.Row="2" MinWidth="70" MaxWidth="150"  Style="{DynamicResource BuyButtonStyle}"
-                                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.AddToShoppingCartCommand}"
-                                                    CommandParameter="{Binding Id}"
-                                                    >
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image HorizontalAlignment="Right" Grid.Column="0"
-                        x:Name="buttonImage" Width="12" Height="12" Source="{DynamicResource BuyBascetIcon}"/>
-                                                    <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"
-                                                                          Grid.Column="1" Style="{DynamicResource RedButtonTextStyle}"  Text="В КОРЗИНУ"/>
-                                                </StackPanel>
-                                            </Button>
-                                            <Button Margin="5" Grid.Row="3" MinWidth="70" MaxWidth="150"  Style="{DynamicResource ButtonStyleSelectProductCount}"
-                                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.AboutProductCommand}"
-                                                    CommandParameter="{Binding Id}"
-                                                    >
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image HorizontalAlignment="Right" Grid.Column="0"
-                        Width="12" Height="12" Source="{DynamicResource BuyBascetIcon}"/>
-                                                    <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"
-                                                                          Grid.Column="1" Text="Подробнее"/>
-                                                </StackPanel>
-                                            </Button>
-
-                                            <TextBlock Grid.Row="4"  Text="{Binding Path=Availability, StringFormat=Наличие {0} шт.}" HorizontalAlignment="Center"/>
+                                            <TextBlock FontSize="18" Style="{DynamicResource titleText}" Grid.Row="1" Text="{Binding Category.Name}"/>
+                                            <StackPanel Grid.Row="2">
+                                                <TextBlock Text="{Binding Path=Manufacturer.Name, StringFormat=Бренд: {0}}" Style="{DynamicResource mainText}" FontSize="13" HorizontalAlignment="Left"/>
+                                                <TextBlock Text="{Binding Path=VendorCode, StringFormat=Артикул: {0}}" Style="{DynamicResource mainText}" FontSize="13" HorizontalAlignment="Left"/>
+                                            </StackPanel>
+                                            <ItemsControl Grid.Row="3" x:Name="featureList" ItemsSource="{Binding Features}"
+                                                             HorizontalAlignment="Stretch"
+                                                             AlternationCount="2">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Border Style="{DynamicResource border}">
+                                                            <Grid x:Name="PropertyItem">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock Grid.Column="0" Text="{Binding Path=Parameter}" Style="{DynamicResource mainText}" FontSize="13" HorizontalAlignment="Left"/>
+                                                                <TextBlock Margin="0,0,10,0" Grid.Column="0" Text="{Binding Path=Description}" Style="{DynamicResource mainText}" FontSize="13" HorizontalAlignment="Right"/>
+                                                            </Grid>
+                                                        </Border>
+                                                        <DataTemplate.Triggers>
+                                                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                            <Setter TargetName="PropertyItem" Property="Background" Value="#EBEBEB"/>
+                                                        </Trigger>
+                                                    </DataTemplate.Triggers>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
                                         </Grid>
-                                    </Border>
-                                </Grid>
+                                        <Border Grid.Column="2" Padding="15 0 15 0">
+                                            <Grid   >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"></RowDefinition>
+                                                    <RowDefinition Height="30"></RowDefinition>
+                                                    <!--<RowDefinition Height="40"></RowDefinition>-->
+                                                    <RowDefinition Height="40"></RowDefinition>
+                                                    <RowDefinition Height="40"></RowDefinition>
+                                                    <RowDefinition Height="40"></RowDefinition>
+                                                    <RowDefinition Height="*"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Grid.Row="1" FontSize="20"  FontWeight="Bold" Text="{Binding Path=Price, StringFormat={}{0} р.}" HorizontalAlignment="Center"/>
+                                                <TextBlock Grid.Row="2"  Text="{Binding Path=Availability, StringFormat=Наличие {0} шт.}" HorizontalAlignment="Center"/>
+
+                                                <Button Grid.Row="3" Height="35" Content="В корзину" FontSize="13"
+                                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.AddToShoppingCartCommand}"
+                                                    CommandParameter="{Binding Id}" Style="{DynamicResource standartButton}"
+                                                    >
+                                                </Button>
+                                                <Button Grid.Row="4" Height="35" Style="{DynamicResource secondaryButton}" FontSize="13"
+                                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.AboutProductCommand}"
+                                                    CommandParameter="{Binding Id}" Content="Подробнее"
+                                                    >
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </Border>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

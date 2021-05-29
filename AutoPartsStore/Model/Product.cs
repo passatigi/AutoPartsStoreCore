@@ -213,7 +213,11 @@ namespace AutoPartsStore.Model
             }
             set
             {
-                SetProperty(ref availability, value);
+                if(value >= 0)
+                {
+                    SetProperty(ref availability, value);
+                }
+                
 
             }
         }

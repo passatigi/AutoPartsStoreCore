@@ -149,10 +149,18 @@ namespace AutoPartsStore.ViewModel
             {
                 return updateVehiclePartCommand ?? (updateVehiclePartCommand = new RelayCommand(action =>
                 {
-                    VehiclePart = storeService.VehiclePartService.GetVehiclePart(
+                    try
+                    {
+                        VehiclePart = storeService.VehiclePartService.GetVehiclePart(
                         ChooseCarViewModel.SelectedVehicleEngine,
                         SelectedCategory
                         );
+                    }
+                    catch(Exception e)
+                    {
+                        WindowProvider.NotifynWindow(e.Message);
+                    }
+                    
                 }, func =>
                 {
                     return true;
@@ -166,7 +174,14 @@ namespace AutoPartsStore.ViewModel
             {
                 return updateVehiclePartOemNumbersCommand ?? (updateVehiclePartOemNumbersCommand = new RelayCommand(action =>
                 {
-                    storeService.VehiclePartService.SaveChanges();
+                    try
+                    {
+                        storeService.VehiclePartService.SaveChanges();
+                    }
+                    catch(Exception e)
+                    {
+                        WindowProvider.NotifynWindow(e.Message);
+                    }
                 }, func =>
                 {
                     return true;
@@ -181,12 +196,17 @@ namespace AutoPartsStore.ViewModel
             {
                 return deleteVehiclePartOemNumbersCommand ?? (deleteVehiclePartOemNumbersCommand = new RelayCommand(action =>
                 {
-                    if (action is string) 
+                    try
                     {
-                        string oem = (string)action;
-                        VehiclePart.ConcretVehiclePartOemNumbers.Remove(
-                             VehiclePart.ConcretVehiclePartOemNumbers.Where(p => p.OEMNumber.Equals(oem)).LastOrDefault()
-                            );
+                        if (action is ConcretVehiclePartOemNumber)
+                        {
+                            ConcretVehiclePartOemNumber oem = (ConcretVehiclePartOemNumber)action;
+                            VehiclePart.ConcretVehiclePartOemNumbers.Remove(oem);
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        WindowProvider.NotifynWindow(e.Message);
                     }
                 }, func =>
                 {

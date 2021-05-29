@@ -16,7 +16,8 @@
        
         <StackPanel Background="{DynamicResource SecondItemBackGround}"
                      DataContext="{Binding Source={StaticResource AddOemToCarCategoryViewModel}}">
-            <Grid>
+                <TextBlock Margin="10" FontSize="20" Text="Редактирование OEM номеров автомобиля"/>
+                <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -26,15 +27,15 @@
                 <ComboBox  ItemsSource="{Binding Path=ChooseCarViewModel.VehicleBrands}"
                   SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleBrand, Mode=TwoWay}"
                     Grid.Column="0" x:Name="CarBrandName" FontSize="16"
-                           Margin="10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
+                           Margin="10"></ComboBox>
                 <ComboBox  ItemsSource="{Binding Path=ChooseCarViewModel.VehicleModifications}"
                             SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleModification, Mode=TwoWay}"
                     Grid.Column="1" x:Name="CarModification" 
-                           Margin="0,10,10,10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
+                           Margin="0,10,10,10"></ComboBox>
                 <ComboBox ItemsSource="{Binding Path=ChooseCarViewModel.VehicleEngines}"
                   SelectedValue="{Binding Path=ChooseCarViewModel.SelectedVehicleEngine , Mode=TwoWay}"
                     Grid.Column="2" x:Name="CarEngine" 
-                          Margin="0,10,0,10" Template="{DynamicResource ComboBoxControlTemplate}"></ComboBox>
+                          Margin="0,10,0,10"></ComboBox>
             </Grid>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -54,7 +55,8 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <TextBox  Grid.Column="0" FontSize="18" FontWeight="Bold" Grid.Row="0" Text="{Binding Path=SearchCategoryString}" />
-                        <Button Grid.Column="1" Command="{Binding FindStringCommand}"
+                            <Button Style="{DynamicResource secondaryButton}" Content="{DynamicResource FindCategoryButtonText}"
+                            Grid.Column="1" Command="{Binding FindStringCommand}"
                                             CommandParameter="{Binding Categories}"
                                     
                             />
@@ -63,7 +65,8 @@
             </Grid>
                 
                     <Border Margin="5">
-                        <Button Command="{Binding UpdateVehiclePartCommand}"
+                        <Button Style="{DynamicResource secondaryButton}"
+                            Command="{Binding UpdateVehiclePartCommand}"
                                             CommandParameter="{Binding Categories}"
                             Content="{DynamicResource UpdateAutoPartText}"
                             />
@@ -89,11 +92,12 @@
                                 </StackPanel>
                                 <Grid  Grid.Column="1">
                                     <Border Margin="3">
-                                        <Button Content="{DynamicResource DeleteText}"
-                                                Command="{Binding Source={StaticResource OemToCarCategoryViewModelDataProvider}, Path=DeleteVehiclePartOemNumbersCommand}"
-                                                CommandParameter="{Binding Path=OEMNumber}"
+                                        <Button Style="{DynamicResource secondaryButton}"
+                                            Content="{DynamicResource DeleteText}"
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.DeleteVehiclePartOemNumbersCommand}"
+                                                CommandParameter="{Binding}"
                                                 />
-                                        <!--CommandParameter="{Binding Path=this}"-->
+                                        
                                     </Border>
                                 </Grid>
                              </Grid>
@@ -111,13 +115,12 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0" Margin="5">
-                        <Button Command="{Binding UpdateVehiclePartOemNumbersCommand}"
+                        <Button Height="33"
+                            Style="{DynamicResource standartButton}"
+                            Command="{Binding UpdateVehiclePartOemNumbersCommand}"
                                             CommandParameter="{Binding Categories}"
                             Content="{DynamicResource SaveChangesText}"
                             />
-                    </Border>
-                    <Border Grid.Column="1" Margin="5">
-                        <TextBlock Text="{DynamicResource SaveChangesText}"/>
                     </Border>
                 </Grid>
                 <Grid>
@@ -154,7 +157,9 @@
                         <TextBox Text="{Binding OemNumberString}"/>
                     </Border>
                     <Border Grid.Column="3" Grid.Row="1" Margin="5">
-                        <Button Content="{DynamicResource AddCarBrandButtonText}"
+                        <Button Height="25"
+                            Style="{DynamicResource secondaryButton}"
+                            Content="{DynamicResource AddCarBrandButtonText}"
                                     Command="{Binding AddOemNumberCommand}"
                                     />
                     </Border>

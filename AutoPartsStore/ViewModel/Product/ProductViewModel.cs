@@ -112,10 +112,6 @@ namespace AutoPartsStore.ViewModel
                 return addToShoppingCartCommand ?? (addToShoppingCartCommand = new RelayCommand(action =>
                 {
                     mainViewModel.AddProductToShoppingCart(product, productCount);
-                    //if (mainViewModel.ShoppingCartViewModel != null)
-                    //{
-                    //    mainViewModel.ShoppingCartViewModel.UpdateShoppingCart();
-                    //} 
                 }, func =>
                 {
                     return true;

@@ -103,11 +103,18 @@ namespace AutoPartsStore.ViewModel
 
         public void SearchString(string str)
         {
-            WindowProvider.OpenFirstPage();
-            WindowProvider.OpenProductsList();
-            if (mainViewModel.ProductsViewModel != null)
+            try
             {
-                mainViewModel.ProductsViewModel.UpdateProductsList(StoreService.ProductService.SearchProductByString(str));
+                WindowProvider.OpenFirstPage();
+                WindowProvider.OpenProductsList();
+                if (mainViewModel.ProductsViewModel != null)
+                {
+                    mainViewModel.ProductsViewModel.UpdateProductsList(StoreService.ProductService.SearchProductByString(str));
+                }
+            }
+            catch(Exception e)
+            {
+                WindowProvider.NotifynWindow(e.Message);
             }
         }
     }

@@ -12,18 +12,18 @@
         <ScrollViewer>
             <Grid DataContext="{Binding Source={StaticResource ShoppingCartViewModel}}" Background="{DynamicResource SecondItemBackGround}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition MinWidth="770" MaxWidth="1150"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="140*"/>
+                    <ColumnDefinition Width="550*"/>
+                    <ColumnDefinition Width="102*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1">
-                    <StackPanel>
+                    <StackPanel Margin="0,50,0,0">
                         <Border>
                             <Grid>
-                                <TextBlock Text="Корзина" FontSize="20"/>
+                                <TextBlock Text="Корзина" Style="{DynamicResource titleText}"/>
                             </Grid>
                         </Border>
-                        <Border>
+                        <Border Margin="0,18,0,0">
                             <Grid>
                                 <Grid.Style>
                                     <Style TargetType="Grid">
@@ -35,7 +35,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Grid.Style>
-                                <TextBlock Text="Ваша корзина пуста!" FontSize="20"/>
+                                <TextBlock Text="Ваша корзина пуста!" Style="{DynamicResource mainText}"/>
                             </Grid>
                         </Border>
                         <StackPanel>
@@ -49,51 +49,51 @@
                                     </Style.Triggers>
                                 </Style>
                             </StackPanel.Style>
-                            <Border>
-                                <Grid Background="{DynamicResource ItemBackGround}">
+                            <Border Style="{DynamicResource border}">
+                                <Grid Background="Transparent">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.5*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="0.5*"/>
-                                        <ColumnDefinition Width="0.25*"/>
-                                        <ColumnDefinition Width="0.25*"/>
-                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="0.3*"/>
+                                        <ColumnDefinition Width="0.7*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.3*"/>
                                     </Grid.ColumnDefinitions>
                                     <Border Margin="5" Grid.Column="0">
-                                        <TextBlock Text="Фото" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Фото" HorizontalAlignment="Left" Style="{DynamicResource secondaryText}"/>
                                     </Border>
                                     <Border Margin="5" Grid.Column="1">
-                                        <TextBlock Text="Название" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Название" HorizontalAlignment="Center" Style="{DynamicResource secondaryText}"/>
                                     </Border>
                                     <Border Margin="5" Grid.Column="2">
-                                        <TextBlock Text="Количество" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="5" Grid.Column="3">
-                                        <TextBlock Text="Удалить" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="5" Grid.Column="4">
-                                        <TextBlock Text="Цена" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Количество" HorizontalAlignment="Center" Style="{DynamicResource secondaryText}"/>
                                     </Border>
                                     <Border Margin="5" Grid.Column="5">
-                                        <TextBlock Text="Итого" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Удалить" HorizontalAlignment="Right" Style="{DynamicResource secondaryText}"/>
+                                    </Border>
+                                    <Border Margin="5" Grid.Column="3">
+                                        <TextBlock Text="Цена" HorizontalAlignment="Center" Style="{DynamicResource secondaryText}"/>
+                                    </Border>
+                                    <Border Margin="5" Grid.Column="4">
+                                        <TextBlock Text="Итого" HorizontalAlignment="Center" Style="{DynamicResource secondaryText}"/>
                                     </Border>
                                 </Grid>
                             </Border>
-                            <Border BorderBrush="{DynamicResource BlackTextColor}" BorderThickness="1"></Border>
+
                             <ItemsControl ItemsSource="{Binding ShoppingCart.OrderParts}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border BorderBrush="{DynamicResource BlackTextColor}" BorderThickness="0.25">
+                                        <Border Style="{DynamicResource border}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="0.5*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="0.5*"/>
-                                                    <ColumnDefinition Width="0.25*"/>
-                                                    <ColumnDefinition Width="0.25*"/>
-                                                    <ColumnDefinition Width="0.25*"/>
+                                                    <ColumnDefinition Width="0.3*"/>
+                                                    <ColumnDefinition Width="0.7*"/>
+                                                    <ColumnDefinition Width="0.6*"/>
+                                                    <ColumnDefinition Width="0.4*"/>
+                                                    <ColumnDefinition Width="0.4*"/>
+                                                    <ColumnDefinition Width="0.3*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Border Margin="5" Grid.Column="0">
+                                                <Border Margin="5" Grid.Column="0" HorizontalAlignment="Left">
                                                     <Image Grid.Row="2" Width="30" Height="30" Source="{Binding Product.Image}"></Image>
                                                 </Border>
                                                 <Border Margin="5" Grid.Column="1">
@@ -111,38 +111,39 @@
                                                     <Grid >
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="1*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
                                                             <ColumnDefinition Width="1*"></ColumnDefinition>
                                                         </Grid.ColumnDefinitions>
-                                                        <Button Style="{DynamicResource ButtonStyleSelectProductCount}" 
+                                                        <Button Style="{DynamicResource smallButton}" 
                                                 Command="{Binding Source={StaticResource ShoppingCartViewModelDataProvider}, Path=ReduceProductCountCommand}"
                                                 CommandParameter="{Binding Product.Id}"
-                                                Grid.Column="0" Content="&lt;"/>
+                                                Grid.Column="0" Content="&lt;" VerticalAlignment="Center" Margin="60,0,0,0"/>
                                                         <TextBox Style="{DynamicResource TextboxNoBorder}" Grid.Column="1" FontSize="15"
                                              Text="{Binding ProductCount, Mode=TwoWay}"
-                                             VerticalAlignment="Center"/>
-                                                        <Button Style="{DynamicResource ButtonStyleSelectProductCount}"
+                                             VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                        <Button Style="{DynamicResource smallButton}" 
                                                 Command="{Binding Source={StaticResource ShoppingCartViewModelDataProvider}, Path=AddProductCountCommand}"
                                                 CommandParameter="{Binding Product.Id}"
-                                                Grid.Column="2" Content="&gt;"/>
+                                                Grid.Column="2" Content="&gt;" VerticalAlignment="Center" Margin="0,0,60,0"/>
                                                     </Grid>
                                                 </Border>
+
                                                 <Border Margin="5" Grid.Column="3">
-                                                    <Grid >
-                                                        <Button Style="{DynamicResource ButtonStyleSelectProductCount}"
-                                                Command="{Binding Source={StaticResource ShoppingCartViewModelDataProvider}, Path=DeleteOrderPartCommand}"
-                                                CommandParameter="{Binding Product.Id}"
-                                                Grid.Column="2" Content="X"/>
-                                                    </Grid>
-                                                </Border>
-                                                <Border Margin="5" Grid.Column="4">
                                                     <Grid >
                                                         <TextBlock Grid.Row="1" FontSize="14"  Text="{Binding Path=Product.Price, StringFormat={}{0} р.}" HorizontalAlignment="Center"/>
                                                     </Grid>
                                                 </Border>
-                                                <Border Margin="5" Grid.Column="5">
+                                                <Border Margin="5" Grid.Column="4">
                                                     <Grid >
                                                         <TextBlock Grid.Row="1" FontSize="14"  Text="{Binding Path=TotalPrice, StringFormat={}{0} р.}" HorizontalAlignment="Center"/>
+                                                    </Grid>
+                                                </Border>
+                                                <Border Margin="5" Grid.Column="5" HorizontalAlignment="Right">
+                                                    <Grid >
+                                                        <Button Style="{DynamicResource smallButton}"
+                                                Command="{Binding Source={StaticResource ShoppingCartViewModelDataProvider}, Path=DeleteOrderPartCommand}"
+                                                CommandParameter="{Binding Product.Id}"
+                                                 Content="x" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30"/>
                                                     </Grid>
                                                 </Border>
                                             </Grid>
@@ -150,10 +151,10 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                            <Border>
+                            <Border Margin="0,20,0,0">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <TextBlock Margin="5" FontSize="20" Text="Итого: "/>
-                                    <TextBlock Margin="5" FontSize="20" Text="{Binding ShoppingCart.TotalPrice}"/>
+                                    <TextBlock FontSize="20" Text="Итого: " Style="{DynamicResource secondaryText}"/>
+                                    <TextBlock FontSize="20" Text="{Binding ShoppingCart.TotalPrice}" Style="{DynamicResource secondaryText}"/>
                                 </StackPanel>
                             </Border>
                             <Grid>
@@ -161,11 +162,11 @@
                             </Grid>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="433*"/>
+                                    <ColumnDefinition Width="111*"/>
                                 </Grid.ColumnDefinitions>
-                                <Border Grid.Column="1">
-                                    <Button Command="{Binding PlaceOrderCommand}"
+                                <Border Grid.Column="1" Margin="0,10,0,0">
+                                    <Button Command="{Binding PlaceOrderCommand}" Style="{DynamicResource standartButton}" Height="45"
                                 Content="Оформить заказ"
                                 >
                                     </Button>

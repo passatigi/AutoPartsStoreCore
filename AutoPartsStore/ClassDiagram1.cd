@@ -1,0 +1,725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AutoPartsStore.Command.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAACAAQAAEAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.BusinessLogicLayer.Service.AdminService" Collapsed="true">
+    <Position X="52" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAABAQCAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>BusinessLogicLayer\Service\AdminService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.BusinessLogicLayer.Service.CategoryService" Collapsed="true">
+    <Position X="46.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAACAwAAAAACAAAIACAAAAAACAAAAAAAAAAAAg=</HashCode>
+      <FileName>BusinessLogicLayer\Service\CategoryService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.BusinessLogicLayer.Service.ManufacturerService" Collapsed="true">
+    <Position X="43.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>BusinessLogicLayer\Service\ManufacturerService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.BusinessLogicLayer.Service.OrderService" Collapsed="true">
+    <Position X="41.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAgEAAACAAAAAgAAAAAAAAAAAAAg=</HashCode>
+      <FileName>BusinessLogicLayer\Service\OrderService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.BusinessLogicLayer.Service.ProductService" Collapsed="true">
+    <Position X="39.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIARAQACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>BusinessLogicLayer\Service\ProductService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.BusinessLogicLayer.Service.ReviewService" Collapsed="true">
+    <Position X="50.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAAAAAAAAAAAAABAAACAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BusinessLogicLayer\Service\ReviewService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.BusinessLogicLayer.Service.StoreService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAgAggAACIDQAAAAwICAAAIAAAACAAAQAICIEAA=</HashCode>
+      <FileName>BusinessLogicLayer\Service\StoreService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.BusinessLogicLayer.Service.UserService" Collapsed="true">
+    <Position X="48.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAASAACgAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>BusinessLogicLayer\Service\UserService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.BusinessLogicLayer.Service.VehiclePartService" Collapsed="true">
+    <Position X="45" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>BusinessLogicLayer\Service\VehiclePartService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.BusinessLogicLayer.Service.VehicleService" Collapsed="true">
+    <Position X="48.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAAAAABAAABCCAAAAAIAASAACAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>BusinessLogicLayer\Service\VehicleService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.CategoriesViewModel" Collapsed="true">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAAAAQAABAAAAAIAAAgBAQQhAAAEEQAIAREEAiABA=</HashCode>
+      <FileName>ViewModel\Category\CategoriesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.EditCategoryViewModel" Collapsed="true">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAQIABACAAAIAMAgAASAABAEAAgIAggAAgIAAA=</HashCode>
+      <FileName>ViewModel\Category\EditCategoryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.NewCategoryViewModel" Collapsed="true">
+    <Position X="46.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Category\NewCategoryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.AddManufacturerViewModel" Collapsed="true">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAIAAAAAAAQAAAAgAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Manufacturer\AddManufacturerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.AdminOrdersViewModel" Collapsed="true">
+    <Position X="15" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAEBAAEAAAAAAEAEAABAAAAAQAAAAQAAAAAAAAAAAQ=</HashCode>
+      <FileName>ViewModel\Order\AdminOrdersViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.OrdersViewModel" Collapsed="true">
+    <Position X="15" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEAAAABAAAAAAAQIAAAgAAAAAAAAAAQAAAAAACAAAE=</HashCode>
+      <FileName>ViewModel\Order\OrdersViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.NewProductViewModel" Collapsed="true">
+    <Position X="14.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAACCQAAAggAACEQACOBgAASgAAEEABYDGACCAxAAAE=</HashCode>
+      <FileName>ViewModel\Product\NewProductViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.ProductsViewModel" Collapsed="true">
+    <Position X="17.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAGAAoAAhAQAIAAAiCAAABAAAAAABUABhCQAAIQ=</HashCode>
+      <FileName>ViewModel\Product\ProductsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.ProductViewModel" Collapsed="true">
+    <Position X="1" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAACAFAAAgABAAAIJAAAiACAAAAAAAAAIAAAgAEAAIA=</HashCode>
+      <FileName>ViewModel\Product\ProductViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.ConfirmAdminViewModel" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAgAAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ViewModel\User\ConfirmAdminViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.ShoppingCartViewModel" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAgABAAACAEAgAIAAIgAAAAgABEAIAAgAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\User\ShoppingCartViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.UserViewModel" Collapsed="true">
+    <Position X="5.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAJQCBAAQAggAAIAIAgAAAAQAAAAAACAAAAQAAIAE=</HashCode>
+      <FileName>ViewModel\User\UserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.ChooseCarViewModel" Collapsed="true">
+    <Position X="10" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAgCQSAIAgEgAAAIAAEgACCAAAAAgIAAAAGAAAAAAE=</HashCode>
+      <FileName>ViewModel\Vehicle\ChooseCarViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.NewCarViewModel" Collapsed="true">
+    <Position X="45" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAApAAAAAAAAoAAAgAQAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>ViewModel\Vehicle\NewCarViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.AddEntityPanelViewModel" Collapsed="true">
+    <Position X="39.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAABAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\AddEntityPanelViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.AddOemToCarCategoryViewModel" Collapsed="true">
+    <Position X="17.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAiioAAYAEAgAAQA4AAEAAAAEAhAADAAQA=</HashCode>
+      <FileName>ViewModel\AddOemToCarCategoryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.BaseViewModel" Collapsed="true">
+    <Position X="10" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.HeaderViewModel" Collapsed="true">
+    <Position X="17" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAgAAAIIAAAAAAAAQAAAAEAAAAACAAAAA=</HashCode>
+      <FileName>ViewModel\HeaderViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.MainViewModel" Collapsed="true">
+    <Position X="52" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAMRAAAAkIAAQIAAAgAAQAqABBIAgAAAAACAAAgA=</HashCode>
+      <FileName>ViewModel\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.UserConfiguration" Collapsed="true">
+    <Position X="43.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBgAABIAAACAAQAAAAAYAACgAAAAAEAAAAAACAAAA=</HashCode>
+      <FileName>ViewModel\UserConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.WindowProvider" Collapsed="true">
+    <Position X="52" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAIwIYAAQQAUAEMBAYBQDAQQQEIAAEDCBBQCAEgAAg=</HashCode>
+      <FileName>ViewModel\WindowProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.NewVehicleHelpTools.NewVehicleBrandHelper" Collapsed="true">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACSAgAAgAQAAAAEAAgAAAAQAAAAAIAAAAAAAAAQE=</HashCode>
+      <FileName>ViewModel\Vehicle\NewVehicleHelpTools\NewVehicleBrandHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.NewVehicleHelpTools.NewVehicleEngineHelper" Collapsed="true">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgABAhIAoBgAAAAQAAwQECAAgAggACCAAAAAEAAAA=</HashCode>
+      <FileName>ViewModel\Vehicle\NewVehicleHelpTools\NewVehicleEngineHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.NewVehicleHelpTools.NewVehicleModificationHelper" Collapsed="true">
+    <Position X="16.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAAAgRhBABUABAAEAAAgQAABAAAAAIAAAAEAAgAAAI=</HashCode>
+      <FileName>ViewModel\Vehicle\NewVehicleHelpTools\NewVehicleModificationHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.NewVehicleHelpTools.VehicleEngineComboboxes" Collapsed="true">
+    <Position X="50.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAIAAAAAAAAAIAAEIIAACAACAA=</HashCode>
+      <FileName>ViewModel\Vehicle\NewVehicleHelpTools\VehicleEngineComboboxes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.ViewModel.NewVehicleHelpTools.VehicleModificationComboboxes" Collapsed="true">
+    <Position X="39.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAQAAAAABAAABAAAAAAAIBAA=</HashCode>
+      <FileName>ViewModel\Vehicle\NewVehicleHelpTools\VehicleModificationComboboxes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.View.CategoryPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\Category\AdminCategoryPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.NewCategoryWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\Category\NewCategoryWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.AddNewCarPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\Vehicle\AddNewCarPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.EditDataBasePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\EditDataBasePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.ProductsShowPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Product\ProductsShowPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.UserPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\User\UserPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.SpoilerUserControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAIEAAAAAAAIAAEAAAAAAAAQAAQAAAA=</HashCode>
+      <FileName>View\UserControl\SpoilerUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.ChooseCarPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Vehicle\ChoiceCarPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.FirstPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="50.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\FirstPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.Category.EditCategoryPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\Category\EditCategoryPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.Category.RenameCategoryWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\Category\RenameCategoryWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.Manufacturer.AddManufacturerWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\Manufacturer\AddManufacturerWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.Admin.Manufacturer.EditManufacturerPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\Manufacturer\EditManufacturerPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.Admin.Product.AdminProductPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\Product\AdminProductPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.Product.NewProductPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="50.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\Product\NewProductPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.Product.ProductPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="50.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\User\Product\ProductPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.Vehicle.AddOemToCarCategoryPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\Vehicle\AddOemToCarCategoryPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.Admin.OrdersPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\AdminOrdersPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.Admin.ConfirmAdminWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Admin\ConfirmAdminWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.NotificationWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="52" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Notification\NotificationWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.Window1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="50.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Window1.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.ReviewExistsException" Collapsed="true">
+    <Position X="46.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exception\ReviewExistsException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.View.Resources.Class1" Collapsed="true">
+    <Position X="50.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Resources\Class1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.View.User.Category.CategoryPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\User\Category\CategoryPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.User.OrdersPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\User\OrdersPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.View.User.ShoppingCartPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="52" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\User\ShoppingCartPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.Model.Vehicle.ConcretVehiclePartOemNumber" Collapsed="true">
+    <Position X="52" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQA=</HashCode>
+      <FileName>Model\Vehicle\ConcretVehiclePartOemNumber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Vehicle.VehicleBrand" Collapsed="true">
+    <Position X="9.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAQAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAABAgA=</HashCode>
+      <FileName>Model\Vehicle\VehicleBrand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Vehicle.VehicleEngine" Collapsed="true">
+    <Position X="3.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAAAAAAAAEAAgAAAAIAAEBBBADEQYQAkACAgA=</HashCode>
+      <FileName>Model\Vehicle\VehicleEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Vehicle.VehicleModification" Collapsed="true">
+    <Position X="5.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAACAAAACAAAAhhACAAwQAkAIAgA=</HashCode>
+      <FileName>Model\Vehicle\VehicleModification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Vehicle.VehiclePart" Collapsed="true">
+    <Position X="10" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACEAAAABAAAAAAAAAAAAAAAAAAAIIAAACAA=</HashCode>
+      <FileName>Model\Vehicle\VehiclePart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Administrator" Collapsed="true">
+    <Position X="46.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Administrator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.BasicModel" Collapsed="true">
+    <Position X="11.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\BasicModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AutoPartsStore.Model.Category" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAiAAAQAAAAAAAEAAAAAAQgAAAEAAAAAAAAAAAgIgA=</HashCode>
+      <FileName>Model\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Customer" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAIAAAACAQAAAAEIAAAACAAAAAwAAAgE=</HashCode>
+      <FileName>Model\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Manufacturer" Collapsed="true">
+    <Position X="5.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAEAAAAAAQQEAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Manufacturer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Order" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUCAAQEAAQAAAIAAAAAAABAAQAAwAUAAAQgAIAABAA=</HashCode>
+      <FileName>Model\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.OrderPart" Collapsed="true">
+    <Position X="12" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAIAAAACAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\OrderPart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Feature" Collapsed="true">
+    <Position X="48.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACgAAAAAAgAAAAAACAAAAAAAAQAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Model\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Product" Collapsed="true">
+    <Position X="7.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgDAAAIAQCgAAEAIAABAAAQEQAAABAAAIAIAAAACgA=</HashCode>
+      <FileName>Model\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.ProductOEMNumber" Collapsed="true">
+    <Position X="46.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ProductOEMNumber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.Model.Review" Collapsed="true">
+    <Position X="0.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAABAAAEAAAAAAAAAAAQEQAAABUAAAAAAAQAAAA=</HashCode>
+      <FileName>Model\Review.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.AdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="50.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\AdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.CategoryRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\CategoryRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.ManufacturerRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\ManufacturerRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.OrderRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\OrderRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.ProductOEMNumberRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\ProductOemNumberRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.ProductRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="52" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\ProductRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.ReviewRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\ReviewRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.UserRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.VehicleEngineRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="52" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\VehicleEngineRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.VehicleModificationRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\VehicleModificationRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.VehiclePartRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\VehiclePartRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Repositories.VehicleRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Repositories\VehicleRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseConnector.EfStoreUnitOfWork" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEIAJYAgEiAQIIAREMCABRAAAgAAAAIAAAEAAMAQASA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\EfStoreUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoPartsStore.DataBaseLayer.AutoPartsStoreContext" Collapsed="true">
+    <Position X="39.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAUQAACAAAAAAAAAAAAAAEQEAEgAABIAAAAAAAQQ=</HashCode>
+      <FileName>DataBaseLayer\AutoPartsStoreContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="AutoPartsStore.BusinessLogicLayer.Service.IStoreService" Collapsed="true">
+    <Position X="41.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAggAACAAAAAAAwAAAAAAAAAACAAAAAIAAEAA=</HashCode>
+      <FileName>BusinessLogicLayer\Interfaces\IStoreService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Interfaces.IRepository&lt;T, IDT&gt;" Collapsed="true">
+    <Position X="39.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Interfaces\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AutoPartsStore.DataBaseLayer.UnitOfWork.Interfaces.IUnitOfWork" Collapsed="true">
+    <Position X="43.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAAAIAAAAAAIAABEIAAAAAAAgAAAAAAAAEAAEAQASA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork\Interfaces\IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

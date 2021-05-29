@@ -8,40 +8,42 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="350"
       Title="CategoryPage">
-
+    <Page.Resources>
+        <Image x:Key="searchImage" Source="loupe.png" Width="15"></Image>
+    </Page.Resources>
     <Grid>
         <Grid x:Name="CategoriesTree" DataContext="{Binding Source={StaticResource CategoriesViewModel}}">
             <Grid Margin="10 10 0 10">
-                <Border Background="{DynamicResource SecondItemBackGround}" Padding="0,0,0,10">
-                    <Border.Effect>
-                        <DropShadowEffect Opacity="0.2" ShadowDepth="0" BlurRadius="20"></DropShadowEffect>
-                    </Border.Effect>
+                <Border Background="#EBEBEB" Margin="10 10 0 10">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="60"/>
+                            <RowDefinition/>
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Grid  VerticalAlignment="Top" Grid.Row="0" Height="60" >
-                            <Border Padding="15, 5, 5, 5">
+                        <!--<Grid  VerticalAlignment="Top" Grid.Row="0">
+                            <Border Padding="15, 15, 15, 0">
                                 <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="3*"/>
+                                    </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*" />
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="50"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBox Grid.Column="0" VerticalAlignment="Center" 
-                                             MinWidth="210" MaxWidth="250" 
-                                             Padding="10" Style="{DynamicResource TextboxNoBorder}" 
-                                             Text="{Binding InputCategoryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                    <Button Grid.Column="1" Margin="10" 
-                        Command="{Binding FindCategoryCommand}"
-                         Style="{DynamicResource BuyButtonStyle}" Content="{DynamicResource FindCategoryButtonText}"/>
+                                    <TextBox Grid.Column="0" Height="35"
+                                             Padding="2" Style="{DynamicResource textBox}" 
+                                             Text="{Binding InputCategoryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="2" />
+                                    <Button Grid.Column="1"
+                                        Command="{Binding FindCategoryCommand}" Height="35" Width="35"
+                                            Style="{DynamicResource standartButton}" Content="{DynamicResource searchImage}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.RowSpan="2"/>
 
                                 </Grid>
-                                <!--<StackPanel Orientation="Horizontal" >
-                                    </StackPanel>-->
+                                --><!--<StackPanel Orientation="Horizontal" >
+                                    </StackPanel>--><!--
                             </Border>
-                        </Grid>
-                        <TreeView Margin="0" Grid.Row="1"
+                        </Grid>-->
+                        <TreeView Background="#EBEBEB" Margin="0" Grid.Row="1"
                             BorderThickness="0" 
                              VerticalAlignment="Top"
                                   x:Name="treeView1" ItemsSource="{Binding MainCategoryNode.Nodes}" >
@@ -72,8 +74,15 @@
                                                         <Image Source="{DynamicResource BuyBascetIcon}" />
                                                     </MenuItem.Icon>
                                                 </MenuItem>
-                                                <MenuItem Header="Редактировать категорию"  
-                                                          Command="{Binding Source={StaticResource CategoriesViewModelDataProvider}, Path=EditCategoryCommand}" 
+                                                <MenuItem Header="{DynamicResource RenameCategoryMenuItemText}"  
+                                                          Command="{Binding Source={StaticResource CategoriesViewModelDataProvider}, Path=RenameCategoryCommand}" 
+                                                          CommandParameter="{Binding Id}">
+                                                    <MenuItem.Icon>
+                                                        <Image Source="{DynamicResource BuyBascetIcon}" />
+                                                    </MenuItem.Icon>
+                                                </MenuItem>
+                                                <MenuItem Header="{DynamicResource DeleteCategoryMenuItemText}"  
+                                                          Command="{Binding Source={StaticResource CategoriesViewModelDataProvider}, Path=DeleteCategoryCommand}" 
                                                           CommandParameter="{Binding Id}">
                                                     <MenuItem.Icon>
                                                         <Image Source="{DynamicResource BuyBascetIcon}" />
