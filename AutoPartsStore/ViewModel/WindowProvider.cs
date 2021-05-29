@@ -14,6 +14,7 @@ namespace AutoPartsStore.ViewModel
     public static class WindowProvider
     {
         
+        private static string _InfoPagePath = "InfoPage.xaml";
         private static string _ChoiceCarPagePath = "Vehicle/ChoiceCarPage.xaml";
         private static string _ProductsShowPagePath = "Product/ProductsShowPage.xaml";
 
@@ -137,7 +138,7 @@ namespace AutoPartsStore.ViewModel
                 EditDataBaseFrame.Source = null;
                 CategoryFrame.Source = new Uri(_UserCategoryPagePath, UriKind.Relative);
             }
-            //WorkSpacePage.Source = new Uri(_ProductsShowPagePath, UriKind.Relative);
+            WorkSpacePage.Source = new Uri(_InfoPagePath, UriKind.Relative);
         }
 
 

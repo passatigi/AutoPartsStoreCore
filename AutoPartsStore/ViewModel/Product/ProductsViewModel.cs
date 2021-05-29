@@ -68,7 +68,7 @@ namespace AutoPartsStore.ViewModel
                 {
                     isSortByManufacturer = value;
                     FilProducts();
-                    NotifyPropertyChanged(nameof(isSortByManufacturer));
+                    NotifyPropertyChanged(nameof(IsSortByManufacturer));
 
                 }
                 else

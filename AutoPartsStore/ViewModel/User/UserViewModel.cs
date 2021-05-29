@@ -264,7 +264,11 @@ namespace AutoPartsStore.ViewModel
                             Customer = new Customer();
                             UserConfiguration.GetUserConfiguration().Customer = null;
                             UserConfiguration.GetUserConfiguration().UnsetAdmin();
-
+                            if(mainViewModel.OrdersViewModel != null)
+                            {
+                                mainViewModel.OrdersViewModel.UpdateOrders();
+                            }
+                            WindowProvider.OpenFirstPage();
                         }
                         else if (str.Equals("back"))
                         {
