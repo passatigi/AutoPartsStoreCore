@@ -42,7 +42,7 @@ namespace AutoPartsStore.ViewModel
         {
             get
             {
-                return true;
+                //return true;
                 if (administrator != null)
                 {
                     return true;
