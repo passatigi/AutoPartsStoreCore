@@ -22,5 +22,12 @@ namespace AutoPartsStore.View
         {
             InitializeComponent();
         }
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            
+            if (this.PassBox != null)
+            { hiddenPassword.Text = PassBox.Password; }
+
+        }
     }
 }

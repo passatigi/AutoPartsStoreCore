@@ -29,12 +29,19 @@ namespace AutoPartsStore.ViewModel
             }
             set
             {
-                inputCategoryString = value;
-                NotifyPropertyChanged("InputCategoryString");
-                if (inputCategoryString.Equals(""))
+                try
                 {
-                    ObservableCollection<Category> categories = storeService.CategoryService.GetMainCategory().Nodes;
-                    MainCategoryNode.Nodes = categories;
+                    inputCategoryString = value;
+                    NotifyPropertyChanged("InputCategoryString");
+                    if (inputCategoryString.Equals(""))
+                    {
+                        ObservableCollection<Category> categories = storeService.CategoryService.GetMainCategory().Nodes;
+                        MainCategoryNode.Nodes = categories;
+                    }
+                }
+                catch(Exception e)
+                {
+                    WindowProvider.NotifyWindow(e.Message);
                 }
             }
         }

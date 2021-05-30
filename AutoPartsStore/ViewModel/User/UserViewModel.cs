@@ -3,6 +3,7 @@ using AutoPartsStore.Command;
 using AutoPartsStore.Model;
 using System;
 using System.Collections.Generic;
+using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -50,6 +51,10 @@ namespace AutoPartsStore.ViewModel
                 SetProperty(ref customer, value);
             }
         }
+        public string SafePassword {  get; set; }
+        public string Password { private get; set; }
+        public SecureString SecurePassword { private get; set; }
+
         private Customer editCustomer;
         public Customer EditCustomer
         {
@@ -126,7 +131,8 @@ namespace AutoPartsStore.ViewModel
                     {
                         string str = action as string;
                         if (str.Equals("login")){
-                            if(customer.Mail == null || customer.Mail == "" ||
+                            customer.Password = SafePassword;
+                            if (customer.Mail == null || customer.Mail == "" ||
                             customer.Password == null || customer.Password == ""
                             )
                             {
@@ -197,9 +203,8 @@ namespace AutoPartsStore.ViewModel
                                         if (storeService.UserService.AddCustomer(Customer))
                                         {
                                             WindowProvider.NotifyWindow("Успешно добавлен");
-                                            ConfirmPassword = "";
                                             Customer = new Customer();
-                                            ConfirmPassword = "";
+   
                                         }
                                     }
                                 }

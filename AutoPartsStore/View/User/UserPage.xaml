@@ -44,7 +44,9 @@
                                         <TextBlock Text="Email" Style="{DynamicResource mainText}"/>
                                         <TextBox Text="{Binding Customer.Mail}" Style="{DynamicResource textBox}"/>
                                         <TextBlock Text="Пароль" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
-                                        <TextBox Text="{Binding Customer.Password}" Style="{DynamicResource textBox}"/>
+                                        <PasswordBox x:Name="PassBox" PasswordChanged="PasswordBox_PasswordChanged"/>
+                                        <TextBlock x:Name="hiddenPassword" Text="{Binding SafePassword,  Mode=TwoWay}" Visibility="Collapsed"/>
+                                        <!--Password="{Binding Customer.Password}" Style="{DynamicResource textBox}"/>-->
                                     </StackPanel>
                                 </Border>
                                 <Button Style="{DynamicResource standartButton}"
@@ -73,7 +75,7 @@
                                         <TextBox Text="{Binding Customer.Password}" Style="{DynamicResource textBox}"/>
 
                                         <TextBlock Text="Подтвердите пароль" Style="{DynamicResource mainText}" Margin="0,10,0,0"/>
-                                        <TextBox Text="{Binding ConfirmPassword}" Style="{DynamicResource textBox}"/>
+                                        <TextBox Text="{Binding ConfirmPassword, Mode=TwoWay}" Style="{DynamicResource textBox}"/>
                                     </StackPanel>
                                 </Border>
                                 <Button Style="{DynamicResource standartButton}"
