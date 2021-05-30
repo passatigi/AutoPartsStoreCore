@@ -40,9 +40,6 @@
                                 <TextBlock Text="{Binding Path=Product.Manufacturer.Name, StringFormat=Бренд: {0}}" Style="{DynamicResource secondaryText}" HorizontalAlignment="Left"/>
                                 <TextBlock Text="{Binding Path=Product.VendorCode, StringFormat=Артикул: {0}}" Style="{DynamicResource secondaryText}" HorizontalAlignment="Left" Margin="0,5,0,0"/>
                             </StackPanel>
-                            <Grid Margin="0,20,0,0">
-                                <TextBlock Text="Оригинальные номера" Style="{DynamicResource secondaryText}"/>
-                            </Grid>
                             <Grid>
                                 <ScrollViewer>
                                     <ItemsControl ItemsSource="{Binding Product.ProductOEMNumbers}"
@@ -51,8 +48,8 @@
                                                       Margin="5">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <Border Style="{DynamicResource border}">
-                                                    <Grid x:Name="PropertyItem">
+                                                <Border Style="{DynamicResource border}" x:Name="PropertyItem">
+                                                    <Grid>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="1*"></ColumnDefinition>
                                                         </Grid.ColumnDefinitions>
@@ -71,6 +68,7 @@
                                     </ItemsControl>
                                 </ScrollViewer>
                             </Grid>
+
 
 
                             <Grid Margin="0,40,0,0">
